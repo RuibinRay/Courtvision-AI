@@ -45,6 +45,11 @@ code,.mono{font-family:var(--font-mono)}
 body[data-route="team"] .bg-arena::before,body[data-route="player"] .bg-arena::before{background:
   radial-gradient(1000px 560px at 50% -10%, rgba(var(--team-a-rgb),.22), transparent 62%),
   radial-gradient(800px 480px at 100% 10%, rgba(var(--team-b-rgb),.12), transparent 60%)}
+/* home: the arena is lit in the league's own blue and red before the matchup's team colours take over */
+body[data-route="home"] .bg-arena::before{background:
+  radial-gradient(900px 520px at 50% -12%, rgba(243,238,228,.07), transparent 65%),
+  radial-gradient(760px 440px at 6% 0%, rgba(var(--nba-blue-rgb),.22), transparent 60%),
+  radial-gradient(760px 440px at 94% 0%, rgba(var(--nba-red-rgb),.16), transparent 60%)}
 body[data-route="live"] .bg-arena::before,body[data-route="game"] .bg-arena::before{background:radial-gradient(900px 520px at 50% -12%, rgba(127,168,255,.10), transparent 65%)}
 body[data-route="predictions"] .bg-arena::before,body[data-route="models"] .bg-arena::before{background:radial-gradient(900px 520px at 50% -12%, rgba(155,140,255,.10), transparent 65%)}
 /* scrollbars */
