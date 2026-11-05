@@ -1,42 +1,54 @@
-/* COURTVISION AI — design tokens */
+/* COURTVISION AI — "Broadcast Night" design tokens
+   Near-black charcoal surfaces, warm off-white type, one basketball-orange brand accent,
+   one cool court-light accent for data & interaction, team colours used only as lighting. */
 :root {
-  /* arena palette */
-  --bg-0: #06080E;
-  --bg-1: #0B0F1A;
-  --bg-2: #12161F;
-  --bg-3: #1A1F2B;
-  --bg-4: #232938;
-  --line: rgba(255,255,255,.08);
-  --line-2: rgba(255,255,255,.14);
-  --text: #F2F4F8;
-  --text-2: #B3BCCB;
-  --text-3: #74809A;
-  --blue: #3D7BFF;
-  --blue-2: #7FB2FF;
-  --purple: #8B5CF6;
-  --violet: #B79CFF;
-  --orange: #F26B1F;
-  --gold: #F5B301;
-  --green: #2DD4A0;
-  --red: #F0506E;
-  --cyan: #38E8FF;
-  /* reactive team colours: pages re-assign these */
-  --team-a: #3D7BFF;
-  --team-b: #8B5CF6;
-  --team-a-rgb: 61,123,255;
-  --team-b-rgb: 139,92,246;
+  /* surfaces */
+  --bg-0: #0A0A0C;            /* arena black */
+  --bg-1: #111114;            /* page surface */
+  --bg-2: #171719;            /* panel */
+  --bg-3: #1F1F23;            /* raised */
+  --bg-4: #2A2A2F;            /* hover */
+  --line: #26262B;
+  --line-2: #34343A;
+  --line-3: #4A4A52;
+  /* type */
+  --text: #F3EEE4;            /* warm off-white */
+  --text-2: #B9B3A8;
+  --text-3: #7E7A73;
+  --text-inverse: #0A0A0C;
+  /* brand & accents */
+  --orange: #E8622A;          /* brand: primary actions, key emphasis only */
+  --orange-2: #F58A52;
+  --orange-rgb: 232,98,42;
+  --cool: #7FA8FF;            /* court light: links, focus, data primary */
+  --cool-2: #A9C4FF;
+  --cool-rgb: 127,168,255;
+  --wood: #6B4A2B;            /* hardwood */
+  --wood-2: #8C6239;
+  /* semantic */
+  --pos: #3FCB95; --pos-rgb: 63,203,149;
+  --neg: #E6596A; --neg-rgb: 230,89,106;
+  --warn: #F2C14E;
+  --info: #7FA8FF;
+  /* team lighting (pages re-assign) */
+  --team-a: #7FA8FF; --team-b: #E8622A;
+  --team-a-rgb: 127,168,255; --team-b-rgb: 232,98,42;
+  /* legacy aliases used across views */
+  --blue: var(--cool); --blue-2: var(--cool-2); --purple: #9B8CFF; --violet: #B9ADFF; --gold: var(--warn); --green: var(--pos); --red: var(--neg); --cyan: #8DD3E8;
+  /* chart series: primary, comparison, then semantic */
+  --chart-1: #F3EEE4; --chart-2: #E8622A; --chart-3: #7FA8FF; --chart-4: #3FCB95; --chart-5: #E6596A; --chart-6: #9B8CFF; --chart-7: #F2C14E;
   /* type */
   --font-display: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-  /* spacing & radius */
-  --gutter: clamp(16px, 4vw, 48px);
-  --r-sm: 6px; --r-md: 12px; --r-lg: 20px; --r-xl: 28px;
+  /* layout */
+  --gutter: clamp(16px, 4vw, 56px);
+  --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-xl: 24px;
   --nav-h: 64px;
-  --shadow-1: 0 10px 30px rgba(0,0,0,.45);
-  --shadow-glow: 0 0 40px rgba(var(--team-a-rgb), .35);
+  --shadow-1: 0 12px 32px rgba(0,0,0,.5);
+  --shadow-2: 0 2px 8px rgba(0,0,0,.35);
   --ease-out: cubic-bezier(.16,1,.3,1);
   --ease-in-out: cubic-bezier(.65,0,.35,1);
-  --chart-1: #3D7BFF; --chart-2: #B79CFF; --chart-3: #38E8FF; --chart-4: #F5B301; --chart-5: #F26B1F; --chart-6: #2DD4A0; --chart-7: #F0506E;
+  --dur: .22s;
   color-scheme: dark;
 }

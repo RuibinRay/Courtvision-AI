@@ -56,9 +56,8 @@ export async function mountExplorer(el, { heading = true, standings = true } = {
   };
   const conf = (c) => h('div', { class: 'conf ' + c.toLowerCase() }, h('div', { class: 'conf-title' }, `${c}ern Conference`, h('small', null, '3 divisions · 15 teams')), DIVISIONS[c].map(d => division(c, d)));
   const court = h('div', { class: 'court-wrap' }, h('div', { html: COURT_SVG }), h('div', { class: 'court-grid' }, conf('East'), h('div', { class: 'mid' }, h('span', { class: 'lbl' }, 'Center court'), h('span', { class: 'ball' }), h('span', { class: 'lbl' }, 'Tip-off')), conf('West')), card);
-  const root = h('div', { class: 'explorer' },
-    heading ? h('div', { class: 'head' }, h('div', null, h('p', { class: 'eyebrow' }, h('b', null, 'League map'), ' · 30 teams · 6 divisions'), h('h2', null, 'Enter the League')), h('p', { class: 'lead' }, 'Hover a logo to light the arena in team colours. Click to open the team’s analytics dashboard.')) : null,
-    court);
+  const head = heading ? h('div', { class: 'head' + (heading === 'after' ? ' after' : '') }, h('div', null, h('p', { class: 'eyebrow' }, 'League map · 30 teams · 6 divisions'), h('h2', null, 'Enter the ', h('em', { style: { fontStyle: 'normal', color: 'var(--orange)' } }, 'league'))), h('p', { class: 'lead' }, 'Hover a logo to light the arena in team colours. Click to open the team’s analytics dashboard.')) : null;
+  const root = h('div', { class: 'explorer' }, heading === 'after' ? null : head, court, heading === 'after' ? head : null);
   if (standings) {
     const list = (c) => { const ts = byConf(c).sort((a, b) => confRank(a) - confRank(b)); return h('div', { class: 'stand' }, h('h4', null, `${c} standings`), ts.map(t => h('a', { href: `#/team/${t.abbr}`, class: confRank(t) <= 6 ? 'pl' : confRank(t) <= 10 ? 'playin' : '' }, h('span', { class: 'r' }, confRank(t)), logoImg(t), h('span', { class: 'n' }, t.full), h('span', { class: 'num mono' }, fmt.rec(t.st.WINS, t.st.LOSSES)), h('span', { class: 'num mono' }, fmt.pct(t.st.WinPCT, 0)), h('span', { class: 'num mono', style: { color: t.adv.NET_RATING > 0 ? 'var(--green)' : 'var(--red)' } }, fmt.signed(t.adv.NET_RATING)))), h('div', { class: 'legend' }, 'W-L · WIN% · NET RTG · green = playoff spot (1-6), gold = play-in (7-10)')); };
     root.append(h('div', { class: 'standings-grid' }, list('East'), list('West')));

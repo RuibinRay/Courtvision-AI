@@ -2,56 +2,64 @@
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 html,body{height:100%}
-body{margin:0;background:var(--bg-0);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg-0);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 body.reduced-motion *,body.reduced-motion *::before,body.reduced-motion *::after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
 img,svg,canvas,video{display:block;max-width:100%}
-a{color:var(--blue-2);text-decoration:none}
-a:hover{text-decoration:underline}
+a{color:var(--cool);text-decoration:none}
+a:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 input,select,textarea{font:inherit;color:inherit}
-h1,h2,h3,h4{margin:0;font-family:var(--font-display);font-weight:800;letter-spacing:.01em;line-height:1;text-transform:uppercase}
-h1{font-size:clamp(40px,8vw,112px)}
-h2{font-size:clamp(30px,4.6vw,56px)}
-h3{font-size:clamp(22px,2.6vw,30px)}
-h4{font-size:18px;letter-spacing:.06em}
+h1,h2,h3,h4{margin:0;font-family:var(--font-display);font-weight:800;letter-spacing:.005em;line-height:.95;text-transform:uppercase;text-wrap:balance}
+h1{font-size:clamp(40px,7vw,96px)}
+h2{font-size:clamp(30px,4.2vw,52px)}
+h3{font-size:clamp(20px,2.2vw,26px)}
+h4{font-size:17px;letter-spacing:.05em}
 p{margin:0 0 1em}
 code,.mono{font-family:var(--font-mono)}
 .num{font-family:var(--font-mono);font-variant-numeric:tabular-nums}
-.skip-link{position:absolute;left:-999px;top:8px;background:var(--blue);color:#fff;padding:8px 12px;border-radius:6px;z-index:1000}
+.skip-link{position:absolute;left:-999px;top:8px;background:var(--orange);color:var(--text-inverse);padding:8px 12px;border-radius:6px;z-index:1000;font-weight:600}
 .skip-link:focus{left:8px}
 .noscript{padding:40px;text-align:center}
-:focus-visible{outline:2px solid var(--blue-2);outline-offset:2px}
+:focus-visible{outline:2px solid var(--cool);outline-offset:2px;border-radius:4px}
 .main{position:relative;z-index:1;min-height:100vh;padding-top:var(--nav-h)}
 .main.no-pad{padding-top:0}
 .container{width:min(1440px,100% - 2*var(--gutter));margin-inline:auto}
 .section{padding:clamp(48px,8vw,112px) 0}
-.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-3)}
-.eyebrow b{color:var(--blue-2);font-weight:600}
-.lead{color:var(--text-2);font-size:clamp(16px,1.3vw,19px);max-width:62ch}
+.eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3)}
+.eyebrow b{color:var(--orange);font-weight:600}
+.lead{color:var(--text-2);font-size:clamp(16px,1.25vw,18px);max-width:60ch;line-height:1.55}
 .muted{color:var(--text-3)}
 .small{font-size:13px}
 .hide{display:none!important}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-/* reactive multi-colour arena background */
-.bg-arena{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:radial-gradient(1200px 700px at 50% -10%, #121a33 0%, transparent 60%),var(--bg-0)}
-.bg-glow{position:absolute;width:70vmax;height:70vmax;border-radius:50%;filter:blur(90px);opacity:.38;transition:background 1.2s var(--ease-out),opacity 1.2s;will-change:transform}
-.bg-glow.a{left:-20vmax;top:-10vmax;background:radial-gradient(circle,var(--team-a),transparent 60%);animation:drift-a 26s ease-in-out infinite alternate}
-.bg-glow.b{right:-22vmax;bottom:-18vmax;background:radial-gradient(circle,var(--team-b),transparent 60%);animation:drift-b 31s ease-in-out infinite alternate}
-.bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 30%,#000 0%,transparent 75%);-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 0%,transparent 75%)}
-@keyframes drift-a{from{transform:translate(0,0) scale(1)}to{transform:translate(12vw,10vh) scale(1.15)}}
-@keyframes drift-b{from{transform:translate(0,0) scale(1.1)}to{transform:translate(-10vw,-12vh) scale(.95)}}
+/* ---------- atmosphere: stadium darkness, one overhead light, film grain; no floating blobs ---------- */
+.bg-arena{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:var(--bg-0)}
+.bg-arena::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(900px 520px at 50% -12%, rgba(243,238,228,.07), transparent 65%),
+  radial-gradient(700px 420px at 8% 0%, rgba(var(--team-a-rgb),.10), transparent 60%),
+  radial-gradient(700px 420px at 92% 0%, rgba(var(--team-b-rgb),.08), transparent 60%);
+  transition:opacity .8s}
+.bg-arena::after{content:"";position:absolute;inset:0;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:overlay}
+.bg-arena .bg-glow,.bg-arena .bg-grid{display:none}
+/* court-line motif for the analytics pages: faint, anchored top-right, never behind charts' centre */
+body[data-route="team"] .bg-arena::before,body[data-route="player"] .bg-arena::before{background:
+  radial-gradient(1000px 560px at 50% -10%, rgba(var(--team-a-rgb),.22), transparent 62%),
+  radial-gradient(800px 480px at 100% 10%, rgba(var(--team-b-rgb),.12), transparent 60%)}
+body[data-route="live"] .bg-arena::before,body[data-route="game"] .bg-arena::before{background:radial-gradient(900px 520px at 50% -12%, rgba(127,168,255,.10), transparent 65%)}
+body[data-route="predictions"] .bg-arena::before,body[data-route="models"] .bg-arena::before{background:radial-gradient(900px 520px at 50% -12%, rgba(155,140,255,.10), transparent 65%)}
 /* scrollbars */
-::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#2a3142;border-radius:8px}::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-thumb{background:#2E2E33;border-radius:8px}::-webkit-scrollbar-track{background:transparent}
 /* tables */
-.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:var(--r-md);background:rgba(10,13,22,.6)}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:var(--r-md);background:var(--bg-1)}
 table.data{width:100%;border-collapse:collapse;font-size:14px;white-space:nowrap}
 table.data th,table.data td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:right}
 table.data th:first-child,table.data td:first-child{text-align:left;position:sticky;left:0;background:var(--bg-1)}
-table.data th{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);font-weight:600;background:var(--bg-1);position:sticky;top:0;cursor:pointer;user-select:none}
-table.data th.sorted{color:var(--blue-2)}
-table.data tbody tr:hover{background:rgba(var(--team-a-rgb),.08)}
-table.data td{font-variant-numeric:tabular-nums;font-family:var(--font-mono);font-size:13px}
-table.data td.name{font-family:var(--font-body);font-weight:600}
-table.data .pos{color:var(--green)}table.data .neg{color:var(--red)}
-/* responsive type */
+table.data th{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);font-weight:600;background:var(--bg-2);position:sticky;top:0;cursor:pointer;user-select:none}
+table.data th:hover{color:var(--text-2)}
+table.data th.sorted{color:var(--orange)}
+table.data tbody tr{transition:background var(--dur)}
+table.data tbody tr:hover{background:var(--bg-3)}
+table.data td{font-variant-numeric:tabular-nums;font-family:var(--font-mono);font-size:13px;color:var(--text-2)}
+table.data td.name{font-family:var(--font-body);font-weight:600;color:var(--text)}
+table.data .pos{color:var(--pos)}table.data .neg{color:var(--neg)}
 @media (max-width:720px){body{font-size:15px}.section{padding:40px 0}}
