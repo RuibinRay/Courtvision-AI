@@ -23,6 +23,10 @@ An interactive, data-driven NBA analytics laboratory: a cinematic Three.js/GSAP 
 | History | `#/history` | Time Machine: league environment 1996-97 → today, season explorer, era-adjusted player comparison |
 | Models | `#/models` | Data, leakage controls, each model, walk-forward metrics, calibration, limitations |
 
+## Visual direction — "Broadcast Night"
+
+Near-black charcoal surfaces, warm off-white type, basketball orange as the single brand accent and one cool "court light" accent for data and interaction; team colours are used only as lighting. The homepage is a single scroll-driven camera move through a procedural Three.js arena (hardwood floor with markings, stadium bowl, directional light cones, dust): the arena awakens → the face-off with broadcast lower-thirds → the camera tilts to the floor where both athletes' **real** 2026-27 shot locations appear → an aerial view with zone-efficiency labels → the 30-team explorer. Tablet, mobile and reduced-motion get a static composition with the same identity. Tokens live in `css/tokens.css`.
+
 ## Architecture
 
 ```
