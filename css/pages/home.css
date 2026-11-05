@@ -74,7 +74,7 @@
 .vs .ball{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 36% 30%,#ff9d5c,#e8622a 55%,#6e2b0c);box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 24px rgba(232,98,42,.25)}
 .vs .ball::after{content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(#1a0a03,#1a0a03) center/100% 1.5px no-repeat,linear-gradient(#1a0a03,#1a0a03) center/1.5px 100% no-repeat;opacity:.9}
 .vs span{position:relative;font-family:var(--font-display);font-weight:900;font-size:22px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.6)}
-.tape{position:absolute;left:0;right:0;top:calc(100% + 8px);display:flex;flex-direction:column;gap:4px;padding:10px 14px;border-radius:14px;background:rgba(10,10,12,.82);border:1px solid var(--line-2);backdrop-filter:blur(8px);opacity:0;transform:translateY(12px);will-change:transform,opacity}
+.tape{position:absolute;left:0;right:0;width:min(460px,calc(100vw - 2 * min(330px,34vw) - 28px));margin:0 auto;top:calc(100% + 8px);display:flex;flex-direction:column;gap:4px;padding:10px 14px;border-radius:14px;background:rgba(10,10,12,.82);border:1px solid var(--line-2);backdrop-filter:blur(8px);opacity:0;transform:translateY(12px);will-change:transform,opacity}
 .tape .tr{display:grid;grid-template-columns:58px 1fr 58px;align-items:center;gap:10px;height:22px}
 .tape .tr b{font-family:var(--font-display);font-weight:800;font-size:20px;line-height:1;color:var(--text-3);text-align:right;transition:color .3s}
 .tape .tr b:last-child{text-align:left}
