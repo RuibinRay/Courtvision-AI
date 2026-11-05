@@ -1,0 +1,23 @@
+name: Refresh NBA data snapshot and retrain models
+on:
+  workflow_dispatch:
+  # Uncomment to refresh nightly. NBA Stats often blocks cloud runners; run the pipeline locally if the job fails.
+  # schedule: [{ cron: "15 9 * * *" }]
+permissions: { contents: write }
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install -r backend/requirements.txt
+      - name: Build snapshot (teams, players, games, lineups)
+        run: cd backend/pipeline && python build_snapshot.py teams players games lineups manifest
+      - name: Train and validate models
+        run: cd backend/ml && python train.py
+      - name: Commit snapshot
+        run: |
+          git config user.name "courtvision-bot" && git config user.email "bot@users.noreply.github.com"
+          git add data backend/ml/artifacts && git commit -m "data: snapshot $(date -u +%F)" || echo "no changes"
+          git push

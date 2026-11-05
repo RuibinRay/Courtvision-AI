@@ -1,0 +1,42 @@
+/* COURTVISION AI — design tokens */
+:root {
+  /* arena palette */
+  --bg-0: #06080E;
+  --bg-1: #0B0F1A;
+  --bg-2: #12161F;
+  --bg-3: #1A1F2B;
+  --bg-4: #232938;
+  --line: rgba(255,255,255,.08);
+  --line-2: rgba(255,255,255,.14);
+  --text: #F2F4F8;
+  --text-2: #B3BCCB;
+  --text-3: #74809A;
+  --blue: #3D7BFF;
+  --blue-2: #7FB2FF;
+  --purple: #8B5CF6;
+  --violet: #B79CFF;
+  --orange: #F26B1F;
+  --gold: #F5B301;
+  --green: #2DD4A0;
+  --red: #F0506E;
+  --cyan: #38E8FF;
+  /* reactive team colours: pages re-assign these */
+  --team-a: #3D7BFF;
+  --team-b: #8B5CF6;
+  --team-a-rgb: 61,123,255;
+  --team-b-rgb: 139,92,246;
+  /* type */
+  --font-display: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  /* spacing & radius */
+  --gutter: clamp(16px, 4vw, 48px);
+  --r-sm: 6px; --r-md: 12px; --r-lg: 20px; --r-xl: 28px;
+  --nav-h: 64px;
+  --shadow-1: 0 10px 30px rgba(0,0,0,.45);
+  --shadow-glow: 0 0 40px rgba(var(--team-a-rgb), .35);
+  --ease-out: cubic-bezier(.16,1,.3,1);
+  --ease-in-out: cubic-bezier(.65,0,.35,1);
+  --chart-1: #3D7BFF; --chart-2: #B79CFF; --chart-3: #38E8FF; --chart-4: #F5B301; --chart-5: #F26B1F; --chart-6: #2DD4A0; --chart-7: #F0506E;
+  color-scheme: dark;
+}

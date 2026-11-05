@@ -1,0 +1,102 @@
+/** THE MATCHUP LAB — any two players (or teams), any season, cinematic versus layout. No simplistic "winner" score. */
+import { h, seg, select, infoTip, empty, setTeamTheme, toast } from '../core/dom.js';
+import { players, playerSeason, playerGameLogs, career as loadCareer, shots as loadShots, leagueZones, manifest, tableToObjects, teamStats } from '../core/api.js';
+import { teams, teamTable, logoImg } from '../data/teams.js';
+import { openPicker } from '../components/search.js';
+import { fmt, mean, std } from '../core/format.js';
+import { radar, bar, line, disposeAll } from '../charts/charts.js';
+import { zoneSummary } from '../charts/shotchart.js';
+import { CONFIG } from '../core/config.js';
+import { HERO_ART } from '../data/heroArt.js';
+
+export const title = 'Matchup Lab';
+const METRICS = [
+  ['PTS', 'PPG', 'Points per game', 'num'], ['REB', 'RPG', 'Rebounds per game', 'num'], ['AST', 'APG', 'Assists per game', 'num'], ['STL', 'SPG', 'Steals per game', 'num'], ['BLK', 'BPG', 'Blocks per game', 'num'], ['TOV', 'TOV', 'Turnovers per game (lower is better)', 'num', true],
+  ['FG_PCT', 'FG%', 'Field-goal percentage', 'pct'], ['FG3_PCT', '3P%', 'Three-point percentage', 'pct'], ['FT_PCT', 'FT%', 'Free-throw percentage', 'pct'],
+  ['TS_PCT', 'TS%', 'True shooting % = PTS / (2 × (FGA + 0.44 × FTA)) — scoring efficiency including threes and free throws', 'pct'], ['EFG_PCT', 'eFG%', 'Effective FG% = (FGM + 0.5 × 3PM) / FGA — field goals weighted for threes', 'pct'],
+  ['USG_PCT', 'USG%', 'Usage: share of team possessions the player finishes (shot, FT trip or turnover) while on court', 'pct'], ['AST_PCT', 'AST%', 'Share of teammate field goals assisted while on floor', 'pct'], ['REB_PCT', 'REB%', 'Share of available rebounds grabbed while on floor', 'pct'],
+  ['OFF_RATING', 'ORtg', 'Team points per 100 possessions with the player on court', 'num'], ['DEF_RATING', 'DRtg', 'Team points allowed per 100 possessions with the player on court (lower is better)', 'num', true], ['NET_RATING', 'NET', 'On-court net rating', 'signed'], ['PIE', 'PIE', 'Player Impact Estimate (NBA box-score composite)', 'pct'], ['MIN', 'MIN', 'Minutes per game', 'num'],
+];
+const SEASONS = ['2025-26', '2024-25', '2023-24', '2022-23', '2021-22'];
+
+export async function render(el, params, query) {
+  const [P, T, M] = await Promise.all([players(), teams(), manifest()]);
+  const byId = new Map(P.rows.map(p => [p.id, p]));
+  const state = { a: byId.has(+query.a) ? +query.a : 1629029, b: byId.has(+query.b) ? +query.b : 1628983, mode: 'current' };
+  const container = h('div', { class: 'container' }); el.append(container);
+  container.append(h('div', { class: 'page-head' }, h('div', null, h('p', { class: 'eyebrow' }, h('b', null, 'The Matchup Lab'), ' · player vs player · team vs team'), h('h1', null, 'Head to ', h('em', null, 'Head'))), h('p', { class: 'lead' }, 'Compare any two players across the current season, a past season, their careers, the playoffs or the last ten games. Every advanced metric carries its definition. We show the evidence — you make the call.')));
+  const stage = h('div', { class: 'vs-stage' }); container.append(stage);
+  const modeRow = h('div', { class: 'controls' }); container.append(modeRow);
+  const body = h('div'); container.append(body);
+  let modeSeg;
+  function drawStage() {
+    const pa = byId.get(state.a), pb = byId.get(state.b); const ta = T.find(t => t.id === pa.teamId), tb = T.find(t => t.id === pb.teamId);
+    const col = (t) => !t ? '#3D7BFF' : (t.colors[0] === '#000000' || t.colors[0] === '#111111') ? t.colors[1] : t.colors[0];
+    setTeamTheme(col(ta), col(tb)); stage.innerHTML = '';
+    const ply = (p, t, side) => { const art = HERO_ART[p.id]; const flip = art && ((side === 'l' && art.facing === 'left') || (side === 'r' && art.facing === 'right')); return h('div', { class: 'ply' }, h('img', { src: art ? art.src : CONFIG.HEADSHOT(p.id), class: (flip ? 'flip ' : '') + (art ? '' : 'bust'), alt: p.name, onError: (e) => { e.target.src = CONFIG.HEADSHOT(p.id); e.target.className = 'bust'; } }), h('div', { class: 'nm' }, p.name, h('small', null, `${t?.full || p.team} · ${p.GP} GP · ${fmt.num(p.PTS)} PPG`)), h('div', { class: 'row' }, h('button', { class: 'btn sm', onClick: () => openPicker({ type: 'player', title: 'Choose a player', onPick: (it) => { state[side === 'l' ? 'a' : 'b'] = it.p.id; drawStage(); draw(); } }) }, '⇄ Change'), h('a', { class: 'btn sm ghost', href: `#/player/${p.id}` }, 'Profile'))); };
+    stage.append(ply(pa, ta, 'l'), h('div', { class: 'mid' }, h('div', { class: 'vs' }, h('span', { class: 'ring' }), h('span', { class: 'ring r2' }), h('span', null, 'VS')), h('h2', null, 'Matchup Lab'), h('p', { class: 'muted small' }, 'Scroll for the full comparison')), ply(pb, tb, 'r'));
+    history.replaceState(null, '', `#/compare?a=${state.a}&b=${state.b}`);
+  }
+  modeSeg = seg([{ value: 'current', label: CONFIG.SEASON }, ...SEASONS.map(s => ({ value: s, label: s })), { value: 'playoffs', label: '2025-26 playoffs' }, { value: 'career', label: 'Career' }, { value: 'last10', label: 'Last 10 games' }], state.mode, (v) => { state.mode = v; draw(); });
+  modeRow.append(h('span', { class: 'eyebrow' }, 'Compare'), modeSeg, h('span', { class: 'spacer' }), h('a', { class: 'btn sm ghost', href: '#teamcmp' }, 'Team vs team ↓'));
+
+  async function statsFor(mode) {
+    if (mode === 'current') return { pool: P.rows, label: `${CONFIG.SEASON} regular season` };
+    if (mode === 'playoffs') { const d = await playerSeason('2025-26', 'playoffs'); return { pool: d.rows, label: '2025-26 playoffs' }; }
+    if (SEASONS.includes(mode)) { const d = await playerSeason(mode); return { pool: d.rows, label: `${mode} regular season` }; }
+    if (mode === 'last10') { const GL = await playerGameLogs(); const agg = (id) => { const logs = GL.rows.filter(r => r.PLAYER_ID === id).sort((x, y) => y.GAME_DATE.localeCompare(x.GAME_DATE)).slice(0, 10); if (!logs.length) return null; const n = logs.length, S = (k) => logs.reduce((s, r) => s + r[k], 0); const base = byId.get(id); return { ...base, GP: n, MIN: S('MIN') / n, PTS: S('PTS') / n, REB: S('REB') / n, AST: S('AST') / n, STL: S('STL') / n, BLK: S('BLK') / n, TOV: S('TOV') / n, FG_PCT: S('FGM') / S('FGA'), FG3_PCT: S('FG3M') / Math.max(1, S('FG3A')), FT_PCT: S('FTM') / Math.max(1, S('FTA')), TS_PCT: S('PTS') / (2 * (S('FGA') + 0.44 * S('FTA'))), EFG_PCT: (S('FGM') + .5 * S('FG3M')) / S('FGA'), PLUS_MINUS: S('PLUS_MINUS') / n, USG_PCT: null, AST_PCT: null, REB_PCT: null, OFF_RATING: null, DEF_RATING: null, NET_RATING: null, PIE: null }; }; return { pool: [agg(state.a), agg(state.b)].filter(Boolean), label: 'last 10 games (box-score aggregates; on-court rates not available per game)' }; }
+    if (mode === 'career') { const get = async (id) => { try { const C = await loadCareer(id); const reg = C.regular; const S = (k) => reg.reduce((s, r) => s + (r[k] || 0), 0); const gp = S('GP') || 1; return { ...byId.get(id), GP: gp, MIN: S('MIN') / gp, PTS: S('PTS') / gp, REB: S('REB') / gp, AST: S('AST') / gp, STL: S('STL') / gp, BLK: S('BLK') / gp, TOV: S('TOV') / gp, FG_PCT: S('FGM') / S('FGA'), FG3_PCT: S('FG3M') / Math.max(1, S('FG3A')), FT_PCT: S('FTM') / Math.max(1, S('FTA')), TS_PCT: S('PTS') / (2 * (S('FGA') + .44 * S('FTA'))), EFG_PCT: (S('FGM') + .5 * S('FG3M')) / S('FGA'), USG_PCT: null, AST_PCT: null, REB_PCT: null, OFF_RATING: null, DEF_RATING: null, NET_RATING: null, PIE: null, PLUS_MINUS: null, seasons: reg.length }; } catch { return null; } }; return { pool: [await get(state.a), await get(state.b)].filter(Boolean), label: 'career regular season (cached for the 90 highest-minute players)' }; }
+  }
+  async function draw() {
+    disposeAll(); body.innerHTML = ''; body.append(h('div', { class: 'loader' }, h('span', { class: 'ball' }), 'Comparing'));
+    const { pool, label } = await statsFor(state.mode);
+    const A = pool.find(p => p.id === state.a), B = pool.find(p => p.id === state.b);
+    body.innerHTML = '';
+    if (!A || !B) { body.append(empty(`One of the players has no data for “${label}”. Try another mode.`)); return; }
+    const ta = T.find(t => t.id === byId.get(state.a).teamId), tb = T.find(t => t.id === byId.get(state.b).teamId);
+    const fmtv = (v, k) => v == null ? '—' : k === 'pct' ? fmt.pct(v) : k === 'signed' ? fmt.signed(v) : fmt.num(v);
+    // comparison rows
+    const rowsEl = h('div', null, METRICS.map(([key, lbl, tip, kind, lower]) => { const a = A[key], b = B[key]; if (a == null && b == null) return null; const max = Math.max(Math.abs(a || 0), Math.abs(b || 0)) || 1; const aw = a != null && b != null && (lower ? a < b : a > b), bw = a != null && b != null && (lower ? b < a : b > a); return h('div', { class: 'compare-row' }, h('div', { class: 'side' + (aw ? ' win' : '') }, h('span', { class: 'v num' }, fmtv(a, kind)), h('div', { class: 'bar' }, h('i', { style: { width: `${Math.abs(a || 0) / max * 100}%` } }))), h('div', { class: 'lbl' }, lbl, infoTip(tip)), h('div', { class: 'side r' + (bw ? ' win' : '') }, h('span', { class: 'v num' }, fmtv(b, kind)), h('div', { class: 'bar' }, h('i', { style: { width: `${Math.abs(b || 0) / max * 100}%` } })))); }));
+    const legend = h('div', { class: 'metric-legend' }, h('span', { class: 'badge raw' }, 'PPG…FT% raw box score'), h('span', { class: 'badge calc' }, 'TS% eFG% computed'), h('span', { class: 'badge model' }, 'USG% AST% REB% ORtg DRtg NET PIE: NBA on-court rates'));
+    body.append(h('div', { class: 'panel' }, h('div', { class: 'panel-head' }, h('h3', null, 'Side by side'), h('span', { class: 'sub' }, label)), rowsEl, legend, h('p', { class: 'source' }, 'Brighter value = better on that metric (lower is better for TOV and DRtg). No overall score is computed: role, usage and context differ between players.')));
+    // strengths & weaknesses
+    const edges = METRICS.filter(([k]) => A[k] != null && B[k] != null && A[k] && B[k]).map(([k, lbl, , kind, lower]) => { const rel = (A[k] - B[k]) / (Math.abs(B[k]) || 1); return { lbl, rel: lower ? -rel : rel, a: fmtv(A[k], kind), b: fmtv(B[k], kind) }; }).sort((x, y) => Math.abs(y.rel) - Math.abs(x.rel));
+    const edgeList = (who, sign) => edges.filter(e => sign > 0 ? e.rel > .08 : e.rel < -.08).slice(0, 5).map(e => h('div', { class: 'insight ' + (sign > 0 ? 'good' : 'good') }, h('span', { class: 'i' }, '▲'), h('p', null, h('b', null, e.lbl), `: ${sign > 0 ? e.a : e.b} vs ${sign > 0 ? e.b : e.a} (${fmt.pct(Math.abs(e.rel), 0)} edge)`)));
+    body.append(h('div', { class: 'grid c2', style: { marginTop: '18px' } }, h('div', { class: 'panel' }, h('div', { class: 'panel-head' }, h('h3', null, `${A.name} edges`)), h('div', { class: 'insights' }, edgeList(A, 1).length ? edgeList(A, 1) : empty('No clear statistical edges (>8%)'))), h('div', { class: 'panel' }, h('div', { class: 'panel-head' }, h('h3', null, `${B.name} edges`)), h('div', { class: 'insights' }, edgeList(B, -1).length ? edgeList(B, -1) : empty('No clear statistical edges (>8%)')))));
+    // radar percentiles vs pool
+    const qual = pool.filter(p => p.GP >= 3 && p.MIN >= 15); const pctl = (key, v, lower = false) => { if (v == null) return 0; const arr = qual.map(p => p[key]).filter(x => x != null); return Math.round(100 * arr.filter(x => lower ? x > v : x < v).length / Math.max(1, arr.length)); };
+    const axes = [['PTS', 'Scoring'], ['AST', 'Playmaking'], ['REB', 'Rebounding'], ['TS_PCT', 'Efficiency'], ['STL', 'Steals'], ['BLK', 'Rim protection'], ['FG3_PCT', '3-pt shooting'], ['TOV', 'Ball security', true]];
+    const g = h('div', { class: 'dash-grid' }); body.append(g);
+    const pnl = (t, s, cls = '') => { const c = h('div', { class: 'chart' }); g.append(h('div', { class: 'panel ' + cls }, h('div', { class: 'panel-head' }, h('h3', null, t), h('span', { class: 'sub' }, s)), c)); return c; };
+    const colA = ta ? (ta.colors[0] === '#000000' ? ta.colors[1] : ta.colors[0]) : '#3D7BFF', colB = tb ? (tb.colors[0] === '#000000' ? tb.colors[1] : tb.colors[0]) : '#B79CFF';
+    radar(pnl('Head-to-head radar', `Percentile among ${qual.length} players (15+ min) · ${label}`), axes.map(a => ({ name: a[1], max: 100 })), [{ name: A.name, value: axes.map(a => pctl(a[0], A[a[0]], a[2])), color: colA }, { name: B.name, value: axes.map(a => pctl(a[0], B[a[0]], a[2])), color: colB }], { alt: 'Head to head radar' });
+    bar(pnl('Side-by-side bars', 'Per-game production'), { x: ['PTS', 'REB', 'AST', 'STL', 'BLK', 'TOV'], series: [{ name: A.name, data: ['PTS', 'REB', 'AST', 'STL', 'BLK', 'TOV'].map(k => +(A[k] || 0).toFixed(1)), color: colA }, { name: B.name, data: ['PTS', 'REB', 'AST', 'STL', 'BLK', 'TOV'].map(k => +(B[k] || 0).toFixed(1)), color: colB }], labels: true, alt: 'Side by side bars' });
+    // career trajectory + season timeline
+    const trajEl = pnl('Career trajectory', 'Points per game by season (regular season)'), tsEl = pnl('Season comparison timeline', 'True shooting % by season');
+    try { const [CA, CB] = await Promise.all([loadCareer(state.a), loadCareer(state.b)]); const per = (r, k) => r.GP ? r[k] / r.GP : null; const seasons = [...new Set([...CA.regular, ...CB.regular].map(r => r.SEASON_ID))].sort(); const ser = (C, k) => seasons.map(s => { const r = C.regular.find(x => x.SEASON_ID === s); return r ? +per(r, k).toFixed(1) : null; }); const tsS = (C) => seasons.map(s => { const r = C.regular.find(x => x.SEASON_ID === s); return r && r.FGA ? +(100 * r.PTS / (2 * (r.FGA + .44 * r.FTA))).toFixed(1) : null; }); line(trajEl, { x: seasons, series: [{ name: A.name, data: ser(CA, 'PTS'), symbol: true, color: colA }, { name: B.name, data: ser(CB, 'PTS'), symbol: true, color: colB }], alt: 'Career PPG trajectory' }); line(tsEl, { x: seasons, series: [{ name: A.name, data: tsS(CA), symbol: true, color: colA }, { name: B.name, data: tsS(CB), symbol: true, color: colB }], yName: 'TS%', alt: 'TS% by season' }); }
+    catch { const fallback = async () => { const rows = []; for (const s of [...SEASONS].reverse()) { const d = await playerSeason(s); rows.push([s, d.rows.find(p => p.id === state.a), d.rows.find(p => p.id === state.b)]); } rows.push([CONFIG.SEASON, byId.get(state.a), byId.get(state.b)]); line(trajEl, { x: rows.map(r => r[0]), series: [{ name: A.name, data: rows.map(r => r[1]?.PTS ?? null), symbol: true, color: colA }, { name: B.name, data: rows.map(r => r[2]?.PTS ?? null), symbol: true, color: colB }], alt: 'PPG by season' }); line(tsEl, { x: rows.map(r => r[0]), series: [{ name: A.name, data: rows.map(r => r[1]?.TS_PCT != null ? +(r[1].TS_PCT * 100).toFixed(1) : null), symbol: true, color: colA }, { name: B.name, data: rows.map(r => r[2]?.TS_PCT != null ? +(r[2].TS_PCT * 100).toFixed(1) : null), symbol: true, color: colB }], yName: 'TS%', alt: 'TS% by season' }); trajEl.parentElement.querySelector('.sub').textContent = 'Seasons in the snapshot (2021-22 →); full careers are cached for the 90 highest-minute players'; }; await fallback(); }
+    // shooting zones
+    const zEl = pnl('Shooting-zone comparison', `FG% by court zone · ${CONFIG.SEASON} shot coordinates`, 'span2');
+    try { const [SA, SB, LZ] = await Promise.all([loadShots(state.a), loadShots(state.b), leagueZones().catch(() => [])]); const za = zoneSummary(SA.shots, SA.league?.length ? SA.league : LZ), zb = zoneSummary(SB.shots, SB.league?.length ? SB.league : LZ); const zones = [...new Set([...za, ...zb].map(z => z.zone))]; bar(zEl, { x: zones, series: [{ name: A.name, data: zones.map(z => { const r = za.find(x => x.zone === z); return r?.pct != null ? +(r.pct * 100).toFixed(1) : null; }), color: colA }, { name: B.name, data: zones.map(z => { const r = zb.find(x => x.zone === z); return r?.pct != null ? +(r.pct * 100).toFixed(1) : null; }), color: colB }, { name: 'League', data: zones.map(z => { const r = za.find(x => x.zone === z) || zb.find(x => x.zone === z); return r?.league != null ? +(r.league * 100).toFixed(1) : null; }), color: 'rgba(255,255,255,.3)' }], labels: true, formatter: (v) => v + '%', alt: 'Zone FG% comparison' }); }
+    catch { zEl.replaceWith(empty('Shot coordinates are cached for the 60 highest-minute players; zone comparison is unavailable for this pair. No locations are invented.')); }
+    // career milestones from data
+    if (state.mode === 'career') body.append(h('p', { class: 'source' }, `Career rows: ${A.seasons} seasons for ${A.name}, ${B.seasons} for ${B.name}. Awards and honours are not in the data snapshot and are therefore not claimed.`));
+    drawTeamCompare();
+  }
+  /* ---------- team vs team ---------- */
+  const teamBox = h('div', { id: 'teamcmp', class: 'panel', style: { marginTop: '18px' } }); container.append(teamBox);
+  let tA = query.ta || 'LAL', tB = query.tb || 'OKC';
+  async function drawTeamCompare() {
+    const TT = await teamTable(); const ST = await teamStats(); const ff = tableToObjects(ST.windows.season.fourfactors);
+    const a = TT.find(t => t.abbr === tA), b = TT.find(t => t.abbr === tB); const fa = ff.find(r => r.TEAM_ID === a.id), fb = ff.find(r => r.TEAM_ID === b.id);
+    teamBox.innerHTML = '';
+    teamBox.append(h('div', { class: 'panel-head' }, h('h3', null, 'Team vs team'), h('div', { class: 'row' }, select(T.map(t => ({ value: t.abbr, label: t.full })), tA, (v) => { tA = v; drawTeamCompare(); }), h('b', { class: 'muted' }, 'vs'), select(T.map(t => ({ value: t.abbr, label: t.full })), tB, (v) => { tB = v; drawTeamCompare(); }), h('a', { class: 'btn sm', href: `#/predictions?home=${tA}&away=${tB}` }, 'Predict this game'))));
+    const rows = [['Record', `${a.st.WINS}-${a.st.LOSSES}`, `${b.st.WINS}-${b.st.LOSSES}`, a.st.WinPCT, b.st.WinPCT], ['Net rating', fmt.signed(a.adv.NET_RATING), fmt.signed(b.adv.NET_RATING), a.adv.NET_RATING + 30, b.adv.NET_RATING + 30], ['ORtg', fmt.num(a.adv.OFF_RATING), fmt.num(b.adv.OFF_RATING), a.adv.OFF_RATING, b.adv.OFF_RATING], ['DRtg (lower better)', fmt.num(a.adv.DEF_RATING), fmt.num(b.adv.DEF_RATING), -a.adv.DEF_RATING, -b.adv.DEF_RATING], ['Pace', fmt.num(a.adv.PACE), fmt.num(b.adv.PACE), a.adv.PACE, b.adv.PACE], ['eFG%', fmt.pct(fa.EFG_PCT), fmt.pct(fb.EFG_PCT), fa.EFG_PCT, fb.EFG_PCT], ['TOV% (lower better)', fmt.pct(fa.TM_TOV_PCT), fmt.pct(fb.TM_TOV_PCT), -fa.TM_TOV_PCT, -fb.TM_TOV_PCT], ['OREB%', fmt.pct(fa.OREB_PCT), fmt.pct(fb.OREB_PCT), fa.OREB_PCT, fb.OREB_PCT], ['FT rate', fmt.num(fa.FTA_RATE, 3), fmt.num(fb.FTA_RATE, 3), fa.FTA_RATE, fb.FTA_RATE], ['Opp eFG% (lower better)', fmt.pct(fa.OPP_EFG_PCT), fmt.pct(fb.OPP_EFG_PCT), -fa.OPP_EFG_PCT, -fb.OPP_EFG_PCT]];
+    teamBox.append(h('div', { class: 'grid c2' }, h('div', null, rows.map(([l, va, vb, ra, rb]) => h('div', { class: 'compare-row' }, h('div', { class: 'side' + (ra > rb ? ' win' : '') }, logoImg(a, 'logo'), h('span', { class: 'v num' }, va)), h('div', { class: 'lbl' }, l), h('div', { class: 'side r' + (rb > ra ? ' win' : '') }, logoImg(b, 'logo'), h('span', { class: 'v num' }, vb))))), h('div', { class: 'chart', id: 'teamradar' })));
+    const adv = tableToObjects(ST.windows.season.advanced); const pct = (key, v, lower = false) => Math.round(100 * adv.filter(r => lower ? r[key] > v : r[key] < v).length / 29);
+    const pf = (key, v, lower = false) => Math.round(100 * ff.filter(r => lower ? r[key] > v : r[key] < v).length / 29);
+    radar(teamBox.querySelector('#teamradar'), ['Offense', 'Defense', 'eFG%', 'Ball security', 'Off. reb', 'FT rate', 'Shot defense', 'Pace'].map(n => ({ name: n, max: 100 })), [{ name: a.abbr, value: [pct('OFF_RATING', a.adv.OFF_RATING), pct('DEF_RATING', a.adv.DEF_RATING, true), pct('EFG_PCT', a.adv.EFG_PCT), pct('TM_TOV_PCT', a.adv.TM_TOV_PCT, true), pct('OREB_PCT', a.adv.OREB_PCT), pf('FTA_RATE', fa.FTA_RATE), pf('OPP_EFG_PCT', fa.OPP_EFG_PCT, true), pct('PACE', a.adv.PACE)], color: a.colors[0] === '#000000' ? a.colors[1] : a.colors[0] }, { name: b.abbr, value: [pct('OFF_RATING', b.adv.OFF_RATING), pct('DEF_RATING', b.adv.DEF_RATING, true), pct('EFG_PCT', b.adv.EFG_PCT), pct('TM_TOV_PCT', b.adv.TM_TOV_PCT, true), pct('OREB_PCT', b.adv.OREB_PCT), pf('FTA_RATE', fb.FTA_RATE), pf('OPP_EFG_PCT', fb.OPP_EFG_PCT, true), pct('PACE', b.adv.PACE)], color: b.colors[0] === '#000000' ? b.colors[1] : b.colors[0] }], { alt: 'Team radar' });
+  }
+  drawStage(); draw();
+}
+export function destroy() { disposeAll(); }

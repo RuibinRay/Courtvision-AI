@@ -1,0 +1,63 @@
+/* ===================== LIVE GAME CENTER ===================== */
+.live-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:18px 0}
+.live-head .date-nav{display:flex;align-items:center;gap:6px}
+.live-head .date-nav b{font-family:var(--font-display);font-size:22px;min-width:200px;text-align:center}
+.refresh{font-family:var(--font-mono);font-size:11px;color:var(--text-3);letter-spacing:.08em;display:flex;align-items:center;gap:8px}
+.refresh .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 1.4s infinite}
+.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.gcard{position:relative;display:block;padding:16px;border-radius:var(--r-lg);border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01));color:var(--text);text-decoration:none!important;overflow:hidden;transition:transform .3s var(--ease-out),border-color .3s}
+.gcard:hover{transform:translateY(-4px);border-color:var(--line-2)}
+.gcard.live{border-color:rgba(45,212,160,.5);box-shadow:0 0 30px rgba(45,212,160,.12)}
+.gcard .status{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:12px}
+.gcard .status .st{color:#fff}.gcard.live .status .st{color:var(--green)}
+.gcard .teamrow{display:grid;grid-template-columns:36px 1fr auto;align-items:center;gap:10px;padding:6px 0}
+.gcard .teamrow img{width:36px;height:36px}
+.gcard .teamrow .n{font-family:var(--font-display);font-weight:700;font-size:20px;letter-spacing:.03em}
+.gcard .teamrow .n small{display:block;font-family:var(--font-mono);font-size:10px;color:var(--text-3);letter-spacing:.1em}
+.gcard .teamrow .s{font-family:var(--font-display);font-weight:900;font-size:34px;line-height:1;min-width:52px;text-align:right}
+.gcard .teamrow.winner .s{color:#fff}.gcard .teamrow:not(.winner) .s{color:var(--text-2)}
+.gcard .foot{display:flex;justify-content:space-between;margin-top:10px;font-family:var(--font-mono);font-size:11px;color:var(--text-3)}
+.gcard .wp{height:4px;border-radius:2px;background:rgba(255,255,255,.08);margin-top:10px;overflow:hidden}
+.gcard .wp i{display:block;height:100%;background:linear-gradient(90deg,var(--team-a),var(--team-b))}
+/* game page */
+.scoreboard{position:relative;overflow:hidden;border-radius:var(--r-xl);border:1px solid var(--line);margin-top:22px;padding:clamp(18px,3vw,36px);display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:center;background:linear-gradient(90deg,rgba(var(--team-a-rgb),.35),rgba(6,8,14,.75) 40%,rgba(6,8,14,.75) 60%,rgba(var(--team-b-rgb),.35))}
+.scoreboard .side{display:flex;align-items:center;gap:16px}
+.scoreboard .side.r{flex-direction:row-reverse;text-align:right}
+.scoreboard .side img{width:clamp(64px,8vw,110px);height:clamp(64px,8vw,110px);object-fit:contain;filter:drop-shadow(0 10px 30px rgba(0,0,0,.6))}
+.scoreboard .side .nm{font-family:var(--font-display);font-weight:800;font-size:clamp(22px,2.6vw,36px);line-height:.95;text-transform:uppercase}
+.scoreboard .side .nm small{display:block;font-family:var(--font-mono);font-size:11px;color:var(--text-2);letter-spacing:.14em;margin-top:4px}
+.scoreboard .side .sc{font-family:var(--font-display);font-weight:900;font-size:clamp(56px,8vw,112px);line-height:.85}
+.scoreboard .mid{text-align:center;min-width:140px}
+.scoreboard .mid .clock{font-family:var(--font-display);font-weight:800;font-size:clamp(26px,3vw,40px);color:#fff}
+.scoreboard .mid .lbl{font-family:var(--font-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3)}
+.scoreboard .mid .lbl.live{color:var(--green)}
+@media (max-width:760px){.scoreboard{grid-template-columns:1fr}.scoreboard .side,.scoreboard .side.r{flex-direction:row;text-align:left;justify-content:space-between}}
+.linescore{width:100%;border-collapse:collapse;margin-top:12px;font-family:var(--font-mono);font-size:13px}
+.linescore th,.linescore td{padding:6px 10px;text-align:center;border-bottom:1px solid var(--line)}
+.linescore th{color:var(--text-3);font-weight:600;font-size:10px;letter-spacing:.14em}
+.linescore td:first-child{text-align:left;font-family:var(--font-display);font-size:16px;font-weight:700}
+.linescore td.tot{font-weight:700;color:#fff}
+.cmp{display:flex;flex-direction:column;gap:8px}
+.cmp .r{display:grid;grid-template-columns:60px 1fr 120px 1fr 60px;align-items:center;gap:8px;font-family:var(--font-mono);font-size:12px}
+.cmp .r .k{text-align:center;color:var(--text-3);letter-spacing:.08em;text-transform:uppercase;font-size:10px}
+.cmp .r .b{height:8px;border-radius:4px;background:rgba(255,255,255,.07);overflow:hidden;display:flex}
+.cmp .r .b.l{justify-content:flex-end}
+.cmp .r .b i{display:block;height:100%}
+.cmp .r .b.l i{background:var(--team-a)}.cmp .r .b.r i{background:var(--team-b)}
+.cmp .r .v{text-align:right}.cmp .r .v.r{text-align:left}
+.pbp{max-height:460px;overflow:auto;display:flex;flex-direction:column;gap:2px}
+.play{display:grid;grid-template-columns:52px 60px 1fr auto;gap:10px;padding:6px 8px;border-radius:8px;font-size:13px;align-items:center}
+.play.score{background:rgba(255,255,255,.04)}
+.play .c{font-family:var(--font-mono);font-size:11px;color:var(--text-3)}
+.play .t{font-family:var(--font-mono);font-size:11px;font-weight:600}
+.play .s{font-family:var(--font-mono);font-size:12px;color:var(--text-2)}
+.play.big{border-left:3px solid var(--gold)}
+.momentum{display:flex;align-items:center;gap:12px}
+.momentum .mbar{flex:1;height:14px;border-radius:7px;background:linear-gradient(90deg,var(--team-a),rgba(255,255,255,.08) 50%,var(--team-b));position:relative}
+.momentum .mbar i{position:absolute;top:-6px;width:4px;height:26px;background:#fff;border-radius:2px;box-shadow:0 0 10px #fff;transform:translateX(-50%)}
+.box th.ath{text-align:left}
+.cal{display:flex;gap:4px;overflow:auto;padding:4px 0}
+.cal button{flex:none;min-width:58px;padding:8px 6px;border-radius:10px;border:1px solid var(--line);font-family:var(--font-mono);font-size:11px;color:var(--text-2);text-align:center}
+.cal button b{display:block;font-family:var(--font-display);font-size:18px;color:#fff}
+.cal button.on{background:rgba(var(--team-a-rgb),.2);border-color:var(--team-a)}
+.cal button.today{box-shadow:inset 0 -3px 0 var(--gold)}

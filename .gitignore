@@ -1,0 +1,7 @@
+backend/.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+.claude/
+backend/ml/artifacts/*.pkl.bak
