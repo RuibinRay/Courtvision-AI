@@ -1,14 +1,24 @@
-/* ===================== HERO — THE MATCHUP (Broadcast Night) ===================== */
+/* ===================== HERO — THE MATCHUP (Broadcast Night, league edition) =====================
+   The arena is lit in the league's own blue and red before the matchup's team colours take over (js/scenes/arena.js).
+   The visitor carries a basketball as the cursor; the wordmark's letters are drawn toward it. */
 .hero{position:relative;height:100vh;min-height:700px;overflow:hidden;background:#0a0a0c;--side-l:#7FA8FF;--side-r:#E8622A;--side-l-rgb:127,168,255;--side-r-rgb:232,98,42}
 .hero-canvas{position:absolute;inset:0;width:100%;height:100%}
-.hero-vignette{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(10,10,12,.55),transparent 22%,transparent 70%,rgba(10,10,12,.7) 100%),radial-gradient(ellipse at 50% 55%,transparent 45%,rgba(10,10,12,.55) 100%)}
+.hero-vignette{position:absolute;inset:0;pointer-events:none;background:
+  radial-gradient(640px 320px at 8% 0%,rgba(var(--nba-blue-rgb),.30),transparent 68%),
+  radial-gradient(640px 320px at 92% 0%,rgba(var(--nba-red-rgb),.24),transparent 68%),
+  linear-gradient(to bottom,rgba(10,10,12,.55),transparent 22%,transparent 70%,rgba(10,10,12,.7) 100%),
+  radial-gradient(ellipse at 50% 55%,transparent 45%,rgba(10,10,12,.55) 100%)}
 .hero-stage{position:absolute;inset:0;padding:var(--nav-h) var(--gutter) 0}
 /* brand: dominant, sits behind the athletes for depth */
-.hero-brand{position:absolute;left:0;right:0;top:19%;text-align:center;z-index:1;pointer-events:none;will-change:transform,opacity}
-.hero-brand .eyebrow{color:var(--text-2);margin-bottom:14px;font-size:11px;letter-spacing:.2em}
-.hero-brand .eyebrow b{color:var(--orange)}
-.hero-title{font-size:clamp(64px,9.6vw,154px);line-height:.92;letter-spacing:var(--track,.02em);white-space:nowrap;color:var(--text);text-shadow:0 20px 60px rgba(0,0,0,.65)}
-.hero-title i{font-style:normal;color:var(--orange)}
+.hero-brand{position:absolute;left:0;right:0;top:18%;text-align:center;z-index:1;pointer-events:none;will-change:transform,opacity}
+.hero-slate{display:flex;justify-content:center;align-items:center;gap:12px;margin:0 0 14px;font-family:var(--font-display);font-weight:600;font-size:clamp(13px,1.1vw,16px);letter-spacing:.16em;text-transform:uppercase;color:var(--text-2)}
+.hero-slate .dot{width:6px;height:6px;border-radius:50%;background:var(--orange);flex:none}
+.hero-title{font-size:clamp(64px,9vw,150px);line-height:.92;letter-spacing:.02em;white-space:nowrap;color:var(--text);text-shadow:0 20px 60px rgba(0,0,0,.65)}
+.hero-title .ch{display:inline-block;will-change:transform}                                   /* outer: scroll spread (GSAP) */
+.hero-title .ch.sp{width:.22em}
+.hero-title .ch-in{display:inline-block;will-change:transform;animation:letter-in .9s var(--ease-out) backwards;animation-delay:var(--d,0s)}   /* inner: entrance + magnet */
+.hero-title .ch.accent{color:var(--orange)}
+@keyframes letter-in{from{transform:translateY(42%)}to{transform:none}}   /* transform-only: the wordmark is never hidden, even on a slow first paint */
 .hero-tag{margin:10px 0 0;font-family:var(--font-display);font-weight:600;font-size:clamp(15px,1.5vw,22px);letter-spacing:.46em;text-transform:uppercase;color:var(--text-2);padding-left:.46em}
 /* athletes */
 .hero-side{position:absolute;bottom:0;width:38%;height:100%;z-index:2;display:flex;align-items:flex-end;--side:var(--side-l);--side-rgb:var(--side-l-rgb)}
@@ -49,8 +59,9 @@
 .lower-third .lt-extra .v{font-family:var(--font-mono);font-size:13px;color:var(--text-2)}
 .lower-third .lt-actions{display:flex;gap:6px;margin-top:8px;opacity:0;transition:opacity .3s}
 .hero-side.hover .lt-actions,.hero-side.pinned .lt-actions{opacity:1}
-/* centre-bottom: the matchup bar + primary calls to action */
+/* centre-bottom: the matchup bar + primary calls to action; the tale of the tape unfolds under the bar in scene 2 */
 .hero-center{position:absolute;left:50%;bottom:6.5vh;transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:12px;width:min(640px,90vw);will-change:transform,opacity}
+.mb-wrap{position:relative;width:100%}
 .matchup-bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;width:100%;padding:10px 14px;border-radius:14px;background:rgba(10,10,12,.78);border:1px solid var(--line-2);backdrop-filter:blur(8px)}
 .matchup-bar .mt{display:flex;align-items:center;gap:10px;min-width:0}
 .matchup-bar .mt.r{flex-direction:row-reverse;text-align:right}
@@ -63,44 +74,71 @@
 .vs .ball{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 36% 30%,#ff9d5c,#e8622a 55%,#6e2b0c);box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 24px rgba(232,98,42,.25)}
 .vs .ball::after{content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(#1a0a03,#1a0a03) center/100% 1.5px no-repeat,linear-gradient(#1a0a03,#1a0a03) center/1.5px 100% no-repeat;opacity:.9}
 .vs span{position:relative;font-family:var(--font-display);font-weight:900;font-size:22px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.tape{position:absolute;left:0;right:0;top:calc(100% + 8px);display:flex;flex-direction:column;gap:4px;padding:10px 14px;border-radius:14px;background:rgba(10,10,12,.82);border:1px solid var(--line-2);backdrop-filter:blur(8px);opacity:0;transform:translateY(12px);will-change:transform,opacity}
+.tape .tr{display:grid;grid-template-columns:58px 1fr 58px;align-items:center;gap:10px;height:22px}
+.tape .tr b{font-family:var(--font-display);font-weight:800;font-size:20px;line-height:1;color:var(--text-3);text-align:right;transition:color .3s}
+.tape .tr b:last-child{text-align:left}
+.tape .tr b.lead{color:var(--text)}
+.tape .bars{display:grid;grid-template-columns:1fr 44px 1fr;align-items:center;gap:8px}
+.tape .bl,.tape .br{display:block;height:6px;border-radius:3px;background:rgba(243,238,228,.08);overflow:hidden}
+.tape .bl i,.tape .br i{display:block;height:100%;border-radius:3px;will-change:transform}
+.tape .bl i{background:var(--ca);transform-origin:right center}
+.tape .br i{background:var(--cb);transform-origin:left center}
+.tape .lbl{font-family:var(--font-display);font-weight:700;font-size:12px;letter-spacing:.1em;color:var(--text-3);text-align:center;text-transform:uppercase}
 .hero-cta{display:flex;gap:10px;justify-content:center}
 .hero-cta .btn{padding:12px 22px}
 .hero-featured{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
-.hero-featured button{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);padding:5px 9px;border:1px solid var(--line-2);border-radius:999px;background:rgba(10,10,12,.5);transition:all var(--dur)}
+.hero-featured button{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);padding:5px 9px;border:1px solid var(--line-2);border-radius:999px;background:rgba(10,10,12,.5);transition:color var(--dur),border-color var(--dur)}
 .hero-featured button:hover{color:var(--text);border-color:var(--line-3)}
-/* data lines from each lower-third to the centre */
-.hero-lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
-.hero-lines path{fill:none;stroke:rgba(243,238,228,.55);stroke-width:1;stroke-dasharray:900;stroke-dashoffset:900;opacity:.9}
-.hero-lines path.l{stroke:rgba(var(--side-l-rgb),.8)}.hero-lines path.r{stroke:rgba(var(--side-r-rgb),.8)}
-/* projected court labels (scene 3–4) */
+/* projected court labels (scenes 3–4) */
 .zone-labels{position:absolute;inset:0;pointer-events:none;z-index:3}
 .zone-label{position:absolute;left:0;top:0;opacity:0;transform:translate(-50%,-50%);padding:6px 9px;border-radius:8px;background:rgba(10,10,12,.85);border:1px solid var(--line-2);border-left:3px solid var(--zl,var(--orange));font-family:var(--font-mono);font-size:11px;color:var(--text);white-space:nowrap;letter-spacing:.04em;will-change:transform,opacity}
 .zone-label b{font-family:var(--font-display);font-size:18px;margin-left:6px;letter-spacing:.02em}
 .zone-label small{display:block;font-size:9px;color:var(--text-3);letter-spacing:.12em;text-transform:uppercase}
 .zone-label.title{border-left-width:3px;font-size:12px}
 .zone-label.title b{font-size:20px}
-/* scene rail */
-.scene-rail{position:absolute;left:var(--gutter);bottom:16px;z-index:5;display:flex;gap:16px;align-items:center}
-.scene-rail button{display:flex;flex-direction:row-reverse;align-items:center;gap:8px;color:var(--text-3);font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;opacity:.75;transition:opacity var(--dur),color var(--dur)}
-.scene-rail button i{width:6px;height:6px;border-radius:50%;background:currentColor;flex:none;transition:transform var(--dur)}
-.scene-rail button span{display:none}
-.scene-rail button.on span{display:inline}
-.scene-rail:hover button span,.scene-rail button.on span{opacity:1;transform:none}
-.scene-rail button.on{color:var(--orange);opacity:1}.scene-rail button.on i{transform:scale(1.6)}
-.hero-hint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);font-family:var(--font-mono);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--text-3);z-index:3;display:flex;align-items:center;gap:8px}
-.hero-hint i{width:22px;height:1px;background:var(--text-3);animation:hint 1.8s ease-in-out infinite}
-@keyframes hint{0%{transform:scaleX(0);transform-origin:left}50%{transform:scaleX(1);transform-origin:left}51%{transform-origin:right}100%{transform:scaleX(0);transform-origin:right}}
-/* aerial caption */
-.hero-aerial{position:absolute;left:var(--gutter);top:calc(var(--nav-h) + 28px);opacity:0;pointer-events:none;z-index:3;max-width:440px}
-.hero-aerial .eyebrow{color:var(--orange)}
-.hero-aerial h2{font-size:clamp(30px,3.6vw,54px);margin-top:6px}
-.hero-aerial p{color:var(--text-2);font-size:14px;margin:8px 0 0}
-/* ===================== intro animations (transform-only; never hide content) ===================== */
-.hero-title .word{display:inline-block;animation:word-in .9s var(--ease-out) both}
-.hero-title .word:nth-child(2){animation-delay:.08s}.hero-title .word:nth-child(3){animation-delay:.16s}
-@keyframes word-in{from{transform:translateY(40%)}to{transform:none}}
+/* scene captions (scenes 3–4): a readable panel at the bottom-left, over the dimmed athlete */
+.hero-cap{position:absolute;left:var(--gutter);bottom:84px;z-index:3;max-width:470px;opacity:0;pointer-events:none;padding:18px 22px 20px;border-radius:14px;background:rgba(10,10,12,.74);backdrop-filter:blur(6px);border-left:3px solid var(--orange);will-change:transform,opacity}
+.hero-cap .scene-tag{margin:0 0 6px;font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+.hero-cap h2{font-size:clamp(28px,3vw,44px);line-height:.95}
+.hero-cap .cap-text{margin:8px 0 0;color:var(--text-2);font-size:15px;line-height:1.5}
+.hero-cap .cap-figs{display:flex;gap:22px;margin:12px 0 0}
+.hero-cap .cap-figs span{display:block;font-family:var(--font-display);font-weight:800;font-size:24px;line-height:1;color:var(--text)}
+.hero-cap .cap-figs small{display:block;margin-top:4px;font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--text-3)}
+.hero-cap .legend{display:flex;gap:16px;margin:12px 0 0;font-size:13px;color:var(--text-2)}
+.hero-cap .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:7px;vertical-align:-1px}
+/* scene rail: chapter names with a fill that tracks progress through each chapter */
+.scene-rail{position:absolute;left:var(--gutter);bottom:22px;z-index:5;display:flex;gap:16px;align-items:flex-end}
+.scene-rail button{display:flex;flex-direction:column;gap:7px;align-items:flex-start;min-width:96px;color:var(--text-3);font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;line-height:1;transition:color var(--dur)}
+.scene-rail button:hover{color:var(--text-2)}
+.scene-rail button .bar{display:block;width:100%;height:3px;border-radius:2px;background:rgba(243,238,228,.14);overflow:hidden}
+.scene-rail button .bar b{display:block;height:100%;background:var(--orange);transform:scaleX(0);transform-origin:left center;will-change:transform}
+.scene-rail button.on{color:var(--text)}
+.hero-hint{position:absolute;right:var(--gutter);bottom:26px;z-index:3;display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-2)}
+.hero-hint i{width:10px;height:10px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff9d5c,#e8622a 55%,#6e2b0c);animation:hint-bounce 1.1s cubic-bezier(.4,0,.6,1) infinite alternate}
+@keyframes hint-bounce{from{transform:translateY(-5px)}to{transform:translateY(4px)}}
+/* scene 5 hand-over into the explorer */
+.hero-handoff{position:absolute;left:50%;bottom:64px;transform:translateX(-50%);z-index:4;opacity:0;text-align:center;pointer-events:none;will-change:transform,opacity}
+.hero-handoff p{margin:0;font-family:var(--font-display);font-weight:800;font-size:clamp(28px,3.4vw,48px);line-height:1;letter-spacing:.02em;text-transform:uppercase;color:var(--text);text-shadow:0 10px 30px rgba(0,0,0,.7)}
+.hero-handoff .arrow{display:block;margin-top:6px;font-size:24px;line-height:1;color:var(--orange);animation:nudge 1.4s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+/* intro: the athletes step in from the wings */
 .hero-side.left .side-wrap{animation:slide-l 1.1s var(--ease-out) backwards}.hero-side.right .side-wrap{animation:slide-r 1.1s var(--ease-out) backwards}
 @keyframes slide-l{from{transform:translateX(-14%)}}@keyframes slide-r{from{transform:translateX(14%)}}
+/* ===================== basketball cursor (home route, fine pointer, full motion) ===================== */
+body.has-ball,body.has-ball a,body.has-ball button,body.has-ball [role="button"],body.has-ball summary,body.has-ball label{cursor:none}
+body.has-ball input,body.has-ball textarea,body.has-ball select{cursor:auto}
+.cv-ball{position:fixed;left:0;top:0;z-index:200;width:0;height:0;pointer-events:none;will-change:transform;opacity:1;transition:opacity .25s}
+.cv-ball.off,.cv-ball.text{opacity:0}
+.cv-ball .scaler{position:absolute;left:0;top:0;width:0;height:0;transition:transform .2s var(--ease-out)}
+.cv-ball .orb{position:absolute;left:-11px;top:-11px;width:22px;height:22px;will-change:transform}
+.cv-ball .orb svg{width:100%;height:100%;display:block;filter:drop-shadow(0 4px 8px rgba(0,0,0,.55))}
+.cv-ball .ring{position:absolute;left:-19px;top:-19px;width:38px;height:38px;border-radius:50%;border:1.5px solid rgba(243,238,228,.9);opacity:0;transform:scale(.55);transition:transform .22s var(--ease-out),opacity .22s}
+.cv-ball.link .ring{opacity:1;transform:scale(1)}
+.cv-ball.link .scaler{transform:scale(.5)}
+.cv-ball.aim .scaler{transform:scale(1.7)}
+.cv-ball.aim .ring{opacity:.7;transform:scale(1.9)}
+.cv-ball.press .scaler{transform:scale(.72)}
 /* ===================== below the hero ===================== */
 .home-section{position:relative;padding:clamp(56px,7vw,104px) 0}
 .home-section .head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:28px}
@@ -144,6 +182,7 @@
   .hero-stage{position:relative;inset:auto;display:flex;flex-direction:column;align-items:center;gap:0;padding-top:calc(var(--nav-h) + 18px)}
   .hero-brand{position:static;order:0;padding:0 0 14px}
   .hero-title{font-size:clamp(46px,12.5vw,96px);white-space:normal;line-height:.88}
+  .hero-slate{font-size:12px;letter-spacing:.12em;flex-wrap:wrap;gap:8px}
   .hero-tag{font-size:13px;letter-spacing:.3em}
   .hero-players{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;width:100%;min-height:46vh;align-items:end;order:1;position:relative}
   .hero-side{position:relative;left:auto;right:auto;width:100%;height:auto;align-items:flex-end;justify-content:center}
@@ -156,10 +195,12 @@
   .side-wrap{flex-direction:column;align-items:center;width:100%;min-width:0;height:auto}
   .hero-player img{max-width:100%}
   .hero-center{position:static;transform:none;order:2;width:100%;margin-top:18px}
-  .hero-lines,.scene-rail,.hero-hint,.hero-aerial,.zone-labels{display:none}
+  .tape{position:static;opacity:1;transform:none;margin-top:0}
+  .mb-wrap{display:flex;flex-direction:column;gap:8px}
+  .scene-rail,.hero-hint,.hero-cap,.hero-handoff,.zone-labels{display:none}
   .hero-vignette{background:linear-gradient(to bottom,rgba(10,10,12,.3),transparent 30%)}
 }
-@media (max-width:600px){.hero-player{height:min(40vh,360px)}.matchup-bar .mt b{font-size:16px}.lower-third .lt-head b{font-size:18px}}
+@media (max-width:600px){.hero-player{height:min(40vh,360px)}.matchup-bar{gap:8px;padding:10px}.matchup-bar .mt{gap:6px}.matchup-bar .mt img{width:26px;height:26px}.matchup-bar .mt b{font-size:14px}.matchup-bar .mt small{font-size:9px;white-space:nowrap}.vs{width:44px;height:44px}.vs span{font-size:18px}.lower-third .lt-head b{font-size:18px}.tape .tr{grid-template-columns:48px 1fr 48px}.tape .tr b{font-size:17px}}
 
 .hero.cine .lower-third,.hero.cine .hero-player img{transition:none}
 .hero.cine .hero-side.hover .hero-player img{transition:filter .4s}

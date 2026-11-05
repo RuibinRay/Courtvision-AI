@@ -20,6 +20,10 @@
   --orange: #E8622A;          /* brand: primary actions, key emphasis only */
   --orange-2: #F58A52;
   --orange-rgb: 232,98,42;
+  /* league identity: the NBA logo's blue and red (the league publishes no public master brand book; these are the
+     values matched from the official logo files and used for arena lighting, never for data) */
+  --nba-blue: #1D428A; --nba-blue-rgb: 29,66,138;
+  --nba-red: #C8102E;  --nba-red-rgb: 200,16,46;
   --cool: #7FA8FF;            /* court light: links, focus, data primary */
   --cool-2: #A9C4FF;
   --cool-rgb: 127,168,255;
