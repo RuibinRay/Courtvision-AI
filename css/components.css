@@ -118,9 +118,17 @@ input[type=range]{accent-color:var(--orange);width:100%}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 /* ---------- footer ---------- */
 .footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:48px var(--gutter);color:var(--text-3);font-size:13px;background:var(--bg-0)}
-.footer .inner{width:min(1440px,100%);margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
+.footer .inner{width:min(1440px,100%);margin:auto;display:grid;grid-template-columns:2fr 1fr 1.5fr 1fr;gap:32px}
 .footer h4{color:var(--text-2);margin-bottom:10px}
 .footer a{color:var(--text-2);display:block;margin:4px 0}
+/* the author: a name in the display face, two lines, and four ways to reach them */
+.footer .author .who{margin:0 0 6px;font-family:var(--font-display);font-weight:800;font-size:24px;line-height:1;letter-spacing:.02em;text-transform:uppercase;color:var(--text)}
+.footer .author p{line-height:1.5}
+.footer .author .links{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;margin-top:12px}
+.footer .author .links a{margin:0;padding:8px 10px;border:1px solid var(--line);border-radius:8px;color:var(--text);font-weight:600;min-width:0;transition:border-color var(--dur),background var(--dur)}
+.footer .author .links a:hover{border-color:var(--line-3);background:var(--bg-1)}
+.footer .author .links small{display:block;margin-top:2px;font-family:var(--font-mono);font-size:10px;font-weight:400;letter-spacing:.04em;color:var(--text-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:1100px){.footer .inner{grid-template-columns:1fr 1fr}}
 @media (max-width:760px){.footer .inner{grid-template-columns:1fr}}
 /* ---------- view transitions ---------- */
 .view{opacity:0;animation:view-in .45s var(--ease-out) forwards}

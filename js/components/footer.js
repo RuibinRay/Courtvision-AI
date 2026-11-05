@@ -7,6 +7,14 @@ export async function mountFooter(el) {
     h('div', null, h('h4', null, 'COURTVISION AI'), h('p', null, 'Beyond the Box Score. Every Possession Tells a Story.'), h('p', null, 'A personal educational data-science portfolio project. Not affiliated with the NBA or any team. No gambling content; predictions are statistical estimates, never guarantees.'),
       h('p', { class: 'mono small' }, `Data snapshot: ${m.generated_at ? fmt.datetime(m.generated_at) : 'n/a'} · Season ${m.season || ''}`)),
     h('div', null, h('h4', null, 'Explore'), ['#/teams|Teams', '#/players|Players', '#/live|Live Games', '#/predictions|Prediction Lab', '#/compare|Matchup Lab', '#/datalab|Data Science Lab'].map(s => { const [href, t] = s.split('|'); return h('a', { href }, t); })),
+    h('div', { class: 'author' }, h('h4', null, 'Author'),
+      h('p', { class: 'who' }, 'Ruibin (Ray) Jin Yao'),
+      h('p', null, 'BBA in Finance & Business Analytics, Hult International Business School, Boston. Working at the intersection of finance, business analytics and technology; COURTVISION AI is a personal data-science portfolio project.'),
+      h('div', { class: 'links' },
+        h('a', { href: 'https://ruibinray.github.io/', target: '_blank', rel: 'noopener' }, 'Portfolio', h('small', null, 'ruibinray.github.io')),
+        h('a', { href: 'https://www.linkedin.com/in/edwin-ruibin-jin-yao-a6b050239', target: '_blank', rel: 'noopener' }, 'LinkedIn', h('small', null, 'edwin-ruibin-jin-yao')),
+        h('a', { href: 'https://github.com/RuibinRay', target: '_blank', rel: 'noopener' }, 'GitHub', h('small', null, 'RuibinRay')),
+        h('a', { href: 'mailto:ruibinjinyao@gmail.com' }, 'Email', h('small', null, 'ruibinjinyao@gmail.com')))),
     h('div', null, h('h4', null, 'Sources & credits'), h('a', { href: 'https://www.nba.com/stats', target: '_blank', rel: 'noopener' }, 'NBA Stats (definitions, statistics)'), h('a', { href: 'https://github.com/swar/nba_api', target: '_blank', rel: 'noopener' }, 'nba_api (research client)'), h('a', { href: 'https://www.espn.com/nba/', target: '_blank', rel: 'noopener' }, 'ESPN (live scores)'), h('p', { class: 'small' }, 'Team logos and player headshots are served from NBA.com CDN and remain the property of NBA Properties and the teams. Full-body player photos were supplied for this project; all other players use NBA.com headshots.'), h('a', { href: '#/models' }, 'Model documentation & accuracy'))
   ));
 }
