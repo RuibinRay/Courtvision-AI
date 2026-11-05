@@ -24,6 +24,8 @@ route('/compare',        () => import('./views/compare.js'));
 route('/datalab',        () => import('./views/datalab.js'));
 route('/history',        () => import('./views/history.js'));
 route('/models',         () => import('./views/models.js'));
+route('/learn',          () => import('./views/learn.js'));
+route('/learn/:topic',   () => import('./views/learn.js'));
 route('/404',            () => Promise.resolve({ title: 'Not found', render: (el) => { el.innerHTML = '<div class="container section"><h2>Out of bounds</h2><p class="lead">That page does not exist. <a href="#/">Back to the arena</a>.</p></div>'; } }));
 
 document.addEventListener('route', (e) => { if (!e.detail.path.startsWith('/team/')) resetTheme(); });
