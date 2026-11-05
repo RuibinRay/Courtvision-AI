@@ -63,13 +63,15 @@
 .hero-center{position:absolute;left:50%;bottom:6.5vh;transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:12px;width:min(640px,90vw);will-change:transform,opacity}
 .mb-wrap{position:relative;width:100%}
 .matchup-bar{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;width:100%;padding:10px 14px;border-radius:14px;background:rgba(10,10,12,.78);border:1px solid var(--line-2);backdrop-filter:blur(8px)}
-.matchup-bar .mt{display:flex;align-items:center;gap:10px;min-width:0}
+/* each athlete's chip is a button: click it to put someone else on that side */
+.matchup-bar .mt{display:flex;align-items:center;gap:10px;min-width:0;padding:4px 6px;margin:-4px -6px;border:0;border-radius:9px;background:none;color:inherit;font:inherit;text-align:left;cursor:pointer;transition:background var(--dur)}
+.matchup-bar .mt:hover,.matchup-bar .mt:focus-visible{background:rgba(243,238,228,.06)}
 .matchup-bar .mt.r{flex-direction:row-reverse;text-align:right}
 .matchup-bar .mt img{width:34px;height:34px;flex:none}
 .matchup-bar .mt b{display:block;font-family:var(--font-display);font-weight:800;font-size:19px;line-height:1;letter-spacing:.02em;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .matchup-bar .mt small{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;color:var(--text-3);text-transform:uppercase;margin-top:3px}
-.matchup-bar .mt button{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);padding:4px 6px;border-radius:5px;flex:none;transition:color var(--dur),background var(--dur)}
-.matchup-bar .mt button:hover{color:var(--text);background:var(--bg-3)}
+.matchup-bar .mt .sw{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);padding:4px 6px;border-radius:5px;flex:none;white-space:nowrap;transition:color var(--dur),background var(--dur)}
+.matchup-bar .mt:hover .sw,.matchup-bar .mt:focus-visible .sw{color:var(--text);background:var(--bg-3)}
 .vs{position:relative;width:52px;height:52px;display:grid;place-items:center;flex:none}
 .vs .ball{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 36% 30%,#ff9d5c,#e8622a 55%,#6e2b0c);box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 24px rgba(232,98,42,.25)}
 .vs .ball::after{content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(#1a0a03,#1a0a03) center/100% 1.5px no-repeat,linear-gradient(#1a0a03,#1a0a03) center/1.5px 100% no-repeat;opacity:.9}
@@ -107,6 +109,11 @@
 .hero-cap .cap-figs small{display:block;margin-top:4px;font-family:var(--font-body);font-weight:500;font-size:12px;color:var(--text-3)}
 .hero-cap .legend{display:flex;gap:16px;margin:12px 0 0;font-size:13px;color:var(--text-2)}
 .hero-cap .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:7px;vertical-align:-1px}
+/* scene 3 glyphs: a filled mark is a make, a ring is a miss, the glowing ring is the basket */
+.hero-cap .legend.shots i{border-radius:50%}
+.hero-cap .legend.shots .mk{background:linear-gradient(90deg,var(--side-l),var(--side-r))}
+.hero-cap .legend.shots .ms{background:none;border:2px solid rgba(243,238,228,.85)}
+.hero-cap .legend.shots .hp{background:none;border:2px solid var(--orange);box-shadow:0 0 8px rgba(232,98,42,.9),inset 0 0 4px rgba(232,98,42,.6)}
 /* scene rail: chapter names with a fill that tracks progress through each chapter */
 .scene-rail{position:absolute;left:var(--gutter);bottom:22px;z-index:5;display:flex;gap:16px;align-items:flex-end}
 .scene-rail button{display:flex;flex-direction:column;gap:7px;align-items:flex-start;min-width:96px;color:var(--text-3);font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;line-height:1;transition:color var(--dur)}
@@ -163,6 +170,7 @@ body.has-ball input,body.has-ball textarea,body.has-ball select{cursor:auto}
 .tn:hover{border-color:var(--line-3);transform:translateY(-2px)}
 .tn .t{display:flex;align-items:center;gap:6px;font-family:var(--font-display);font-weight:700;font-size:18px}
 .tn .t img{width:28px;height:28px}
+.tn .t+.t{padding-left:10px;border-left:1px solid var(--line-2)}   /* away, then home */
 .tn .mid{margin-left:auto;text-align:right;font-family:var(--font-mono);font-size:11px;color:var(--text-3);letter-spacing:.06em}
 .tn .mid b{display:block;color:var(--text);font-size:15px}
 .tn .mid.live b{color:var(--pos)}
@@ -195,12 +203,12 @@ body.has-ball input,body.has-ball textarea,body.has-ball select{cursor:auto}
   .side-wrap{flex-direction:column;align-items:center;width:100%;min-width:0;height:auto}
   .hero-player img{max-width:100%}
   .hero-center{position:static;transform:none;order:2;width:100%;margin-top:18px}
-  .tape{position:static;opacity:1;transform:none;margin-top:0}
+  .tape{position:static;opacity:1;transform:none;margin-top:0;width:100%}   /* the desktop width formula (gap between the lower-thirds) collapses to ~90px on a phone */
   .mb-wrap{display:flex;flex-direction:column;gap:8px}
   .scene-rail,.hero-hint,.hero-cap,.hero-handoff,.zone-labels{display:none}
   .hero-vignette{background:linear-gradient(to bottom,rgba(10,10,12,.3),transparent 30%)}
 }
-@media (max-width:600px){.hero-player{height:min(40vh,360px)}.matchup-bar{gap:8px;padding:10px}.matchup-bar .mt{gap:6px}.matchup-bar .mt img{width:26px;height:26px}.matchup-bar .mt b{font-size:14px}.matchup-bar .mt small{font-size:9px;white-space:nowrap}.vs{width:44px;height:44px}.vs span{font-size:18px}.lower-third .lt-head b{font-size:18px}.tape .tr{grid-template-columns:48px 1fr 48px}.tape .tr b{font-size:17px}}
+@media (max-width:600px){.hero-player{height:min(40vh,360px)}.matchup-bar{gap:8px;padding:10px}.matchup-bar .mt{gap:6px;padding:2px 4px;margin:-2px -4px}.matchup-bar .mt .sw-t{display:none}.matchup-bar .mt img{width:26px;height:26px}.matchup-bar .mt b{font-size:14px}.matchup-bar .mt small{font-size:9px;white-space:nowrap}.vs{width:44px;height:44px}.vs span{font-size:18px}.lower-third .lt-head b{font-size:18px}.tape .tr{grid-template-columns:48px 1fr 48px}.tape .tr b{font-size:17px}}
 
 .hero.cine .lower-third,.hero.cine .hero-player img{transition:none}
 .hero.cine .hero-side.hover .hero-player img{transition:filter .4s}

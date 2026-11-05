@@ -56,12 +56,14 @@ export async function render(el, params, query) {
   const tape = h('div', { class: 'tape', 'aria-label': 'Tale of the tape' });
   const center = h('div', { class: 'hero-center' }, h('div', { class: 'mb-wrap' }, matchup, tape),
     h('div', { class: 'hero-cta' }, h('a', { class: 'btn primary', href: '#explore', onClick: (e) => { e.preventDefault(); document.getElementById('explore').scrollIntoView({ behavior: reduced ? 'instant' : 'smooth' }); } }, 'Explore the NBA'), h('a', { class: 'btn', href: '#/live' }, 'Tonight’s games')),
-    h('div', { class: 'hero-featured' }, FEATURED.slice(0, 3).map(([a, b]) => h('button', { onClick: () => setMatchup(a, b) }, `${surname(byId.get(a))} · ${surname(byId.get(b))}`)), h('button', { onClick: () => pick('left') }, '⇄ Any two players')));
+    h('div', { class: 'hero-featured' }, FEATURED.slice(0, 3).map(([a, b]) => h('button', { onClick: () => setMatchup(a, b) }, `${surname(byId.get(a))} · ${surname(byId.get(b))}`)), h('button', { onClick: () => pick('both') }, '⇄ Any two players')));
   const zoneLabels = h('div', { class: 'zone-labels', 'aria-hidden': 'true' });
   const cap1 = h('div', { class: 'hero-cap' }, h('p', { class: 'scene-tag' }, 'Scene 3 · Beyond the box score'), h('h2', null, 'Every shot, where it happened'),
-    h('p', { class: 'cap-text' }, `Both athletes’ real ${CONFIG.SEASON} field-goal attempts from NBA Stats, placed on their halves of the floor. Bright marks are makes.`), h('div', { class: 'cap-figs' }));
+    h('p', { class: 'cap-text' }, `Both athletes’ real ${CONFIG.SEASON} field-goal attempts from NBA Stats, each placed where it was taken on the half they attack. The dashed arcs sit 10 and 16 ft from the rim; the 3-point line is 23.75 ft.`),
+    h('div', { class: 'legend shots' }, h('span', null, h('i', { class: 'mk' }), 'Make'), h('span', null, h('i', { class: 'ms' }), 'Miss'), h('span', null, h('i', { class: 'hp' }), 'The basket they attack')),
+    h('div', { class: 'cap-figs' }));
   const cap2 = h('div', { class: 'hero-cap' }, h('p', { class: 'scene-tag' }, 'Scene 4 · From court to data'), h('h2', null, 'The floor becomes the chart'),
-    h('p', { class: 'cap-text' }, 'Each zone is tinted by the shooter’s field-goal percentage against the league’s in that zone.'),
+    h('p', { class: 'cap-text' }, 'Each zone is tinted by the shooter’s field-goal percentage against the league’s in that zone. Zone names are written on the floor; each label reads makes over attempts.'),
     h('div', { class: 'legend' }, h('span', null, h('i', { style: { background: 'var(--pos)' } }), 'Above the league'), h('span', null, h('i', { style: { background: 'var(--neg)' } }), 'Below the league')));
   const railBtns = SCENES.map((s, i) => h('button', { class: i === 0 ? 'on' : '', 'aria-label': `Scene ${i + 1}: ${s}`, onClick: () => { if (!tl) return; const st = tl.scrollTrigger; window.scrollTo({ top: st.start + SCENE_AT[i] * (st.end - st.start) + 2, behavior: reduced ? 'instant' : 'smooth' }); } }, h('span', { class: 'nm' }, s), h('i', { class: 'bar' }, h('b'))));
   const rail = h('div', { class: 'scene-rail', role: 'navigation', 'aria-label': 'Scenes' }, railBtns);
@@ -85,7 +87,7 @@ export async function render(el, params, query) {
       h('div', { class: 'lt-head' }, t ? logoImg(t) : null, h('div', null, h('b', null, p.name), h('small', null, `${t?.full || p.team} · ${p.GP} GP · age ${p.AGE}`))),
       h('div', { class: 'lt-stats' }, KEY.map(([k, l, f, c]) => h('div', null, h('div', { class: 'k' }, l), h('div', { class: 'v' + (c ? ' c' : '') }, f(p))))),
       h('div', { class: 'lt-extra' }, EXTRA.map(([k, l, f]) => h('div', null, h('div', { class: 'k' }, l), h('div', { class: 'v' }, f(p))))),
-      h('div', { class: 'lt-actions' }, h('a', { class: 'btn sm primary', href: `#/compare?a=${state.left}&b=${state.right}` }, 'Compare'), h('a', { class: 'btn sm', href: `#/player/${p.id}` }, 'Profile'), h('button', { class: 'btn sm ghost', onClick: () => pick(side) }, '⇄ Swap')));
+      h('div', { class: 'lt-actions' }, h('a', { class: 'btn sm primary', href: `#/compare?a=${state.left}&b=${state.right}` }, 'Compare'), h('a', { class: 'btn sm', href: `#/player/${p.id}` }, 'Profile'), h('button', { class: 'btn sm ghost', onClick: () => pick(side) }, '⇄ Change')));
     const wrap = h('div', { class: 'side-wrap' }, fig, lt);
     const root = side === 'left' ? lSide : rSide; root.innerHTML = ''; root.append(wrap);
     hero.style.setProperty(side === 'left' ? '--side-l' : '--side-r', col); hero.style.setProperty(side === 'left' ? '--side-l-rgb' : '--side-r-rgb', rgb(col));
@@ -99,7 +101,8 @@ export async function render(el, params, query) {
   function drawMatchup() {
     const a = byId.get(state.left), b = byId.get(state.right); const ta = T.find(x => x.id === a.teamId), tb = T.find(x => x.id === b.teamId);
     matchup.innerHTML = '';
-    const mt = (p, t, side) => h('div', { class: 'mt' + (side === 'r' ? ' r' : '') }, t ? logoImg(t) : null, h('div', { style: { minWidth: 0 } }, h('b', null, p.name), h('small', null, `${t?.abbr || p.team} · ${fmt.num(p.PTS)} ppg`)), h('button', { onClick: () => pick(side === 'l' ? 'left' : 'right'), 'aria-label': 'Change player' }, '⇄'));
+    // each chip is a button: click anywhere on a player to replace them on that side
+    const mt = (p, t, side) => h('button', { class: 'mt' + (side === 'r' ? ' r' : ''), type: 'button', 'aria-label': `Change the ${side === 'l' ? 'left' : 'right'} player (now ${p.name})`, onClick: () => pick(side === 'l' ? 'left' : 'right') }, t ? logoImg(t) : null, h('div', { style: { minWidth: 0 } }, h('b', null, p.name), h('small', null, `${t?.abbr || p.team} · ${fmt.num(p.PTS)} ppg`)), h('span', { class: 'sw' }, '⇄', h('span', { class: 'sw-t' }, ' Change')));
     matchup.append(mt(a, ta, 'l'), h('div', { class: 'vs', 'aria-label': 'versus' }, h('span', { class: 'ball' }), h('span', null, 'VS')), mt(b, tb, 'r'));
     // tale of the tape: each row compares one per-game figure, bars grow from the centre, the leader reads in full white
     tape.innerHTML = ''; tape.style.setProperty('--ca', markColor(ta)); tape.style.setProperty('--cb', markColor(tb));
@@ -115,7 +118,21 @@ export async function render(el, params, query) {
     history.replaceState(null, '', `#/?a=${a}&b=${b}`);
     loadShotLayer(); if (cinematic) buildScroll();
   }
-  function pick(side) { openPicker({ type: 'player', title: `Choose the ${side} player`, onPick: (it) => { side === 'left' ? setMatchup(it.p.id, state.right) : setMatchup(state.left, it.p.id); toast(`${it.p.name} steps onto the court`); } }); }
+  /** 'left' | 'right' replaces one athlete; 'both' asks for the two in turn and rebuilds the matchup once */
+  function pick(side) {
+    if (side === 'both') {
+      openPicker({ type: 'player', title: '1 of 2 · Choose the left player', onPick: (a) => openPicker({ type: 'player', title: `2 of 2 · Choose the right player (vs ${a.p.name})`, onPick: (b) => {
+        if (b.p.id === a.p.id) { toast(`${a.p.name} is already on the left`); return; }
+        setMatchup(a.p.id, b.p.id); toast(`${surname(a.p)} vs ${surname(b.p)} take the floor`);
+      } }) });
+      return;
+    }
+    const other = side === 'left' ? state.right : state.left;
+    openPicker({ type: 'player', title: `Choose the ${side} player`, onPick: (it) => {
+      if (it.p.id === other) { toast(`${it.p.name} is already on the court`); return; }
+      side === 'left' ? setMatchup(it.p.id, state.right) : setMatchup(state.left, it.p.id); toast(`${it.p.name} steps onto the court`);
+    } });
+  }
   sideEl('left', byId.get(state.left)); sideEl('right', byId.get(state.right)); drawMatchup();
 
   /* ---------- Three.js arena + real shot data ---------- */
@@ -133,7 +150,7 @@ export async function render(el, params, query) {
         const three = ab3 ? { fga: ab3.fga + c3.reduce((s, z) => s + z.fga, 0), fgm: ab3.fgm + c3.reduce((s, z) => s + z.fgm, 0), league: ab3.league } : null; if (three) three.pct = three.fga ? three.fgm / three.fga : null;
         // labels sit inside the zone they describe (feet from this baseline, scene-lateral feet; mirrored for the right half)
         const mk = (name, z, alongFt, latFt, from) => { if (!z || !z.fga) return; const el = h('div', { class: 'zone-label', style: { '--zl': markColor(t) } }, h('small', null, name), `${z.fgm}/${z.fga}`, h('b', null, fmt.pct(z.pct, 0)), z.league != null ? h('small', { style: { color: z.pct >= z.league ? 'var(--pos)' : 'var(--neg)' } }, `league ${fmt.pct(z.league, 0)}`) : null); zoneLabels.append(el); labels.push({ el, alongFt: side === 'left' ? alongFt : 94 - alongFt, latFt: side === 'left' ? latFt : -latFt, from }); };
-        mk('Restricted area', ra, 5.25 + 2.5, 0, .52); mk('Mid-range', mid, 5.25 + 15, -11, .55); mk('Three-pointers', three, 5.25 + 27, 8, .58);
+        mk('Restricted area', ra, 5.25 + 2.5, 0, .52); mk('Mid-range', mid, 5.25 + 15, -11, .55); mk('Three-pointers', three, 5.25 + 27, 2, .58);     // near the centre line so the left one clears the scene-4 caption
         const made = S.shots.filter(s => s.SHOT_MADE_FLAG).length; const ttl = h('div', { class: 'zone-label title', style: { '--zl': markColor(t) } }, h('small', null, `${p.name} · ${CONFIG.SEASON}`), `${made}/${S.shots.length} FG`, h('b', null, fmt.pct(made / Math.max(1, S.shots.length), 0))); zoneLabels.append(ttl); labels.push({ el: ttl, alongFt: side === 'left' ? 36 : 58, latFt: side === 'left' ? -17 : 17, from: .62 });
         figs.push(h('div', null, h('span', null, `${made}/${S.shots.length}`), h('small', null, `${surname(p)} · field goals`)));
       } catch { data[side] = []; const el = h('div', { class: 'zone-label title', style: { '--zl': col } }, h('small', null, p.name), 'shot coordinates not cached for this player'); zoneLabels.append(el); labels.push({ el, alongFt: side === 'left' ? 24 : 70, latFt: 0, from: .5 }); figs.push(h('div', null, h('span', null, '—'), h('small', null, `${surname(p)} · no coordinates cached`))); }
@@ -230,7 +247,7 @@ async function loadTonight(box, tunnels) {
       for (const e of events) {
         const c = e.competitions[0]; const home = c.competitors.find(x => x.homeAway === 'home'), away = c.competitors.find(x => x.homeAway === 'away');
         const th = await teamByEspn(home.team.abbreviation), ta = await teamByEspn(away.team.abbreviation); const st = c.status.type; const isLive = st.state === 'in';
-        box.append(h('a', { class: 'tn', href: `#/game/${e.id}` }, h('span', { class: 't' }, ta ? logoImg(ta) : null, away.team.abbreviation, isLive || st.completed ? h('b', { class: 'num' }, away.score) : null), h('span', { class: 'muted' }, '@'), h('span', { class: 't' }, th ? logoImg(th) : null, home.team.abbreviation, isLive || st.completed ? h('b', { class: 'num' }, home.score) : null), h('span', { class: 'mid' + (isLive ? ' live' : '') }, isLive ? 'LIVE' : st.completed ? 'FINAL' : fmt.time(e.date), h('b', null, isLive ? `Q${c.status.period} ${c.status.displayClock}` : st.completed ? '' : 'tip-off'))));
+        box.append(h('a', { class: 'tn', href: `#/game/${e.id}` }, h('span', { class: 't' }, ta ? logoImg(ta) : null, away.team.abbreviation, isLive || st.completed ? h('b', { class: 'num' }, away.score) : null), h('span', { class: 't' }, th ? logoImg(th) : null, home.team.abbreviation, isLive || st.completed ? h('b', { class: 'num' }, home.score) : null), h('span', { class: 'mid' + (isLive ? ' live' : '') }, isLive ? 'LIVE' : st.completed ? 'FINAL' : fmt.time(e.date), h('b', null, isLive ? `Q${c.status.period} ${c.status.displayClock}` : st.completed ? '' : 'tip-off'))));
       }
       box.append(h('p', { class: 'source', style: { gridColumn: '1/-1' } }, `Source: ESPN scoreboard · fetched ${new Date().toLocaleTimeString()}`));
       if (live) liveTimer = setTimeout(draw, CONFIG.LIVE_REFRESH_MS);
