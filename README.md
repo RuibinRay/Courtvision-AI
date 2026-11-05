@@ -22,6 +22,7 @@ An interactive, data-driven NBA analytics laboratory: a cinematic Three.js/GSAP 
 | Data Lab | `#/datalab` | Shooting efficiency, possessions, Four Factors, plus-minus & RAPM ridge demo, Kalman player development, EPV simulation, team similarity (PCA), player archetypes (k-means), data playground with CSV export, analytics assistant |
 | History | `#/history` | Time Machine: league environment 1996-97 → today, season explorer, era-adjusted player comparison |
 | Models | `#/models` | Data, leakage controls, each model, walk-forward metrics, calibration, limitations |
+| Learn — Understand the Data | `#/learn`, `#/learn/ts-pct` | Interactive analytics academy: a 95-term dictionary, a standard 13-part lesson for every statistic (formula, worked example, live calculator, real NBA example, visual, mistakes, analyst notes, exercise), a chart-reading school, an interactive court, a five-level learning path with quizzes, a local notebook, and contextual “i” popovers on every stat tile across the site. Coverage report: [docs/ACADEMY_COVERAGE.md](docs/ACADEMY_COVERAGE.md) |
 
 ## Visual direction — "Broadcast Night"
 
@@ -64,14 +65,15 @@ cd backend && cp .env.example .env && pip install -r requirements.txt && uvicorn
 
 ```
 index.html            app shell, import map (CDN libraries pinned)
-css/                  tokens, base, components, pages/{home,teams,dashboard,live,labs}.css
+css/                  tokens, base, components, pages/{home,teams,dashboard,live,labs,learn}.css
 js/app.js             bootstrap + routes
 js/core/              router, api (snapshot / ESPN / backend adapters), dom, format, config
-js/components/        nav, footer, global search & picker, team explorer
+js/components/        nav, footer, global search & picker, team explorer, metricInfo (contextual lesson popover)
 js/scenes/arena.js    Three.js homepage scene
 js/charts/            ECharts wrapper, D3 shot chart
 js/models/            client-side prediction models, analytics (ridge, k-means, PCA, Kalman), assistant engine
-js/views/             one module per route
+js/views/             one module per route; views/learn/ holds the academy (lesson renderer, chart school, court, notebook)
+js/data/metrics/      the central lesson registry: every statistic, formula, calculator, example and exercise
 data/                 JSON snapshot (teams, players, games, shots, history, models) + manifest.json
 backend/pipeline/     fetch_* ingestion scripts, build_snapshot.py
 backend/ml/           features.py (leak-free), elo.py, train.py, artifacts/models.pkl
@@ -79,7 +81,7 @@ backend/app/          FastAPI app, adapters (snapshot, nba_stats, espn, balldont
 backend/db/schema.sql relational schema for a hosted deployment
 backend/tests/        pytest (leakage, API smoke)
 .github/workflows/    Pages deployment + scheduled data refresh
-docs/                 DATA, MODELS, API, DEPLOY, TESTING
+docs/                 DATA, MODELS, API, DEPLOY, TESTING, ACADEMY_COVERAGE
 ```
 
 ## Honesty rules baked into the UI
@@ -88,6 +90,7 @@ docs/                 DATA, MODELS, API, DEPLOY, TESTING
 * Unavailable metrics (RAPM, EPM/LEBRON/DARKO, on/off splits, injuries) are stated as unavailable, never estimated.
 * Shot charts use real coordinates; where none are cached, aggregated zones are shown instead of invented locations.
 * Simulations (RAPM demo, EPV court) are labelled as simulations.
+* Every lesson in the academy is typed (raw / derived / estimated / model / predicted / educational extension); extensions the site does not compute (PER, BPM, Win Shares, RAPM, EPV…) say so and never invent a formula. The notebook lives in the browser's localStorage only and says so.
 
 ## Credits & licensing
 

@@ -5,7 +5,7 @@ export function h(tag, attrs = {}, ...children) {
   for (const [k, v] of Object.entries(attrs || {})) {
     if (v == null || v === false) continue;
     if (k === 'class') el.className = v;
-    else if (k === 'style' && typeof v === 'object') Object.assign(el.style, v);
+    else if (k === 'style' && typeof v === 'object') for (const [sk, sv] of Object.entries(v)) { if (sv == null) continue; sk.startsWith('--') ? el.style.setProperty(sk, String(sv)) : (el.style[sk] = sv); }   // custom properties need setProperty
     else if (k.startsWith('on') && typeof v === 'function') el.addEventListener(k.slice(2).toLowerCase(), v);
     else if (k === 'html') el.innerHTML = v;
     else if (k === 'dataset') Object.assign(el.dataset, v);
@@ -20,7 +20,10 @@ export function loader(label = 'Loading') { return h('div', { class: 'loader' },
 export function empty(msg) { return h('div', { class: 'empty' }, msg); }
 export function errorBox(msg) { return h('div', { class: 'error' }, msg); }
 export function toast(msg, ms = 2600) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('show'), ms); }
-export function infoTip(text) { return h('span', { class: 'info', tabindex: 0, 'data-tip': text, 'aria-label': text }, 'i'); }
+export function infoTip(text, key) {
+  if (!key) return h('span', { class: 'info', tabindex: 0, 'data-tip': text, 'aria-label': text }, 'i');
+  return h('button', { class: 'info linked', type: 'button', 'data-tip': text, 'aria-label': `${key}: ${text}. Open explanation`, onClick: (e) => { e.preventDefault(); e.stopPropagation(); import('../components/metricInfo.js').then(m => m.openMetric(key)); } }, 'i');
+}
 export function seg(options, value, onChange) {
   const el = h('div', { class: 'seg', role: 'tablist' });
   const render = () => { el.innerHTML = ''; options.forEach(o => el.append(h('button', { class: o.value === value ? 'on' : '', role: 'tab', 'aria-selected': o.value === value, onClick: () => { value = o.value; render(); onChange(value); } }, o.label))); };
@@ -35,7 +38,7 @@ export function select(options, value, onChange, attrs = {}) {
 }
 export function statTile(k, v, { d, tip, rank, rankTotal = 30, cls = '' } = {}) {
   const rk = rank ? h('span', { class: 'rank ' + (rank <= 5 ? 'top' : rank >= rankTotal - 4 ? 'bot' : '') }, `#${rank}`) : null;
-  return h('div', { class: 'stat ' + cls }, h('div', { class: 'k' }, k, tip ? infoTip(tip) : null, rk), h('div', { class: 'v num' }, v), d != null ? h('div', { class: 'd ' + (typeof d === 'object' ? d.cls : '') }, typeof d === 'object' ? d.text : d) : null);
+  return h('div', { class: 'stat ' + cls }, h('div', { class: 'k' }, k, tip ? infoTip(tip, k) : null, rk), h('div', { class: 'v num' }, v), d != null ? h('div', { class: 'd ' + (typeof d === 'object' ? d.cls : '') }, typeof d === 'object' ? d.text : d) : null);
 }
 export function setTeamTheme(colorsA, colorsB) {
   const root = document.documentElement.style;

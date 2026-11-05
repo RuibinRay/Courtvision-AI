@@ -71,16 +71,16 @@ export function gauge(el, value, { label = 'Home win probability', color = '#E86
     series: [{ type: 'gauge', startAngle: 200, endAngle: -20, min: 0, max: 100, radius: '100%', center: ['50%', '62%'], progress: { show: true, width: 16, itemStyle: { color: { type: 'linear', x: 0, y: 0, x2: 1, y2: 0, colorStops: [{ offset: 0, color: '#7FA8FF' }, { offset: 1, color }] } } }, axisLine: { lineStyle: { width: 16, color: [[1, 'rgba(255,255,255,.08)']] } }, axisTick: { show: false }, splitLine: { length: 8, lineStyle: { color: 'rgba(255,255,255,.2)', width: 1 } }, axisLabel: { show: false }, pointer: { show: false }, anchor: { show: false }, title: { show: true, offsetCenter: [0, '30%'], color: '#7E7A73', fontFamily: MONO, fontSize: 11 }, detail: { valueAnimation: true, offsetCenter: [0, '-10%'], fontSize: 44, fontWeight: 800, fontFamily: "'Barlow Condensed', sans-serif", color: '#F3EEE4', formatter: (v) => v.toFixed(1) + '%' }, data: [{ value: +(value * 100).toFixed(1), name: label }] }],
   }, { alt });
 }
-export function histogram(el, values, { bins = 30, xName = 'Margin', color = '#7FA8FF', alt, marker, formatter } = {}) {
+export function histogram(el, values, { bins = 30, xName = 'Margin', color = '#7FA8FF', alt, marker, formatter, countLabel = 'simulations', markerLabel = null, negativeRed = true } = {}) {
   const min = Math.min(...values), max = Math.max(...values), w = (max - min) / bins || 1;
   const counts = new Array(bins).fill(0); values.forEach(v => { const i = Math.min(bins - 1, Math.floor((v - min) / w)); counts[i]++; });
   const x = counts.map((_, i) => (min + (i + .5) * w).toFixed(1));
   return initChart(el, {
-    tooltip: tooltipBase({ formatter: (p) => `${xName} ≈ ${p[0].axisValue}<br/>${p[0].value} simulations (${(p[0].value / values.length * 100).toFixed(1)}%)` }),
+    tooltip: tooltipBase({ formatter: (p) => `${xName} ≈ ${p[0].axisValue}<br/>${p[0].value} ${countLabel} (${(p[0].value / values.length * 100).toFixed(1)}%)` }),
     grid: gridBase({ left: 44, bottom: 40 }),
     xAxis: { type: 'category', data: x, name: xName, nameLocation: 'middle', nameGap: 26, nameTextStyle: { color: '#B9B3A8', fontFamily: MONO, fontSize: 11 }, ...axisBase({ axisLabel: { color: '#74809A', fontFamily: MONO, fontSize: 10, interval: Math.floor(bins / 8) } }) },
     yAxis: { type: 'value', ...axisBase() },
-    series: [{ type: 'bar', data: counts.map((c, i) => ({ value: c, itemStyle: { color: (min + (i + .5) * w) >= 0 ? color : '#E6596A' } })), barCategoryGap: '8%', markLine: marker != null ? { symbol: 'none', silent: true, data: [{ xAxis: Math.round((marker - min) / w) }], lineStyle: { color: '#E8622A', width: 2 }, label: { formatter: `${marker > 0 ? '+' : ''}${marker.toFixed(1)}`, color: '#E8622A', fontFamily: MONO } } : undefined }],
+    series: [{ type: 'bar', data: counts.map((c, i) => ({ value: c, itemStyle: { color: (!negativeRed || (min + (i + .5) * w) >= 0) ? color : '#E6596A' } })), barCategoryGap: '8%', markLine: marker != null ? { symbol: 'none', silent: true, data: [{ xAxis: Math.round((marker - min) / w) }], lineStyle: { color: '#E8622A', width: 2 }, label: { formatter: markerLabel != null ? `${markerLabel} ${marker.toFixed(1)}` : `${marker > 0 ? '+' : ''}${marker.toFixed(1)}`, color: '#E8622A', fontFamily: MONO } } : undefined }],
   }, { alt });
 }
 export function calendar(el, data, { range, alt } = {}) {

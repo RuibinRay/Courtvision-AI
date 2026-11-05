@@ -3,7 +3,7 @@ import { manifest } from '../core/api.js';
 import { openSearch } from './search.js';
 import { fmt } from '../core/format.js';
 
-const LINKS = [['#/', 'Home'], ['#/teams', 'Teams'], ['#/players', 'Players'], ['#/live', 'Live'], ['#/games', 'Games'], ['#/predictions', 'Predictions'], ['#/compare', 'Compare'], ['#/datalab', 'Data Lab'], ['#/history', 'History'], ['#/models', 'Models']];
+const LINKS = [['#/', 'Home'], ['#/teams', 'Teams'], ['#/players', 'Players'], ['#/live', 'Live'], ['#/games', 'Games'], ['#/predictions', 'Predictions'], ['#/compare', 'Compare'], ['#/datalab', 'Data Lab'], ['#/history', 'History'], ['#/models', 'Models'], ['#/learn', 'Learn']];
 
 export async function mountNav(el) {
   const links = h('nav', { class: 'links', 'aria-label': 'Primary' }, LINKS.map(([href, label]) => h('a', { href }, label)));
