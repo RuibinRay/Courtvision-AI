@@ -15,7 +15,7 @@
 
 * `common.py` — rate-limited, retried calls; strict JSON writer (`allow_nan=False`, NaN → null); compact `{cols, rows}` tables.
 * `fetch_teams.py` — standings; stats for six windows × four measure types; prior seasons (regular + playoffs, home/away); team game logs (current + previous season); rosters.
-* `fetch_players.py` — per-game and totals indexes (base + advanced); five prior seasons + last playoffs; game logs (current + previous season); career totals and bio for the 90 highest-minute players; shot charts for the top 60; league zone averages.
+* `fetch_players.py` — per-game and totals indexes (base + advanced); five prior seasons + last playoffs; game logs (current + previous season); career totals and bio for every player who has appeared this season; shot-chart coordinates for every player with a field-goal attempt (`deep_ids.json` lists what was actually cached, so a skipped call is never promised); league zone averages.
 * `fetch_games.py` — every regular-season and playoff game since 2010-11 as one row per game with both box scores (model training, Elo, results browser); the full current schedule.
 * `fetch_lineups.py` — top five-man lineups per team.
 * `fetch_history.py` — team and player season tables for every season since 1996-97 (Time Machine, similarity engine, age curves).

@@ -18,10 +18,11 @@ export function parse() {
   const query = Object.fromEntries(new URLSearchParams(qs || ''));
   for (const r of routes) {
     const m = path.match(r.re);
-    if (m) { const params = {}; r.keys.forEach((k, i) => params[k] = decodeURIComponent(m[i + 1])); return { path, params, query, route: r }; }
+    if (m) { const params = {}; r.keys.forEach((k, i) => params[k] = safeDecode(m[i + 1])); return { path, params, query, route: r }; }
   }
   return { path, params: {}, query, route: routes.find(r => r.pattern === '/404') };
 }
+const safeDecode = (v) => { try { return decodeURIComponent(v); } catch { return v; } };   // a raw "%" in a label such as 3P% must not take the router down
 let seq = 0;
 async function handle() {
   const main = document.getElementById('main');
