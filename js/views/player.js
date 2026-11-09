@@ -11,6 +11,7 @@ import { HERO_ART } from '../data/heroArt.js';
 export const title = () => 'Player profile';
 const ts = (r) => { const d = 2 * (r.FGA + 0.44 * r.FTA); return d ? r.PTS / d : null; };
 const efg = (r) => r.FGA ? (r.FGM + 0.5 * r.FG3M) / r.FGA : null;
+const isMissing = (e) => /^404 /.test(e?.message || '');   // a per-player file the pipeline did not write (loadJSON throws `${status} ${url}`)
 
 export async function render(el, params) {
   const id = Number(params.id);
@@ -69,8 +70,11 @@ export async function render(el, params) {
   /* ---------- shot chart ---------- */
   const shotPanel = h('div', { class: 'panel span2' }, h('div', { class: 'panel-head' }, h('div', null, h('h3', null, 'Interactive shot chart'), h('span', { class: 'sub' }, `${CONFIG.SEASON} · real shot coordinates from NBA Stats`)), h('div', { class: 'filters', id: 'shotFilters' })), h('div', { class: 'grid c2' }, h('div', { id: 'court' }), h('div', { id: 'zones' })));
   container.append(h('div', { class: 'dash-grid' }, shotPanel));
-  try {
-    const [S, LZ] = await Promise.all([loadShots(id), leagueZones().catch(() => [])]);
+  // Only a missing coordinate file triggers the aggregated fallback; any other failure is a bug and is surfaced, not hidden.
+  let S = null, shotErr = null;
+  try { S = await loadShots(id); } catch (e) { shotErr = e; }
+  if (S) {
+    const LZ = S.league?.length ? [] : await leagueZones().catch(() => []);
     const shots = S.shots; const league = S.league?.length ? S.league : LZ;
     const f = { mode: 'shots', period: 'all', made: 'all', type: 'all', opp: 'all', from: '', to: '' };
     const opps = [...new Set(shots.map(s => s.HTM === p.team ? s.VTM : s.HTM))].sort();
@@ -90,14 +94,22 @@ export async function render(el, params) {
         h('table', { class: 'zone-table' }, h('thead', null, h('tr', null, h('th', null, 'Zone'), h('th', null, 'FGM/FGA'), h('th', null, 'FG%'), h('th', null, 'League'), h('th', null, 'Pts/shot'), h('th', null, 'Freq'))), h('tbody', null, zs.map(z => h('tr', null, h('td', null, z.zone), h('td', null, `${z.fgm}/${z.fga}`), h('td', { class: z.pct != null && z.league != null ? (z.pct >= z.league ? 'pos' : 'neg') : '' }, z.pct != null ? fmt.pct(z.pct) : '—'), h('td', null, z.league != null ? fmt.pct(z.league) : '—'), h('td', null, z.pps != null ? fmt.num(z.pps, 2) : '—'), h('td', null, fmt.pct(z.freq, 0)))))),
         h('p', { class: 'source' }, `${shots.length} attempts in the snapshot · league zone averages from NBA Stats for the same season.`));
     }
-    drawShots();
-  } catch (e) {
-    const court = shotPanel.querySelector('#court'); court.append(h('div', { class: 'empty' }, 'Shot coordinates are cached for the 60 highest-minute players in this snapshot. For this player, aggregated shooting zones are shown instead of invented locations.'));
-    const S = (k) => logsCur.reduce((s, r) => s + r[k], 0);
+    try { drawShots(); } catch (e) { console.error('[player] shot chart failed', e); shotPanel.querySelector('#court').append(h('div', { class: 'error' }, `Could not draw the shot chart: ${e.message}`)); }
+  } else {
+    if (!isMissing(shotErr)) console.error('[player] shot data failed', shotErr);
+    const court = shotPanel.querySelector('#court');
+    const why = !p.FGA ? 'No field-goal attempts are recorded for this player this season, so there is no shot chart yet.'
+      : isMissing(shotErr) ? 'Shot coordinates for this player are not in this snapshot: the pipeline fetches NBA Stats coordinates for every player with a field-goal attempt, and this player’s fetch was skipped or failed.'
+      : `Shot coordinates could not be loaded (${shotErr.message}).`;
+    court.append(h('div', { class: 'empty' }, `${why} Shooting splits aggregated from the game logs are shown instead of invented locations.`));
     const zel = shotPanel.querySelector('#zones');
-    zel.append(h('div', { class: 'chart', id: 'aggz' }));
-    bar(zel.querySelector('#aggz'), { x: ['2-pt FG%', '3-pt FG%', 'FT%'], series: [{ name: 'Season', data: [(S('FGM') - S('FG3M')) / Math.max(1, S('FGA') - S('FG3A')), S('FG3M') / Math.max(1, S('FG3A')), S('FTM') / Math.max(1, S('FTA'))].map(v => +(100 * v).toFixed(1)) }], labels: true, formatter: (v) => v + '%', alt: 'Aggregated shooting zones' });
-    zel.append(h('p', { class: 'source' }, 'Aggregated from game logs (2-point, 3-point and free-throw attempts). Run the pipeline with a larger shot-chart list to add this player’s coordinates.'));
+    if (!logsCur.length) { zel.append(empty('No game logs are cached for this player this season either.')); }
+    else {
+      const S = (k) => logsCur.reduce((s, r) => s + (r[k] || 0), 0);
+      zel.append(h('div', { class: 'chart', id: 'aggz' }));
+      bar(zel.querySelector('#aggz'), { x: ['2-pt FG%', '3-pt FG%', 'FT%'], series: [{ name: 'Season', data: [(S('FGM') - S('FG3M')) / Math.max(1, S('FGA') - S('FG3A')), S('FG3M') / Math.max(1, S('FG3A')), S('FTM') / Math.max(1, S('FTA'))].map(v => +(100 * v).toFixed(1)) }], labels: true, formatter: (v) => v + '%', alt: 'Aggregated shooting splits' });
+      zel.append(h('p', { class: 'source' }, `Aggregated from ${logsCur.length} game logs (2-point, 3-point and free-throw attempts). Re-running the data pipeline adds this player’s coordinates.`));
+    }
   }
 
   /* ---------- career ---------- */
@@ -110,7 +122,7 @@ export async function render(el, params) {
     const rows = [...C.regular.map(r => ({ ...r, type: 'Regular' })), ...C.playoffs.map(r => ({ ...r, type: 'Playoffs' }))];
     sortable(carPanel.querySelector('table'), rows, [{ key: 'SEASON_ID', label: 'Season', desc: true }, { key: 'type', label: 'Type', desc: false }, { key: 'TEAM_ABBREVIATION', label: 'Team', desc: false }, { key: 'PLAYER_AGE', label: 'Age' }, { key: 'GP', label: 'GP' }, { key: 'MIN', label: 'MIN' }, { key: 'PTS', label: 'PTS' }, { key: 'REB', label: 'REB' }, { key: 'AST', label: 'AST' }, { key: 'FG_PCT', label: 'FG%' }, { key: 'FG3_PCT', label: '3P%' }, { key: 'FT_PCT', label: 'FT%' }],
       (r) => h('tr', null, h('td', { class: 'name' }, r.SEASON_ID), h('td', null, r.type), h('td', null, r.TEAM_ABBREVIATION), h('td', null, r.PLAYER_AGE), h('td', null, r.GP), h('td', null, fmt.num(per(r, 'MIN'))), h('td', null, fmt.num(per(r, 'PTS'))), h('td', null, fmt.num(per(r, 'REB'))), h('td', null, fmt.num(per(r, 'AST'))), h('td', null, fmt.pct(r.FG_PCT)), h('td', null, fmt.pct(r.FG3_PCT)), h('td', null, fmt.pct(r.FT_PCT))), { defaultKey: 'SEASON_ID' });
-  } catch { carPanel.querySelector('#career').replaceWith(empty('Career history is cached for the 90 highest-minute players; use the Matchup Lab to compare any player across the seasons in the snapshot (2021-22 onwards).')); carPanel.querySelector('.table-wrap').remove(); }
+  } catch (e) { if (!isMissing(e)) console.error('[player] career panel failed', e); carPanel.querySelector('#career').replaceWith(isMissing(e) ? empty('Career history for this player is not in this snapshot: the pipeline fetches career totals for every player who has appeared this season, and this player’s fetch was skipped or failed. Use the Matchup Lab to compare any player across the seasons in the snapshot (2021-22 onwards).') : h('div', { class: 'error' }, `Could not render career history: ${e.message}`)); carPanel.querySelector('.table-wrap').remove(); }
   container.append(h('p', { class: 'source', style: { margin: '24px 0 48px' } }, `Sources: NBA Stats player dashboards, game logs, career totals and shot chart detail · snapshot ${fmt.datetime(M.generated_at)}.`));
 }
 export function destroy() { disposeAll(); }
