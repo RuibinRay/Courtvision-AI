@@ -81,6 +81,11 @@ if git diff --cached --quiet; then say "no data changes: nothing to publish"; rm
 N=$(git diff --cached --name-only | wc -l | tr -d ' ')
 if [ -n "${CV_DRY_RUN:-}" ]; then say "CV_DRY_RUN set: $N changed files not committed"; git reset -q --hard; rmdir "$LOCK"; exit 0; fi
 git -c user.name="$(git -C "$REPO" config user.name)" -c user.email="$(git -C "$REPO" config user.email)" commit -q -m "data: snapshot $(date -u +%F)" || fail "commit failed"
-git -c http.version=HTTP/1.1 -c http.postBuffer=524288000 push -q origin HEAD:main >>"$LOG" 2>&1 || fail "push to main failed (main may have moved; the next run starts from the new main)"
+push_main() { git -c http.version=HTTP/1.1 -c http.postBuffer=524288000 push -q origin HEAD:main >>"$LOG" 2>&1; }
+if ! push_main; then   # main moved during the run: replay the snapshot on top of it (the fresh data wins) and try once more
+  say "main moved during the refresh: rebasing the snapshot onto it"
+  git fetch -q origin main && git rebase -q -X theirs origin/main >>"$LOG" 2>&1 || { git rebase --abort 2>/dev/null; fail "could not rebase the snapshot onto the new main"; }
+  push_main || fail "push to main failed after rebasing"
+fi
 say "published $(git rev-parse --short HEAD) to main ($N files) · GitHub Pages will redeploy"
 rmdir "$LOCK"
