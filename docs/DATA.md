@@ -46,3 +46,7 @@ Table files use `{"cols": [...], "rows": [[...], ...]}`; `js/core/api.js::tableT
 * Each fetcher retries with back-off and skips (and logs) individual failures rather than aborting the snapshot.
 * The writer refuses NaN/Infinity; the frontend treats `null` as "not available".
 * The frontend never displays cached scores as live; the live page shows the time of the last successful refresh and an explicit error when the provider fails.
+
+## Scheduled local refresh
+
+`scripts/refresh_snapshot.sh` runs the full pipeline and model training in a separate git worktree (`~/Library/Caches/courtvision-refresh`), validates the result (30 teams, player count, shot and career coverage, model evaluation present, unchanged columns, games played never going backwards) and pushes a `data: snapshot <date>` commit to `main` only if every check passes. Logs go to `~/Library/Logs/courtvision/`. `CV_SKIP_FETCH=1` and `CV_DRY_RUN=1` exercise it without fetching or publishing. Team records do not wait for this: they are overlaid live from ESPN in the browser.
