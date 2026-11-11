@@ -60,6 +60,10 @@ chk(cc >= 0.97, f'career files cover {cc:.1%} of players who have appeared (>= 9
 deep = json.load(open('data/players/deep_ids.json')); chk(all(str(i) in shots for i in deep['shots']), 'every id in deep_ids.shots has a file')
 ev = json.load(open('data/models/eval.json')); chk(ev['summary']['n_test_games'] >= 8000, f"model evaluation covers {ev['summary']['n_test_games']} test games")
 chk(len(json.load(open('data/models/elo.json'))['ratings']) == 30, 'Elo has 30 teams')
+for f in ['data/players/gamelogs.json', 'data/teams/gamelogs.json']:
+    t = json.load(open(f))['table']; gi = t['cols'].index('GAME_ID')
+    bad = sum(not str(r[gi]).zfill(10).startswith('002') for r in t['rows'])
+    chk(bad == 0, f'{f} holds regular-season games only ({bad} other rows)')
 # schema drift against the published snapshot
 for f in ['data/players/index.json', 'data/teams/standings.json', 'data/players/gamelogs.json']:
     old = json.loads(subprocess.run(['git', 'show', f'HEAD:{f}'], capture_output=True, text=True).stdout)

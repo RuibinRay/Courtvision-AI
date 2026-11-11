@@ -20,7 +20,9 @@ def player_index(season: str, season_type="Regular Season", per_mode="PerGame"):
 
 def game_logs(season: str):
     print(f"  player game logs {season}")
-    df = call(playergamelogs.PlayerGameLogs, season_nullable=season).get_data_frames()[0]
+    # Regular season only: without the filter NBA Stats also returns preseason games, which skew every per-game chart.
+    df = call(playergamelogs.PlayerGameLogs, season_nullable=season, season_type_nullable="Regular Season").get_data_frames()[0]
+    df = df[df["GAME_ID"].astype(str).str.zfill(10).str.startswith("002")]   # belt and braces: 002 = regular-season game ids
     cols = ["PLAYER_ID","TEAM_ID","GAME_ID","GAME_DATE","MATCHUP","WL","MIN","PTS","FGM","FGA","FG3M","FG3A","FTM","FTA","OREB","DREB","REB","AST","TOV","STL","BLK","PF","PLUS_MINUS"]
     df = df.sort_values(["GAME_DATE","GAME_ID"])
     df["GAME_DATE"] = df["GAME_DATE"].str[:10]
