@@ -88,6 +88,7 @@ docs/                 DATA, MODELS, API, DEPLOY, TESTING, ACADEMY_COVERAGE
 
 * Raw statistics, computed metrics and model outputs carry badges (`raw`, `calc`, `model`, `snapshot`, `simulation`).
 * Unavailable metrics (RAPM, EPM/LEBRON/DARKO, on/off splits, injuries) are stated as unavailable, never estimated.
+* Team records, seeds, streaks and home/road splits are refreshed in the browser from ESPN's public standings feed and labelled as live; if the feed is unreachable the snapshot record is shown and labelled as such. Ratings and player statistics always come from the snapshot.
 * Shot charts use real NBA Stats coordinates for every player with a field-goal attempt in the snapshot; where a player’s file is missing, shooting splits from the game logs are shown instead of invented locations.
 * Simulations (RAPM demo, EPV court) are labelled as simulations.
 * Every lesson in the academy is typed (raw / derived / estimated / model / predicted / educational extension); extensions the site does not compute (PER, BPM, Win Shares, RAPM, EPV…) say so and never invent a formula. The notebook lives in the browser's localStorage only and says so.

@@ -1,7 +1,7 @@
 /** TEAM ANALYTICS DASHBOARD — one dynamic page for all 30 teams. */
 import { h, setTeamTheme, statTile, seg, select, infoTip, loader, empty, sortable } from '../core/dom.js';
 import { teamStats, teamStatsHistory, teamGameLogs, teamGameLogsPrev, rosters, players, schedule, lineups, tableToObjects, manifest, games as loadGames } from '../core/api.js';
-import { teams, team as getTeam, teamTable, logoImg } from '../data/teams.js';
+import { teams, team as getTeam, teamTable, logoImg, recordSource } from '../data/teams.js';
 import { fmt, mean, rolling, rank, std } from '../core/format.js';
 import { radar, line, bar, scatter, calendar, disposeAll } from '../charts/charts.js';
 import { CONFIG } from '../core/config.js';
@@ -33,7 +33,7 @@ export async function render(el, params) {
   container.append(h('div', { class: 'team-hero' },
     logoImg(t, 'biglogo'),
     h('div', { class: 'ident' }, h('p', { class: 'eyebrow' }, h('b', null, `${t.conf}ern Conference`), ` · ${t.div} Division · ${t.arena}`), h('h1', null, t.city, h('small', null, t.name)),
-      h('div', { class: 'meta' }, h('span', { class: 'badge' }, `${fmt.ordinal(st.PlayoffRank)} in ${t.conf}`), h('span', { class: 'badge' }, `${fmt.ordinal(st.DivisionRank)} in ${t.div}`), h('span', { class: 'badge ' + (streak.startsWith('W') ? 'live' : 'demo') }, `Streak ${streak}`), h('span', { class: 'badge' }, `L10 ${st.L10}`), h('span', { class: 'badge' }, `Home ${st.HOME} · Road ${st.ROAD}`), h('span', { class: 'badge snapshot' }, `Snapshot ${fmt.dateShort(M.generated_at)}`))),
+      h('div', { class: 'meta' }, h('span', { class: 'badge' }, `${fmt.ordinal(st.PlayoffRank)} in ${t.conf}`), h('span', { class: 'badge' }, `${fmt.ordinal(st.DivisionRank)} in ${t.div}`), h('span', { class: 'badge ' + (streak.startsWith('W') ? 'live' : 'demo') }, `Streak ${streak}`), h('span', { class: 'badge' }, `L10 ${st.L10}`), h('span', { class: 'badge' }, `Home ${st.HOME} · Road ${st.ROAD}`), table.standings?.live ? h('span', { class: 'badge live', title: recordSource(table) }, 'Record live · ESPN') : null, h('span', { class: 'badge snapshot', title: 'Ratings, charts and player statistics come from the data snapshot' }, `Stats snapshot ${fmt.dateShort(M.generated_at)}`))),
     h('div', { class: 'record' }, h('div', { class: 'big' }, `${st.WINS}-${st.LOSSES}`), h('div', { class: 'sub' }, 'Net rating ', h('b', { style: { color: me.adv.NET_RATING > 0 ? 'var(--green)' : 'var(--red)' } }, fmt.signed(me.adv.NET_RATING)), ` · ${fmt.ordinal(me.adv.NET_RATING_RANK)} overall`), h('div', { class: 'sub' }, `${fmt.num(st.PointsPG)} PPG · ${fmt.num(st.OppPointsPG)} allowed`))));
 
   /* ---------- controls ---------- */
