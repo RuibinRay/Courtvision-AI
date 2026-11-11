@@ -44,7 +44,48 @@ export function manifest() { return manifestP ||= loadJSON('manifest.json', { tt
 const memo = (fn) => { let p; return (...a) => (p ||= fn(...a)); };
 
 export const teamsMeta   = memo(async () => (await loadJSON('teams/meta.json')).teams);
-export const standings   = memo(async () => { const d = await loadJSON('teams/standings.json'); return { ...d, rows: tableToObjects(d.table) }; });
+/**
+ * Standings = the snapshot table with the live record laid over it.
+ * The snapshot is only as fresh as the last pipeline run, so wins, losses, seed, streak, splits and scoring
+ * are refreshed in the browser from ESPN's public standings feed (CORS-enabled, re-read every 2 minutes).
+ * If the feed is unreachable, or is behind the snapshot for a team, the snapshot row is kept and `live` says so.
+ */
+const ESPN_STANDINGS_BASE = 'https://site.api.espn.com/apis/v2/sports/basketball/nba';
+let liveSeen = null, liveAt = null;
+export const standings = async () => {
+  const [d, meta] = await Promise.all([loadJSON('teams/standings.json'), loadJSON('teams/meta.json')]);
+  const rows = tableToObjects(d.table);
+  let feed = null;
+  try { feed = await loadJSON('/standings', { base: ESPN_STANDINGS_BASE, ttl: 120000 }); } catch (e) { console.warn('[standings] live feed unavailable, showing the snapshot', e.message); }
+  let applied = 0;
+  if (feed?.children) {
+    if (feed !== liveSeen) { liveSeen = feed; liveAt = new Date().toISOString(); }
+    const idByEspn = new Map(meta.teams.map(t => [String(t.espnId), t.id]));
+    const rowBy = new Map(rows.map(r => [r.TeamID, r]));
+    for (const conf of feed.children) for (const e of conf.standings?.entries || []) {
+      const r = rowBy.get(idByEspn.get(String(e.team?.id))); if (!r) continue;
+      const s = Object.fromEntries((e.stats || []).map(x => [x.name, x]));
+      const w = s.wins?.value, l = s.losses?.value;
+      if (!Number.isFinite(w) || !Number.isFinite(l) || w + l < (r.WINS || 0) + (r.LOSSES || 0)) continue;   // never replace a row with older data
+      const streak = s.streak?.displayValue || '';
+      Object.assign(r, {
+        WINS: w, LOSSES: l, WinPCT: w + l ? w / (w + l) : 0,
+        PlayoffRank: s.playoffSeed?.value ?? r.PlayoffRank,
+        HOME: s.Home?.displayValue ?? r.HOME, ROAD: s.Road?.displayValue ?? r.ROAD, L10: s['Last Ten Games']?.displayValue ?? r.L10,
+        ConferenceRecord: s['vs. Conf.']?.displayValue ?? r.ConferenceRecord, DivisionRecord: s['vs. Div.']?.displayValue ?? r.DivisionRecord,
+        strCurrentStreak: streak ? `${streak[0]} ${streak.slice(1)}` : r.strCurrentStreak, CurrentStreak: streak ? (streak[0] === 'L' ? -1 : 1) * Number(streak.slice(1)) : r.CurrentStreak,
+        PointsPG: s.avgPointsFor?.value ?? r.PointsPG, OppPointsPG: s.avgPointsAgainst?.value ?? r.OppPointsPG, DiffPointsPG: s.differential?.value ?? r.DiffPointsPG,
+        ConferenceGamesBack: s.gamesBehind?.value ?? r.ConferenceGamesBack,
+      });
+      applied++;
+    }
+    if (applied) {   // division rank is not in the feed: re-derive it from the live win percentage (snapshot order breaks ties)
+      const byDiv = new Map(); rows.forEach(r => byDiv.set(r.Division, [...(byDiv.get(r.Division) || []), r]));
+      byDiv.forEach(list => list.sort((a, b) => b.WinPCT - a.WinPCT || a.DivisionRank - b.DivisionRank).forEach((r, i) => { r.DivisionRank = i + 1; }));
+    }
+  }
+  return { ...d, rows, live: applied > 0, live_at: applied ? liveAt : null, live_teams: applied };
+};
 export const teamStats   = memo(async () => loadJSON('teams/stats.json'));
 export const teamStatsHistory = memo(async () => loadJSON('teams/stats_history.json'));
 export const teamGameLogs = memo(async () => { const d = await loadJSON('teams/gamelogs.json'); return { ...d, rows: tableToObjects(d.table) }; });

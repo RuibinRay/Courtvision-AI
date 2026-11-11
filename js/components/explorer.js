@@ -3,7 +3,7 @@
  * six division lanes. Hovering recolours the whole site; clicking flies the logo into the team page.
  */
 import { h, setTeamTheme, resetTheme } from '../core/dom.js';
-import { teamTable, logoImg, DIVISIONS } from '../data/teams.js';
+import { teamTable, logoImg, DIVISIONS, recordSource } from '../data/teams.js';
 import { fmt } from '../core/format.js';
 import { gsap } from 'gsap';
 
@@ -60,7 +60,7 @@ export async function mountExplorer(el, { heading = true, standings = true } = {
   const root = h('div', { class: 'explorer' }, heading === 'after' ? null : head, court, heading === 'after' ? head : null);
   if (standings) {
     const list = (c) => { const ts = byConf(c).sort((a, b) => confRank(a) - confRank(b)); return h('div', { class: 'stand' }, h('h4', null, `${c} standings`), ts.map(t => h('a', { href: `#/team/${t.abbr}`, class: confRank(t) <= 6 ? 'pl' : confRank(t) <= 10 ? 'playin' : '' }, h('span', { class: 'r' }, confRank(t)), logoImg(t), h('span', { class: 'n' }, t.full), h('span', { class: 'num mono' }, fmt.rec(t.st.WINS, t.st.LOSSES)), h('span', { class: 'num mono' }, fmt.pct(t.st.WinPCT, 0)), h('span', { class: 'num mono', style: { color: t.adv.NET_RATING > 0 ? 'var(--green)' : 'var(--red)' } }, fmt.signed(t.adv.NET_RATING)))), h('div', { class: 'legend' }, 'W-L · WIN% · NET RTG · green = playoff spot (1-6), gold = play-in (7-10)')); };
-    root.append(h('div', { class: 'standings-grid' }, list('East'), list('West')));
+    root.append(h('div', { class: 'standings-grid' }, list('East'), list('West')), h('p', { class: 'source', style: { marginTop: '12px' } }, `${recordSource(rows)}. Ratings and other statistics come from the data snapshot.`));
   }
   root.append(wash);
   el.append(root);
