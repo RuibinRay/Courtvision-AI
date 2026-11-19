@@ -1,5 +1,5 @@
 {
- "generated_at":"2026-11-18T10:36:14+00:00",
+ "generated_at":"2026-11-19T14:37:54+00:00",
  "season":"2026-27",
  "sources":[
   {
@@ -13,29 +13,32 @@
    "license":"Unofficial public endpoint; used read-only for a non-commercial portfolio demo."
   }
  ],
- "file_count":1010,
- "total_bytes":17976896,
+ "file_count":1014,
+ "total_bytes":18313427,
  "files":{
   "players/index_totals.json":{
-   "bytes":103301
+   "bytes":104435
   },
   "players/gamelogs_2025-26.json":{
    "bytes":2798377
   },
   "players/profiles.json":{
-   "bytes":124817
+   "bytes":125064
   },
   "players/gamelogs.json":{
-   "bytes":495626
+   "bytes":524844
   },
   "players/deep_ids.json":{
-   "bytes":7527
+   "bytes":7583
   },
   "players/index.json":{
-   "bytes":113617
+   "bytes":114748
+  },
+  "players/career/1627747.json":{
+   "bytes":2845
   },
   "players/career/1630578.json":{
-   "bytes":1366
+   "bytes":1364
   },
   "players/career/1642352.json":{
    "bytes":811
@@ -53,7 +56,7 @@
    "bytes":735
   },
   "players/career/1630256.json":{
-   "bytes":1295
+   "bytes":1296
   },
   "players/career/1630169.json":{
    "bytes":1588
@@ -62,19 +65,19 @@
    "bytes":554
   },
   "players/career/1627751.json":{
-   "bytes":2260
+   "bytes":2261
   },
   "players/career/1643555.json":{
-   "bytes":538
+   "bytes":540
   },
   "players/career/1630581.json":{
-   "bytes":1251
+   "bytes":1253
   },
   "players/career/1630702.json":{
    "bytes":1283
   },
   "players/career/1630217.json":{
-   "bytes":1782
+   "bytes":1783
   },
   "players/career/1628963.json":{
    "bytes":2347
@@ -86,61 +89,61 @@
    "bytes":903
   },
   "players/career/203937.json":{
-   "bytes":3245
+   "bytes":3246
   },
   "players/career/1642942.json":{
-   "bytes":638
+   "bytes":640
   },
   "players/career/1631095.json":{
-   "bytes":1234
+   "bytes":1236
   },
   "players/career/1631200.json":{
-   "bytes":961
+   "bytes":962
   },
   "players/career/1629630.json":{
    "bytes":1761
   },
   "players/career/1642954.json":{
-   "bytes":661
+   "bytes":662
   },
   "players/career/1630692.json":{
-   "bytes":1459
+   "bytes":1460
   },
   "players/career/1628975.json":{
-   "bytes":2164
+   "bytes":2165
   },
   "players/career/1643538.json":{
    "bytes":529
   },
   "players/career/1642846.json":{
-   "bytes":672
+   "bytes":675
   },
   "players/career/203999.json":{
-   "bytes":2780
+   "bytes":2781
   },
   "players/career/1626204.json":{
-   "bytes":2568
+   "bytes":2570
   },
   "players/career/1642450.json":{
    "bytes":864
   },
   "players/career/1642889.json":{
-   "bytes":536
+   "bytes":538
   },
   "players/career/1642866.json":{
    "bytes":735
   },
   "players/career/203110.json":{
-   "bytes":3292
+   "bytes":3294
   },
   "players/career/204456.json":{
-   "bytes":2266
+   "bytes":2269
   },
   "players/career/1630173.json":{
    "bytes":1818
   },
   "players/career/1628369.json":{
-   "bytes":2629
+   "bytes":2631
   },
   "players/career/1628386.json":{
    "bytes":2388
@@ -152,43 +155,43 @@
    "bytes":644
   },
   "players/career/1641708.json":{
-   "bytes":1117
+   "bytes":1118
   },
   "players/career/203501.json":{
    "bytes":2981
   },
   "players/career/1642348.json":{
-   "bytes":851
+   "bytes":854
   },
   "players/career/202691.json":{
    "bytes":3081
   },
   "players/career/1642276.json":{
-   "bytes":872
+   "bytes":874
   },
   "players/career/1641724.json":{
    "bytes":1094
   },
   "players/career/1631133.json":{
-   "bytes":1076
+   "bytes":1074
   },
   "players/career/203468.json":{
    "bytes":3659
   },
   "players/career/1631099.json":{
-   "bytes":1106
+   "bytes":1108
   },
   "players/career/1643133.json":{
    "bytes":615
   },
   "players/career/1630558.json":{
-   "bytes":1527
+   "bytes":1531
   },
   "players/career/1629057.json":{
    "bytes":1965
   },
   "players/career/1641765.json":{
-   "bytes":946
+   "bytes":950
   },
   "players/career/1631172.json":{
    "bytes":1349
@@ -200,16 +203,16 @@
    "bytes":711
   },
   "players/career/1628997.json":{
-   "bytes":1840
+   "bytes":1842
   },
   "players/career/1642261.json":{
    "bytes":924
   },
   "players/career/1626209.json":{
-   "bytes":1208
+   "bytes":1209
   },
   "players/career/1641764.json":{
-   "bytes":1014
+   "bytes":1013
   },
   "players/career/1630559.json":{
    "bytes":1556
@@ -245,16 +248,16 @@
    "bytes":536
   },
   "players/career/203500.json":{
-   "bytes":2659
+   "bytes":2661
   },
   "players/career/1641709.json":{
-   "bytes":1108
+   "bytes":1109
   },
   "players/career/1630164.json":{
    "bytes":1235
   },
   "players/career/1631260.json":{
-   "bytes":1169
+   "bytes":1168
   },
   "players/career/1628368.json":{
    "bytes":2077
@@ -266,10 +269,10 @@
    "bytes":1478
   },
   "players/career/1642867.json":{
-   "bytes":769
+   "bytes":768
   },
   "players/career/1631221.json":{
-   "bytes":972
+   "bytes":974
   },
   "players/career/1629611.json":{
    "bytes":1932
@@ -290,7 +293,7 @@
    "bytes":898
   },
   "players/career/202331.json":{
-   "bytes":3741
+   "bytes":3742
   },
   "players/career/1631094.json":{
    "bytes":1333
@@ -305,16 +308,16 @@
    "bytes":1386
   },
   "players/career/1642502.json":{
-   "bytes":722
+   "bytes":724
   },
   "players/career/1642851.json":{
    "bytes":651
   },
   "players/career/1631169.json":{
-   "bytes":1406
+   "bytes":1407
   },
   "players/career/1642914.json":{
-   "bytes":658
+   "bytes":660
   },
   "players/career/1630703.json":{
    "bytes":993
@@ -326,7 +329,7 @@
    "bytes":1043
   },
   "players/career/1643411.json":{
-   "bytes":555
+   "bytes":556
   },
   "players/career/1627750.json":{
    "bytes":2298
@@ -335,16 +338,16 @@
    "bytes":862
   },
   "players/career/1642892.json":{
-   "bytes":551
+   "bytes":550
   },
   "players/career/1629060.json":{
    "bytes":2064
   },
   "players/career/1630241.json":{
-   "bytes":1552
+   "bytes":1554
   },
   "players/career/1642484.json":{
-   "bytes":991
+   "bytes":996
   },
   "players/career/1630611.json":{
    "bytes":968
@@ -353,10 +356,10 @@
    "bytes":1875
   },
   "players/career/1630168.json":{
-   "bytes":1627
+   "bytes":1625
   },
   "players/career/1641744.json":{
-   "bytes":863
+   "bytes":864
   },
   "players/career/1643515.json":{
    "bytes":547
@@ -371,7 +374,7 @@
    "bytes":889
   },
   "players/career/1629021.json":{
-   "bytes":1926
+   "bytes":1927
   },
   "players/career/1630200.json":{
    "bytes":1425
@@ -380,7 +383,7 @@
    "bytes":555
   },
   "players/career/1630579.json":{
-   "bytes":1416
+   "bytes":1424
   },
   "players/career/1626157.json":{
    "bytes":2536
@@ -395,7 +398,7 @@
    "bytes":538
   },
   "players/career/1641718.json":{
-   "bytes":911
+   "bytes":915
   },
   "players/career/1630572.json":{
    "bytes":1407
@@ -413,7 +416,7 @@
    "bytes":2130
   },
   "players/career/1642860.json":{
-   "bytes":653
+   "bytes":655
   },
   "players/career/1643621.json":{
    "bytes":529
@@ -425,7 +428,7 @@
    "bytes":529
   },
   "players/career/1628380.json":{
-   "bytes":1834
+   "bytes":1837
   },
   "players/career/1631288.json":{
    "bytes":1060
@@ -434,19 +437,19 @@
    "bytes":1276
   },
   "players/career/1630533.json":{
-   "bytes":1305
+   "bytes":1306
   },
   "players/career/1642964.json":{
    "bytes":635
   },
   "players/career/1631119.json":{
-   "bytes":1287
+   "bytes":1289
   },
   "players/career/203507.json":{
-   "bytes":3079
+   "bytes":3080
   },
   "players/career/1641775.json":{
-   "bytes":1117
+   "bytes":1120
   },
   "players/career/1628969.json":{
    "bytes":2262
@@ -458,7 +461,7 @@
    "bytes":959
   },
   "players/career/203897.json":{
-   "bytes":2302
+   "bytes":2304
   },
   "players/career/1642948.json":{
    "bytes":644
@@ -467,34 +470,34 @@
    "bytes":2295
   },
   "players/career/1629006.json":{
-   "bytes":2028
+   "bytes":2030
   },
   "players/career/203497.json":{
    "bytes":3055
   },
   "players/career/1631123.json":{
-   "bytes":1318
+   "bytes":1321
   },
   "players/career/202681.json":{
-   "bytes":3212
+   "bytes":3213
   },
   "players/career/1642266.json":{
-   "bytes":884
+   "bytes":887
   },
   "players/career/1627741.json":{
-   "bytes":2861
+   "bytes":2862
   },
   "players/career/1630591.json":{
-   "bytes":1345
+   "bytes":1344
   },
   "players/career/1629026.json":{
-   "bytes":1722
+   "bytes":1723
   },
   "players/career/1630529.json":{
-   "bytes":1331
+   "bytes":1333
   },
   "players/career/1643512.json":{
-   "bytes":546
+   "bytes":548
   },
   "players/career/1642883.json":{
    "bytes":667
@@ -506,19 +509,19 @@
    "bytes":624
   },
   "players/career/1643416.json":{
-   "bytes":534
+   "bytes":539
   },
   "players/career/1630568.json":{
-   "bytes":1350
+   "bytes":1352
   },
   "players/career/1643553.json":{
-   "bytes":548
+   "bytes":550
   },
   "players/career/1628436.json":{
    "bytes":2495
   },
   "players/career/1642856.json":{
-   "bytes":665
+   "bytes":664
   },
   "players/career/1641796.json":{
    "bytes":869
@@ -530,7 +533,7 @@
    "bytes":529
   },
   "players/career/1641807.json":{
-   "bytes":621
+   "bytes":624
   },
   "players/career/1629636.json":{
    "bytes":1901
@@ -545,10 +548,10 @@
    "bytes":2155
   },
   "players/career/1629661.json":{
-   "bytes":1978
+   "bytes":1981
   },
   "players/career/1642285.json":{
-   "bytes":771
+   "bytes":774
   },
   "players/career/1642905.json":{
    "bytes":725
@@ -560,7 +563,7 @@
    "bytes":1394
   },
   "players/career/1642284.json":{
-   "bytes":533
+   "bytes":535
   },
   "players/career/1641739.json":{
    "bytes":1004
@@ -578,13 +581,13 @@
    "bytes":536
   },
   "players/career/1627783.json":{
-   "bytes":2704
+   "bytes":2703
   },
   "players/career/1631207.json":{
    "bytes":1247
   },
   "players/career/1631342.json":{
-   "bytes":741
+   "bytes":739
   },
   "players/career/1630545.json":{
    "bytes":953
@@ -596,7 +599,7 @@
    "bytes":664
   },
   "players/career/1641778.json":{
-   "bytes":751
+   "bytes":752
   },
   "players/career/1642912.json":{
    "bytes":532
@@ -608,10 +611,10 @@
    "bytes":1339
   },
   "players/career/1643417.json":{
-   "bytes":546
+   "bytes":548
   },
   "players/career/1643552.json":{
-   "bytes":539
+   "bytes":543
   },
   "players/career/1630314.json":{
    "bytes":981
@@ -620,13 +623,13 @@
    "bytes":635
   },
   "players/career/201599.json":{
-   "bytes":3879
+   "bytes":3881
   },
   "players/career/1628374.json":{
    "bytes":1615
   },
   "players/career/1642928.json":{
-   "bytes":649
+   "bytes":652
   },
   "players/career/1630178.json":{
    "bytes":1788
@@ -635,13 +638,13 @@
    "bytes":1821
   },
   "players/career/1629027.json":{
-   "bytes":2026
+   "bytes":2027
   },
   "players/career/1641715.json":{
    "bytes":944
   },
   "players/career/1643544.json":{
-   "bytes":540
+   "bytes":541
   },
   "players/career/1642355.json":{
    "bytes":904
@@ -656,28 +659,28 @@
    "bytes":2108
   },
   "players/career/203992.json":{
-   "bytes":2206
+   "bytes":2207
   },
   "players/career/1626171.json":{
    "bytes":2631
   },
   "players/career/1642363.json":{
-   "bytes":830
+   "bytes":831
   },
   "players/career/1626167.json":{
-   "bytes":2568
+   "bytes":2570
   },
   "players/career/1630549.json":{
-   "bytes":1278
+   "bytes":1279
   },
   "players/career/1629011.json":{
-   "bytes":1821
+   "bytes":1823
   },
   "players/career/1630230.json":{
    "bytes":1416
   },
   "players/career/1642271.json":{
-   "bytes":777
+   "bytes":778
   },
   "players/career/202696.json":{
    "bytes":3241
@@ -686,37 +689,37 @@
    "bytes":649
   },
   "players/career/1631323.json":{
-   "bytes":1202
+   "bytes":1201
   },
   "players/career/1630162.json":{
    "bytes":1817
   },
   "players/career/1630532.json":{
-   "bytes":1462
+   "bytes":1460
   },
   "players/career/1629656.json":{
-   "bytes":1750
+   "bytes":1752
   },
   "players/career/1643509.json":{
-   "bytes":550
+   "bytes":551
   },
   "players/career/1642461.json":{
-   "bytes":838
+   "bytes":843
   },
   "players/career/1627832.json":{
-   "bytes":2211
+   "bytes":2212
   },
   "players/career/1642877.json":{
    "bytes":653
   },
   "players/career/1628381.json":{
-   "bytes":1919
+   "bytes":1920
   },
   "players/career/1630174.json":{
    "bytes":1643
   },
   "players/career/1628401.json":{
-   "bytes":2549
+   "bytes":2550
   },
   "players/career/1629640.json":{
    "bytes":1483
@@ -737,16 +740,16 @@
    "bytes":898
   },
   "players/career/1627936.json":{
-   "bytes":2076
+   "bytes":2074
   },
   "players/career/1642264.json":{
    "bytes":906
   },
   "players/career/1629680.json":{
-   "bytes":1907
+   "bytes":1908
   },
   "players/career/1627734.json":{
-   "bytes":2332
+   "bytes":2334
   },
   "players/career/1643530.json":{
    "bytes":549
@@ -764,13 +767,13 @@
    "bytes":2216
   },
   "players/career/2544.json":{
-   "bytes":5471
+   "bytes":5472
   },
   "players/career/1629638.json":{
-   "bytes":2259
+   "bytes":2260
   },
   "players/career/1643567.json":{
-   "bytes":544
+   "bytes":546
   },
   "players/career/1631121.json":{
    "bytes":957
@@ -779,13 +782,13 @@
    "bytes":812
   },
   "players/career/1629004.json":{
-   "bytes":2154
+   "bytes":2158
   },
   "players/career/1626164.json":{
    "bytes":2421
   },
   "players/career/1642419.json":{
-   "bytes":857
+   "bytes":858
   },
   "players/career/1629012.json":{
    "bytes":1711
@@ -794,7 +797,7 @@
    "bytes":4317
   },
   "players/career/1642272.json":{
-   "bytes":1077
+   "bytes":1080
   },
   "players/career/203084.json":{
    "bytes":3044
@@ -809,7 +812,7 @@
    "bytes":2740
   },
   "players/career/1643418.json":{
-   "bytes":532
+   "bytes":534
   },
   "players/career/1629655.json":{
    "bytes":1943
@@ -827,7 +830,7 @@
    "bytes":640
   },
   "players/career/203114.json":{
-   "bytes":3534
+   "bytes":3538
   },
   "players/career/1626220.json":{
    "bytes":2590
@@ -845,7 +848,7 @@
    "bytes":1192
   },
   "players/career/1629028.json":{
-   "bytes":1871
+   "bytes":1870
   },
   "players/career/1642907.json":{
    "bytes":675
@@ -860,16 +863,16 @@
    "bytes":1127
   },
   "players/career/1629008.json":{
-   "bytes":1911
+   "bytes":1910
   },
   "players/career/1627780.json":{
-   "bytes":2246
+   "bytes":2250
   },
   "players/career/1631204.json":{
    "bytes":968
   },
   "players/career/1642383.json":{
-   "bytes":879
+   "bytes":880
   },
   "players/career/1626168.json":{
    "bytes":2152
@@ -887,34 +890,34 @@
    "bytes":726
   },
   "players/career/1631245.json":{
-   "bytes":952
+   "bytes":954
   },
   "players/career/1629675.json":{
    "bytes":1785
   },
   "players/career/1630643.json":{
-   "bytes":1127
+   "bytes":1128
   },
   "players/career/1631117.json":{
-   "bytes":994
+   "bytes":996
   },
   "players/career/1643551.json":{
    "bytes":531
   },
   "players/career/1643414.json":{
-   "bytes":547
+   "bytes":551
   },
   "players/career/1642878.json":{
    "bytes":742
   },
   "players/career/1630182.json":{
-   "bytes":1496
+   "bytes":1499
   },
   "players/career/1628418.json":{
-   "bytes":2292
+   "bytes":2295
   },
   "players/career/1628398.json":{
-   "bytes":2143
+   "bytes":2144
   },
   "players/career/1642881.json":{
    "bytes":530
@@ -923,10 +926,10 @@
    "bytes":530
   },
   "players/career/1630194.json":{
-   "bytes":1746
+   "bytes":1747
   },
   "players/career/1641716.json":{
-   "bytes":1069
+   "bytes":1068
   },
   "players/career/1629618.json":{
    "bytes":1102
@@ -944,7 +947,7 @@
    "bytes":1188
   },
   "players/career/201935.json":{
-   "bytes":5105
+   "bytes":5106
   },
   "players/career/1641740.json":{
    "bytes":932
@@ -953,7 +956,7 @@
    "bytes":1234
   },
   "players/career/1641869.json":{
-   "bytes":631
+   "bytes":632
   },
   "players/career/1630183.json":{
    "bytes":1684
@@ -965,7 +968,7 @@
    "bytes":1552
   },
   "players/career/1626145.json":{
-   "bytes":2508
+   "bytes":2507
   },
   "players/career/1643415.json":{
    "bytes":553
@@ -980,16 +983,16 @@
    "bytes":1686
   },
   "players/career/1629674.json":{
-   "bytes":1330
+   "bytes":1332
   },
   "players/career/1642910.json":{
    "bytes":621
   },
   "players/career/1629048.json":{
-   "bytes":1775
+   "bytes":1776
   },
   "players/career/1642855.json":{
-   "bytes":628
+   "bytes":631
   },
   "players/career/1642382.json":{
    "bytes":751
@@ -1004,7 +1007,7 @@
    "bytes":547
   },
   "players/career/203924.json":{
-   "bytes":2660
+   "bytes":2659
   },
   "players/career/1630228.json":{
    "bytes":1735
@@ -1037,25 +1040,25 @@
    "bytes":3688
   },
   "players/career/1641824.json":{
-   "bytes":790
+   "bytes":793
   },
   "players/career/1629750.json":{
-   "bytes":2056
+   "bytes":2058
   },
   "players/career/1642863.json":{
-   "bytes":737
+   "bytes":738
   },
   "players/career/1627826.json":{
-   "bytes":2652
+   "bytes":2654
   },
   "players/career/1630619.json":{
-   "bytes":640
+   "bytes":641
   },
   "players/career/1630249.json":{
    "bytes":1371
   },
   "players/career/1628415.json":{
-   "bytes":2112
+   "bytes":2114
   },
   "players/career/1630530.json":{
    "bytes":1329
@@ -1076,10 +1079,10 @@
    "bytes":734
   },
   "players/career/1642273.json":{
-   "bytes":790
+   "bytes":792
   },
   "players/career/1631248.json":{
-   "bytes":944
+   "bytes":943
   },
   "players/career/1629013.json":{
    "bytes":2347
@@ -1091,16 +1094,16 @@
    "bytes":858
   },
   "players/career/1630224.json":{
-   "bytes":1350
+   "bytes":1351
   },
   "players/career/1629639.json":{
-   "bytes":1965
+   "bytes":1967
   },
   "players/career/1642377.json":{
-   "bytes":791
+   "bytes":789
   },
   "players/career/201942.json":{
-   "bytes":3300
+   "bytes":3303
   },
   "players/career/1643024.json":{
    "bytes":618
@@ -1109,13 +1112,13 @@
    "bytes":780
   },
   "players/career/1631255.json":{
-   "bytes":775
+   "bytes":774
   },
   "players/career/1642281.json":{
    "bytes":964
   },
   "players/career/1641854.json":{
-   "bytes":1041
+   "bytes":1043
   },
   "players/career/1629632.json":{
    "bytes":1683
@@ -1124,10 +1127,10 @@
    "bytes":1347
   },
   "players/career/203935.json":{
-   "bytes":3196
+   "bytes":3201
   },
   "players/career/1629018.json":{
-   "bytes":1949
+   "bytes":1951
   },
   "players/career/1643717.json":{
    "bytes":540
@@ -1139,7 +1142,7 @@
    "bytes":3171
   },
   "players/career/1642852.json":{
-   "bytes":674
+   "bytes":675
   },
   "players/career/1642278.json":{
    "bytes":925
@@ -1148,7 +1151,7 @@
    "bytes":953
   },
   "players/career/1629673.json":{
-   "bytes":1583
+   "bytes":1587
   },
   "players/career/1641706.json":{
    "bytes":912
@@ -1157,10 +1160,10 @@
    "bytes":1207
   },
   "players/career/1630583.json":{
-   "bytes":1297
+   "bytes":1295
   },
   "players/career/1642346.json":{
-   "bytes":860
+   "bytes":861
   },
   "players/career/1643412.json":{
    "bytes":549
@@ -1184,13 +1187,13 @@
    "bytes":550
   },
   "players/career/1641710.json":{
-   "bytes":1186
+   "bytes":1189
   },
   "players/career/1631107.json":{
-   "bytes":1256
+   "bytes":1259
   },
   "players/career/1642350.json":{
-   "bytes":547
+   "bytes":548
   },
   "players/career/1630595.json":{
    "bytes":1368
@@ -1202,55 +1205,55 @@
    "bytes":534
   },
   "players/career/1631170.json":{
-   "bytes":1091
+   "bytes":1090
   },
   "players/career/1642848.json":{
-   "bytes":670
+   "bytes":669
   },
   "players/career/1641767.json":{
    "bytes":1067
   },
   "players/career/1641730.json":{
-   "bytes":887
+   "bytes":889
   },
   "players/career/1642389.json":{
    "bytes":703
   },
   "players/career/1626162.json":{
-   "bytes":2455
+   "bytes":2456
   },
   "players/career/1642366.json":{
-   "bytes":868
+   "bytes":870
   },
   "players/career/1629628.json":{
    "bytes":1923
   },
   "players/career/1631218.json":{
-   "bytes":1229
+   "bytes":1232
   },
   "players/career/1631131.json":{
-   "bytes":834
+   "bytes":833
   },
   "players/career/201142.json":{
-   "bytes":4462
+   "bytes":4463
   },
   "players/career/1629014.json":{
-   "bytes":1942
+   "bytes":1943
   },
   "players/career/1642274.json":{
-   "bytes":765
+   "bytes":768
   },
   "players/career/1643520.json":{
    "bytes":535
   },
   "players/career/1641771.json":{
-   "bytes":739
+   "bytes":740
   },
   "players/career/1630188.json":{
-   "bytes":1604
+   "bytes":1605
   },
   "players/career/1630167.json":{
-   "bytes":1636
+   "bytes":1635
   },
   "players/career/1642258.json":{
    "bytes":873
@@ -1262,28 +1265,28 @@
    "bytes":2475
   },
   "players/career/1630171.json":{
-   "bytes":1528
+   "bytes":1532
   },
   "players/career/1642864.json":{
-   "bytes":743
+   "bytes":742
   },
   "players/career/1628392.json":{
    "bytes":2131
   },
   "players/career/1643633.json":{
-   "bytes":545
+   "bytes":549
   },
   "players/career/203954.json":{
-   "bytes":2596
+   "bytes":2601
   },
   "players/career/1641989.json":{
-   "bytes":732
+   "bytes":735
   },
   "players/career/1631222.json":{
    "bytes":1304
   },
   "players/career/1643408.json":{
-   "bytes":553
+   "bytes":556
   },
   "players/career/1627749.json":{
    "bytes":1896
@@ -1298,13 +1301,13 @@
    "bytes":1419
   },
   "players/career/1643409.json":{
-   "bytes":557
+   "bytes":556
   },
   "players/career/1630577.json":{
    "bytes":1300
   },
   "players/career/1642865.json":{
-   "bytes":557
+   "bytes":558
   },
   "players/career/1642920.json":{
    "bytes":665
@@ -1319,7 +1322,7 @@
    "bytes":1786
   },
   "players/career/1643018.json":{
-   "bytes":649
+   "bytes":648
   },
   "players/career/1630166.json":{
    "bytes":1370
@@ -1328,10 +1331,10 @@
    "bytes":798
   },
   "players/career/1629605.json":{
-   "bytes":974
+   "bytes":975
   },
   "players/career/1642449.json":{
-   "bytes":799
+   "bytes":803
   },
   "players/career/203083.json":{
    "bytes":3269
@@ -1340,7 +1343,7 @@
    "bytes":769
   },
   "players/career/1628983.json":{
-   "bytes":2053
+   "bytes":2054
   },
   "players/career/203484.json":{
    "bytes":2684
@@ -1355,28 +1358,28 @@
    "bytes":529
   },
   "players/career/1631126.json":{
-   "bytes":641
+   "bytes":643
   },
   "players/career/1641731.json":{
-   "bytes":904
+   "bytes":906
   },
   "players/career/1629111.json":{
    "bytes":1496
   },
   "players/career/1642849.json":{
-   "bytes":667
+   "bytes":664
   },
   "players/career/1643022.json":{
    "bytes":529
   },
   "players/career/1642263.json":{
-   "bytes":957
+   "bytes":956
   },
   "players/career/1643813.json":{
    "bytes":532
   },
   "players/career/1629023.json":{
-   "bytes":1710
+   "bytes":1711
   },
   "players/career/1630202.json":{
    "bytes":1831
@@ -1391,22 +1394,22 @@
    "bytes":1670
   },
   "players/career/1643517.json":{
-   "bytes":530
+   "bytes":532
   },
   "players/career/201572.json":{
    "bytes":3572
   },
   "players/career/1628370.json":{
-   "bytes":1695
+   "bytes":1696
   },
   "players/career/1641750.json":{
    "bytes":659
   },
   "players/career/1628389.json":{
-   "bytes":2336
+   "bytes":2338
   },
   "players/career/1642347.json":{
-   "bytes":881
+   "bytes":883
   },
   "players/career/1643413.json":{
    "bytes":552
@@ -1415,7 +1418,7 @@
    "bytes":2339
   },
   "players/career/1641707.json":{
-   "bytes":1072
+   "bytes":1073
   },
   "players/career/1628960.json":{
    "bytes":2023
@@ -1430,10 +1433,10 @@
    "bytes":1227
   },
   "players/career/1630557.json":{
-   "bytes":1407
+   "bytes":1409
   },
   "players/career/1642404.json":{
-   "bytes":719
+   "bytes":718
   },
   "players/career/203471.json":{
    "bytes":4054
@@ -1442,10 +1445,10 @@
    "bytes":2009
   },
   "players/career/203076.json":{
-   "bytes":3076
+   "bytes":3078
   },
   "players/career/1642845.json":{
-   "bytes":786
+   "bytes":785
   },
   "players/seasons/2024-25.json":{
    "bytes":139460
@@ -1466,25 +1469,25 @@
    "bytes":55181
   },
   "models/matchup_matrix.json":{
-   "bytes":139991
+   "bytes":140054
   },
   "models/logistic.json":{
-   "bytes":2972
+   "bytes":2968
   },
   "models/ridge.json":{
-   "bytes":1511
+   "bytes":1502
   },
   "models/elo.json":{
    "bytes":80350
   },
   "models/team_features.json":{
-   "bytes":22098
+   "bytes":22108
   },
   "models/upcoming_predictions.json":{
-   "bytes":27969
+   "bytes":28811
   },
   "models/eval.json":{
-   "bytes":15912
+   "bytes":15908
   },
   "history/team_seasons.json":{
    "bytes":211283
@@ -1586,22 +1589,22 @@
    "bytes":294247
   },
   "teams/gamelogs.json":{
-   "bytes":47209
+   "bytes":49882
   },
   "teams/standings.json":{
-   "bytes":3810
+   "bytes":3805
   },
   "teams/stats_history.json":{
    "bytes":153715
   },
   "teams/rosters.json":{
-   "bytes":80818
+   "bytes":80813
   },
   "teams/stats.json":{
-   "bytes":81494
+   "bytes":81558
   },
   "teams/lineups.json":{
-   "bytes":65916
+   "bytes":65958
   },
   "teams/meta.json":{
    "bytes":6882
@@ -1640,7 +1643,7 @@
    "bytes":180266
   },
   "games/schedule.json":{
-   "bytes":139315
+   "bytes":139298
   },
   "games/2022-23.json":{
    "bytes":182781
@@ -1655,1396 +1658,1405 @@
    "bytes":182390
   },
   "games/2026-27.json":{
-   "bytes":29794
+   "bytes":31459
   },
   "games/2010-11.json":{
    "bytes":179625
   },
+  "shots/1627747.json":{
+   "bytes":2370
+  },
   "shots/1630578.json":{
-   "bytes":29842
+   "bytes":31244
   },
   "shots/1631105.json":{
-   "bytes":4075
+   "bytes":4076
   },
   "shots/1641712.json":{
-   "bytes":2052
+   "bytes":2053
   },
   "shots/1629020.json":{
-   "bytes":3565
+   "bytes":3707
   },
   "shots/1642885.json":{
-   "bytes":4260
+   "bytes":4261
   },
   "shots/1630256.json":{
-   "bytes":2907
+   "bytes":2908
   },
   "shots/1630169.json":{
-   "bytes":10670
+   "bytes":10671
   },
   "shots/1643410.json":{
-   "bytes":24256
+   "bytes":24257
   },
   "shots/1627751.json":{
-   "bytes":11510
+   "bytes":12624
   },
   "shots/1643555.json":{
-   "bytes":5552
+   "bytes":6825
   },
   "shots/1630581.json":{
-   "bytes":18708
+   "bytes":20401
   },
   "shots/1630702.json":{
-   "bytes":3464
+   "bytes":3465
   },
   "shots/1630217.json":{
-   "bytes":26117
+   "bytes":27357
   },
   "shots/1628963.json":{
-   "bytes":8271
+   "bytes":8838
   },
   "shots/1643257.json":{
-   "bytes":4688
+   "bytes":4689
   },
   "shots/1641790.json":{
-   "bytes":2062
+   "bytes":2063
   },
   "shots/203937.json":{
-   "bytes":3805
+   "bytes":4111
   },
   "shots/1642942.json":{
-   "bytes":1951
-  },
-  "shots/1631095.json":{
-   "bytes":26640
-  },
-  "shots/1631200.json":{
-   "bytes":4350
-  },
-  "shots/1629630.json":{
-   "bytes":8581
-  },
-  "shots/1642954.json":{
-   "bytes":9991
-  },
-  "shots/1630692.json":{
-   "bytes":11218
-  },
-  "shots/1628975.json":{
-   "bytes":7786
-  },
-  "shots/1643538.json":{
-   "bytes":2186
-  },
-  "shots/1642846.json":{
-   "bytes":25569
-  },
-  "shots/203999.json":{
-   "bytes":32293
-  },
-  "shots/1626204.json":{
-   "bytes":7412
-  },
-  "shots/1642450.json":{
-   "bytes":21111
-  },
-  "shots/1642889.json":{
-   "bytes":4538
-  },
-  "shots/1642866.json":{
-   "bytes":9005
-  },
-  "shots/203110.json":{
-   "bytes":7228
-  },
-  "shots/204456.json":{
-   "bytes":6111
-  },
-  "shots/1630173.json":{
-   "bytes":14704
-  },
-  "shots/1628369.json":{
-   "bytes":37706
-  },
-  "shots/1628386.json":{
-   "bytes":14263
-  },
-  "shots/1629651.json":{
-   "bytes":4194
-  },
-  "shots/1642962.json":{
-   "bytes":2365
-  },
-  "shots/1641708.json":{
-   "bytes":23746
-  },
-  "shots/203501.json":{
-   "bytes":9761
-  },
-  "shots/1642348.json":{
-   "bytes":2209
-  },
-  "shots/202691.json":{
-   "bytes":22883
-  },
-  "shots/1642276.json":{
-   "bytes":16829
-  },
-  "shots/1641724.json":{
-   "bytes":3296
-  },
-  "shots/1631133.json":{
-   "bytes":8717
-  },
-  "shots/203468.json":{
-   "bytes":25989
-  },
-  "shots/1631099.json":{
-   "bytes":10030
-  },
-  "shots/1630558.json":{
-   "bytes":26445
-  },
-  "shots/1629057.json":{
-   "bytes":8762
-  },
-  "shots/1641765.json":{
-   "bytes":5004
-  },
-  "shots/1631172.json":{
-   "bytes":6373
-  },
-  "shots/1629684.json":{
-   "bytes":5525
-  },
-  "shots/1642260.json":{
-   "bytes":3097
-  },
-  "shots/1628997.json":{
-   "bytes":7246
-  },
-  "shots/1642261.json":{
    "bytes":2767
   },
-  "shots/1626209.json":{
-   "bytes":17095
+  "shots/1631095.json":{
+   "bytes":28026
   },
-  "shots/1641764.json":{
-   "bytes":22494
+  "shots/1631200.json":{
+   "bytes":5016
   },
-  "shots/1630559.json":{
-   "bytes":28761
+  "shots/1629630.json":{
+   "bytes":8582
   },
-  "shots/1629001.json":{
-   "bytes":16698
+  "shots/1642954.json":{
+   "bytes":11787
   },
-  "shots/1642959.json":{
-   "bytes":5429
+  "shots/1630692.json":{
+   "bytes":11488
   },
-  "shots/203081.json":{
-   "bytes":30698
+  "shots/1628975.json":{
+   "bytes":8349
   },
-  "shots/1630631.json":{
-   "bytes":4398
+  "shots/1643538.json":{
+   "bytes":2187
   },
-  "shots/201950.json":{
-   "bytes":19956
+  "shots/1642846.json":{
+   "bytes":28208
   },
-  "shots/1642918.json":{
-   "bytes":7298
+  "shots/203999.json":{
+   "bytes":34642
   },
-  "shots/1631165.json":{
-   "bytes":9162
+  "shots/1626204.json":{
+   "bytes":7822
   },
-  "shots/1642349.json":{
-   "bytes":26003
+  "shots/1642450.json":{
+   "bytes":23389
   },
-  "shots/1643558.json":{
-   "bytes":2632
+  "shots/1642889.json":{
+   "bytes":5243
   },
-  "shots/203500.json":{
-   "bytes":2478
+  "shots/1642866.json":{
+   "bytes":9006
   },
-  "shots/1641709.json":{
-   "bytes":16650
+  "shots/203110.json":{
+   "bytes":7357
   },
-  "shots/1630164.json":{
-   "bytes":3044
+  "shots/204456.json":{
+   "bytes":7554
   },
-  "shots/1631260.json":{
-   "bytes":10446
+  "shots/1630173.json":{
+   "bytes":14837
   },
-  "shots/1628368.json":{
-   "bytes":19712
+  "shots/1628369.json":{
+   "bytes":40790
   },
-  "shots/1630172.json":{
-   "bytes":6521
+  "shots/1628386.json":{
+   "bytes":16353
   },
-  "shots/1629646.json":{
-   "bytes":9219
+  "shots/1629651.json":{
+   "bytes":5193
   },
-  "shots/1642867.json":{
-   "bytes":15965
-  },
-  "shots/1631221.json":{
-   "bytes":17332
-  },
-  "shots/1629611.json":{
-   "bytes":3997
-  },
-  "shots/1631108.json":{
-   "bytes":10386
-  },
-  "shots/1642847.json":{
-   "bytes":30575
-  },
-  "shots/1631128.json":{
-   "bytes":18286
-  },
-  "shots/1629631.json":{
-   "bytes":18152
-  },
-  "shots/1641729.json":{
-   "bytes":19305
-  },
-  "shots/202331.json":{
-   "bytes":27962
-  },
-  "shots/1631094.json":{
-   "bytes":4897
-  },
-  "shots/1629627.json":{
-   "bytes":27252
-  },
-  "shots/1631217.json":{
-   "bytes":11459
-  },
-  "shots/1630543.json":{
-   "bytes":11696
-  },
-  "shots/1642502.json":{
-   "bytes":3457
-  },
-  "shots/1642851.json":{
-   "bytes":1787
-  },
-  "shots/1631169.json":{
-   "bytes":5708
-  },
-  "shots/1642914.json":{
-   "bytes":9109
-  },
-  "shots/1630703.json":{
-   "bytes":19150
-  },
-  "shots/1643738.json":{
-   "bytes":2466
-  },
-  "shots/1641705.json":{
-   "bytes":43141
-  },
-  "shots/1643411.json":{
-   "bytes":43951
-  },
-  "shots/1627750.json":{
-   "bytes":31210
-  },
-  "shots/1642345.json":{
-   "bytes":8704
-  },
-  "shots/1642892.json":{
-   "bytes":12558
-  },
-  "shots/1629060.json":{
-   "bytes":19788
-  },
-  "shots/1630241.json":{
-   "bytes":9573
-  },
-  "shots/1642484.json":{
-   "bytes":3043
-  },
-  "shots/1630611.json":{
-   "bytes":9147
-  },
-  "shots/1630538.json":{
-   "bytes":17231
-  },
-  "shots/1630168.json":{
-   "bytes":22442
-  },
-  "shots/1641744.json":{
-   "bytes":11110
-  },
-  "shots/1643515.json":{
-   "bytes":11461
-  },
-  "shots/1630191.json":{
-   "bytes":11271
-  },
-  "shots/1631104.json":{
-   "bytes":2220
-  },
-  "shots/1641713.json":{
-   "bytes":11598
-  },
-  "shots/1629021.json":{
-   "bytes":12850
-  },
-  "shots/1630200.json":{
-   "bytes":16167
-  },
-  "shots/1643407.json":{
-   "bytes":23476
-  },
-  "shots/1630579.json":{
-   "bytes":2728
-  },
-  "shots/1626157.json":{
-   "bytes":29224
-  },
-  "shots/1642353.json":{
-   "bytes":3645
-  },
-  "shots/1630596.json":{
-   "bytes":20871
-  },
-  "shots/1643542.json":{
-   "bytes":3632
-  },
-  "shots/1641718.json":{
-   "bytes":33215
-  },
-  "shots/1630572.json":{
-   "bytes":18379
-  },
-  "shots/1642358.json":{
-   "bytes":2811
-  },
-  "shots/1643637.json":{
-   "bytes":4683
-  },
-  "shots/1628379.json":{
-   "bytes":12219
-  },
-  "shots/1628396.json":{
-   "bytes":3605
-  },
-  "shots/1642860.json":{
-   "bytes":4954
-  },
-  "shots/1643621.json":{
-   "bytes":2080
-  },
-  "shots/1642876.json":{
-   "bytes":3300
-  },
-  "shots/1628380.json":{
-   "bytes":5475
-  },
-  "shots/1631288.json":{
-   "bytes":9970
-  },
-  "shots/1630163.json":{
-   "bytes":34131
-  },
-  "shots/1630533.json":{
-   "bytes":11997
-  },
-  "shots/1642964.json":{
-   "bytes":2608
-  },
-  "shots/1631119.json":{
-   "bytes":5693
-  },
-  "shots/203507.json":{
-   "bytes":37995
-  },
-  "shots/1641775.json":{
-   "bytes":10542
-  },
-  "shots/1628969.json":{
-   "bytes":16553
-  },
-  "shots/1642270.json":{
-   "bytes":17550
-  },
-  "shots/1641722.json":{
-   "bytes":5228
-  },
-  "shots/203897.json":{
-   "bytes":25694
-  },
-  "shots/1642948.json":{
-   "bytes":2347
-  },
-  "shots/1627777.json":{
-   "bytes":14180
-  },
-  "shots/1629006.json":{
-   "bytes":9564
-  },
-  "shots/203497.json":{
-   "bytes":13071
-  },
-  "shots/1631123.json":{
-   "bytes":2670
-  },
-  "shots/202681.json":{
-   "bytes":28479
-  },
-  "shots/1642266.json":{
-   "bytes":20282
-  },
-  "shots/1627741.json":{
-   "bytes":10813
-  },
-  "shots/1630591.json":{
-   "bytes":7833
-  },
-  "shots/1629026.json":{
-   "bytes":12763
-  },
-  "shots/1630529.json":{
-   "bytes":16366
-  },
-  "shots/1643512.json":{
-   "bytes":9201
-  },
-  "shots/1642883.json":{
-   "bytes":13410
-  },
-  "shots/1630180.json":{
-   "bytes":27610
-  },
-  "shots/1631457.json":{
-   "bytes":3710
-  },
-  "shots/1643416.json":{
-   "bytes":3305
-  },
-  "shots/1630568.json":{
-   "bytes":10561
-  },
-  "shots/1643553.json":{
-   "bytes":10917
-  },
-  "shots/1628436.json":{
-   "bytes":7060
-  },
-  "shots/1642856.json":{
-   "bytes":9420
-  },
-  "shots/1641796.json":{
-   "bytes":12587
-  },
-  "shots/1630544.json":{
-   "bytes":3045
-  },
-  "shots/1643590.json":{
-   "bytes":1909
-  },
-  "shots/1641807.json":{
-   "bytes":3016
-  },
-  "shots/1629636.json":{
-   "bytes":30831
-  },
-  "shots/1630552.json":{
-   "bytes":26789
-  },
-  "shots/1641738.json":{
-   "bytes":4845
-  },
-  "shots/1628973.json":{
-   "bytes":43797
-  },
-  "shots/1629661.json":{
-   "bytes":13574
-  },
-  "shots/1642285.json":{
-   "bytes":14920
-  },
-  "shots/1642905.json":{
-   "bytes":4153
-  },
-  "shots/1631250.json":{
-   "bytes":1925
-  },
-  "shots/1629660.json":{
-   "bytes":31208
-  },
-  "shots/1642284.json":{
-   "bytes":2877
-  },
-  "shots/1641739.json":{
-   "bytes":20316
-  },
-  "shots/1642400.json":{
-   "bytes":3025
-  },
-  "shots/1630695.json":{
-   "bytes":3778
-  },
-  "shots/1629637.json":{
-   "bytes":10694
-  },
-  "shots/1643568.json":{
-   "bytes":3204
-  },
-  "shots/1627783.json":{
-   "bytes":31629
-  },
-  "shots/1631207.json":{
-   "bytes":2078
-  },
-  "shots/1631342.json":{
-   "bytes":5119
-  },
-  "shots/1630545.json":{
-   "bytes":16008
-  },
-  "shots/1643591.json":{
-   "bytes":2190
-  },
-  "shots/1642857.json":{
-   "bytes":12260
-  },
-  "shots/1641778.json":{
-   "bytes":6549
-  },
-  "shots/1642912.json":{
-   "bytes":2897
-  },
-  "shots/1628964.json":{
-   "bytes":9700
-  },
-  "shots/1631114.json":{
-   "bytes":7168
-  },
-  "shots/1643417.json":{
-   "bytes":11566
-  },
-  "shots/1643552.json":{
-   "bytes":5747
-  },
-  "shots/1630314.json":{
-   "bytes":13152
-  },
-  "shots/1642882.json":{
+  "shots/1642962.json":{
    "bytes":2366
   },
+  "shots/1641708.json":{
+   "bytes":25273
+  },
+  "shots/203501.json":{
+   "bytes":9762
+  },
+  "shots/1642348.json":{
+   "bytes":2617
+  },
+  "shots/202691.json":{
+   "bytes":24272
+  },
+  "shots/1642276.json":{
+   "bytes":17799
+  },
+  "shots/1641724.json":{
+   "bytes":3297
+  },
+  "shots/1631133.json":{
+   "bytes":9136
+  },
+  "shots/203468.json":{
+   "bytes":25990
+  },
+  "shots/1631099.json":{
+   "bytes":11496
+  },
+  "shots/1630558.json":{
+   "bytes":27965
+  },
+  "shots/1629057.json":{
+   "bytes":8763
+  },
+  "shots/1641765.json":{
+   "bytes":5686
+  },
+  "shots/1631172.json":{
+   "bytes":6374
+  },
+  "shots/1629684.json":{
+   "bytes":5526
+  },
+  "shots/1642260.json":{
+   "bytes":3098
+  },
+  "shots/1628997.json":{
+   "bytes":8077
+  },
+  "shots/1642261.json":{
+   "bytes":2768
+  },
+  "shots/1626209.json":{
+   "bytes":18742
+  },
+  "shots/1641764.json":{
+   "bytes":24304
+  },
+  "shots/1630559.json":{
+   "bytes":28762
+  },
+  "shots/1629001.json":{
+   "bytes":17140
+  },
+  "shots/1642959.json":{
+   "bytes":5430
+  },
+  "shots/203081.json":{
+   "bytes":30699
+  },
+  "shots/1630631.json":{
+   "bytes":4399
+  },
+  "shots/201950.json":{
+   "bytes":19957
+  },
+  "shots/1642918.json":{
+   "bytes":7599
+  },
+  "shots/1631165.json":{
+   "bytes":9444
+  },
+  "shots/1642349.json":{
+   "bytes":27583
+  },
+  "shots/1643558.json":{
+   "bytes":2633
+  },
+  "shots/203500.json":{
+   "bytes":3173
+  },
+  "shots/1641709.json":{
+   "bytes":17492
+  },
+  "shots/1630164.json":{
+   "bytes":3045
+  },
+  "shots/1631260.json":{
+   "bytes":11133
+  },
+  "shots/1628368.json":{
+   "bytes":19713
+  },
+  "shots/1630172.json":{
+   "bytes":6812
+  },
+  "shots/1629646.json":{
+   "bytes":10373
+  },
+  "shots/1642867.json":{
+   "bytes":16228
+  },
+  "shots/1631221.json":{
+   "bytes":17927
+  },
+  "shots/1629611.json":{
+   "bytes":3998
+  },
+  "shots/1631108.json":{
+   "bytes":10804
+  },
+  "shots/1642847.json":{
+   "bytes":32314
+  },
+  "shots/1631128.json":{
+   "bytes":20481
+  },
+  "shots/1629631.json":{
+   "bytes":19714
+  },
+  "shots/1641729.json":{
+   "bytes":20459
+  },
+  "shots/202331.json":{
+   "bytes":29656
+  },
+  "shots/1631094.json":{
+   "bytes":4898
+  },
+  "shots/1629627.json":{
+   "bytes":29244
+  },
+  "shots/1631217.json":{
+   "bytes":11460
+  },
+  "shots/1630543.json":{
+   "bytes":11697
+  },
+  "shots/1642502.json":{
+   "bytes":3458
+  },
+  "shots/1642851.json":{
+   "bytes":1788
+  },
+  "shots/1631169.json":{
+   "bytes":5709
+  },
+  "shots/1642914.json":{
+   "bytes":9985
+  },
+  "shots/1630703.json":{
+   "bytes":19151
+  },
+  "shots/1643738.json":{
+   "bytes":2467
+  },
+  "shots/1641705.json":{
+   "bytes":43142
+  },
+  "shots/1643411.json":{
+   "bytes":47120
+  },
+  "shots/1627750.json":{
+   "bytes":33339
+  },
+  "shots/1642345.json":{
+   "bytes":9277
+  },
+  "shots/1642892.json":{
+   "bytes":12970
+  },
+  "shots/1629060.json":{
+   "bytes":19789
+  },
+  "shots/1630241.json":{
+   "bytes":10415
+  },
+  "shots/1642484.json":{
+   "bytes":3892
+  },
+  "shots/1630611.json":{
+   "bytes":9993
+  },
+  "shots/1630538.json":{
+   "bytes":17232
+  },
+  "shots/1630168.json":{
+   "bytes":25370
+  },
+  "shots/1641744.json":{
+   "bytes":12056
+  },
+  "shots/1643515.json":{
+   "bytes":11462
+  },
+  "shots/1630191.json":{
+   "bytes":11272
+  },
+  "shots/1631104.json":{
+   "bytes":2221
+  },
+  "shots/1641713.json":{
+   "bytes":11599
+  },
+  "shots/1629021.json":{
+   "bytes":13421
+  },
+  "shots/1630200.json":{
+   "bytes":17054
+  },
+  "shots/1643407.json":{
+   "bytes":25870
+  },
+  "shots/1630579.json":{
+   "bytes":3144
+  },
+  "shots/1626157.json":{
+   "bytes":29225
+  },
+  "shots/1642353.json":{
+   "bytes":3646
+  },
+  "shots/1630596.json":{
+   "bytes":20872
+  },
+  "shots/1643542.json":{
+   "bytes":3633
+  },
+  "shots/1641718.json":{
+   "bytes":35684
+  },
+  "shots/1630572.json":{
+   "bytes":19782
+  },
+  "shots/1642358.json":{
+   "bytes":2812
+  },
+  "shots/1643637.json":{
+   "bytes":4684
+  },
+  "shots/1628379.json":{
+   "bytes":12790
+  },
+  "shots/1628396.json":{
+   "bytes":3606
+  },
+  "shots/1642860.json":{
+   "bytes":5212
+  },
+  "shots/1643621.json":{
+   "bytes":2340
+  },
+  "shots/1642876.json":{
+   "bytes":3583
+  },
+  "shots/1628380.json":{
+   "bytes":5878
+  },
+  "shots/1631288.json":{
+   "bytes":9971
+  },
+  "shots/1630163.json":{
+   "bytes":34132
+  },
+  "shots/1630533.json":{
+   "bytes":12410
+  },
+  "shots/1642964.json":{
+   "bytes":2609
+  },
+  "shots/1631119.json":{
+   "bytes":6092
+  },
+  "shots/203507.json":{
+   "bytes":39535
+  },
+  "shots/1641775.json":{
+   "bytes":10831
+  },
+  "shots/1628969.json":{
+   "bytes":16554
+  },
+  "shots/1642270.json":{
+   "bytes":17551
+  },
+  "shots/1641722.json":{
+   "bytes":5229
+  },
+  "shots/203897.json":{
+   "bytes":27367
+  },
+  "shots/1642948.json":{
+   "bytes":2348
+  },
+  "shots/1627777.json":{
+   "bytes":15706
+  },
+  "shots/1629006.json":{
+   "bytes":9831
+  },
+  "shots/203497.json":{
+   "bytes":13072
+  },
+  "shots/1631123.json":{
+   "bytes":2809
+  },
+  "shots/202681.json":{
+   "bytes":30582
+  },
+  "shots/1642266.json":{
+   "bytes":22603
+  },
+  "shots/1627741.json":{
+   "bytes":11940
+  },
+  "shots/1630591.json":{
+   "bytes":9263
+  },
+  "shots/1629026.json":{
+   "bytes":13877
+  },
+  "shots/1630529.json":{
+   "bytes":17340
+  },
+  "shots/1643512.json":{
+   "bytes":10163
+  },
+  "shots/1642883.json":{
+   "bytes":13411
+  },
+  "shots/1630180.json":{
+   "bytes":29434
+  },
+  "shots/1631457.json":{
+   "bytes":3711
+  },
+  "shots/1643416.json":{
+   "bytes":3717
+  },
+  "shots/1630568.json":{
+   "bytes":10703
+  },
+  "shots/1643553.json":{
+   "bytes":11989
+  },
+  "shots/1628436.json":{
+   "bytes":7061
+  },
+  "shots/1642856.json":{
+   "bytes":12482
+  },
+  "shots/1641796.json":{
+   "bytes":12870
+  },
+  "shots/1630544.json":{
+   "bytes":3046
+  },
+  "shots/1643590.json":{
+   "bytes":1910
+  },
+  "shots/1641807.json":{
+   "bytes":3293
+  },
+  "shots/1629636.json":{
+   "bytes":30832
+  },
+  "shots/1630552.json":{
+   "bytes":28875
+  },
+  "shots/1641738.json":{
+   "bytes":4846
+  },
+  "shots/1628973.json":{
+   "bytes":43798
+  },
+  "shots/1629661.json":{
+   "bytes":14708
+  },
+  "shots/1642285.json":{
+   "bytes":16500
+  },
+  "shots/1642905.json":{
+   "bytes":4154
+  },
+  "shots/1631250.json":{
+   "bytes":1926
+  },
+  "shots/1629660.json":{
+   "bytes":31209
+  },
+  "shots/1642284.json":{
+   "bytes":3149
+  },
+  "shots/1641739.json":{
+   "bytes":20317
+  },
+  "shots/1642400.json":{
+   "bytes":3026
+  },
+  "shots/1630695.json":{
+   "bytes":3779
+  },
+  "shots/1629637.json":{
+   "bytes":11695
+  },
+  "shots/1643568.json":{
+   "bytes":3205
+  },
+  "shots/1627783.json":{
+   "bytes":34020
+  },
+  "shots/1631207.json":{
+   "bytes":2079
+  },
+  "shots/1631342.json":{
+   "bytes":5562
+  },
+  "shots/1630545.json":{
+   "bytes":16009
+  },
+  "shots/1643591.json":{
+   "bytes":2191
+  },
+  "shots/1642857.json":{
+   "bytes":13419
+  },
+  "shots/1641778.json":{
+   "bytes":7230
+  },
+  "shots/1642912.json":{
+   "bytes":2898
+  },
+  "shots/1628964.json":{
+   "bytes":10395
+  },
+  "shots/1631114.json":{
+   "bytes":7169
+  },
+  "shots/1643417.json":{
+   "bytes":12240
+  },
+  "shots/1643552.json":{
+   "bytes":6453
+  },
+  "shots/1630314.json":{
+   "bytes":13153
+  },
+  "shots/1642882.json":{
+   "bytes":2367
+  },
   "shots/201599.json":{
-   "bytes":2622
+   "bytes":3048
   },
   "shots/1628374.json":{
-   "bytes":17328
+   "bytes":17329
   },
   "shots/1642928.json":{
-   "bytes":5170
+   "bytes":5437
   },
   "shots/1630178.json":{
    "bytes":40103
   },
   "shots/1629162.json":{
-   "bytes":5217
+   "bytes":5218
   },
   "shots/1629027.json":{
-   "bytes":29526
+   "bytes":30809
   },
   "shots/1641715.json":{
-   "bytes":2657
+   "bytes":2658
   },
   "shots/1643544.json":{
-   "bytes":5363
+   "bytes":5762
   },
   "shots/1642355.json":{
-   "bytes":2235
+   "bytes":2236
   },
   "shots/1630590.json":{
-   "bytes":5428
+   "bytes":5429
   },
   "shots/1642267.json":{
-   "bytes":10411
+   "bytes":10412
   },
   "shots/1628991.json":{
-   "bytes":7929
+   "bytes":7930
   },
   "shots/203992.json":{
-   "bytes":9542
+   "bytes":9930
   },
   "shots/1626171.json":{
-   "bytes":16090
+   "bytes":17315
   },
   "shots/1642363.json":{
-   "bytes":6083
+   "bytes":6925
   },
   "shots/1626167.json":{
-   "bytes":15445
+   "bytes":16116
   },
   "shots/1630549.json":{
-   "bytes":12824
+   "bytes":13380
   },
   "shots/1629011.json":{
-   "bytes":8206
-  },
-  "shots/1630230.json":{
-   "bytes":17030
-  },
-  "shots/1642271.json":{
-   "bytes":5290
-  },
-  "shots/202696.json":{
-   "bytes":6660
-  },
-  "shots/1642066.json":{
-   "bytes":4128
-  },
-  "shots/1631323.json":{
-   "bytes":4970
-  },
-  "shots/1630162.json":{
-   "bytes":16451
-  },
-  "shots/1630532.json":{
-   "bytes":37455
-  },
-  "shots/1629656.json":{
-   "bytes":15697
-  },
-  "shots/1643509.json":{
-   "bytes":20229
-  },
-  "shots/1642461.json":{
-   "bytes":4086
-  },
-  "shots/1627832.json":{
-   "bytes":19777
-  },
-  "shots/1642877.json":{
-   "bytes":6891
-  },
-  "shots/1628381.json":{
-   "bytes":17548
-  },
-  "shots/1630174.json":{
-   "bytes":18937
-  },
-  "shots/1628401.json":{
-   "bytes":23147
-  },
-  "shots/1629640.json":{
-   "bytes":16399
-  },
-  "shots/1641871.json":{
-   "bytes":3265
-  },
-  "shots/1628378.json":{
-   "bytes":36126
-  },
-  "shots/1631159.json":{
-   "bytes":9339
-  },
-  "shots/1630573.json":{
-   "bytes":13523
-  },
-  "shots/1642359.json":{
-   "bytes":2879
-  },
-  "shots/1627936.json":{
-   "bytes":9644
-  },
-  "shots/1642264.json":{
-   "bytes":30375
-  },
-  "shots/1629680.json":{
-   "bytes":13423
-  },
-  "shots/1627734.json":{
-   "bytes":16368
-  },
-  "shots/1643530.json":{
-   "bytes":14230
-  },
-  "shots/203991.json":{
-   "bytes":3558
-  },
-  "shots/1631199.json":{
-   "bytes":4128
-  },
-  "shots/1643588.json":{
-   "bytes":3335
-  },
-  "shots/1626172.json":{
-   "bytes":2874
-  },
-  "shots/2544.json":{
-   "bytes":21465
-  },
-  "shots/1629638.json":{
-   "bytes":34998
-  },
-  "shots/1643567.json":{
-   "bytes":9913
-  },
-  "shots/1631121.json":{
-   "bytes":4024
-  },
-  "shots/1629004.json":{
-   "bytes":11238
-  },
-  "shots/1626164.json":{
-   "bytes":33593
-  },
-  "shots/1642419.json":{
-   "bytes":13367
-  },
-  "shots/1629012.json":{
-   "bytes":19004
-  },
-  "shots/201144.json":{
-   "bytes":2474
-  },
-  "shots/1642272.json":{
-   "bytes":25037
-  },
-  "shots/203084.json":{
    "bytes":8490
   },
-  "shots/202695.json":{
-   "bytes":6847
+  "shots/1630230.json":{
+   "bytes":18127
   },
-  "shots/1630264.json":{
-   "bytes":2472
+  "shots/1642271.json":{
+   "bytes":5291
   },
-  "shots/1627759.json":{
-   "bytes":34865
+  "shots/202696.json":{
+   "bytes":6661
   },
-  "shots/1643418.json":{
-   "bytes":2498
+  "shots/1642066.json":{
+   "bytes":4129
   },
-  "shots/1629655.json":{
-   "bytes":11159
+  "shots/1631323.json":{
+   "bytes":5381
   },
-  "shots/1642874.json":{
-   "bytes":9644
+  "shots/1630162.json":{
+   "bytes":16452
   },
-  "shots/203944.json":{
-   "bytes":29324
+  "shots/1630532.json":{
+   "bytes":40541
   },
-  "shots/1630198.json":{
-   "bytes":4301
+  "shots/1629656.json":{
+   "bytes":18537
   },
-  "shots/1642862.json":{
-   "bytes":5167
+  "shots/1643509.json":{
+   "bytes":21460
   },
-  "shots/203114.json":{
-   "bytes":4081
+  "shots/1642461.json":{
+   "bytes":4226
   },
-  "shots/1626220.json":{
-   "bytes":11349
+  "shots/1627832.json":{
+   "bytes":21655
   },
-  "shots/1627827.json":{
-   "bytes":2063
+  "shots/1642877.json":{
+   "bytes":6892
   },
-  "shots/203952.json":{
-   "bytes":17437
+  "shots/1628381.json":{
+   "bytes":18921
   },
-  "shots/1629614.json":{
-   "bytes":21574
+  "shots/1630174.json":{
+   "bytes":19945
   },
-  "shots/1630570.json":{
-   "bytes":4691
+  "shots/1628401.json":{
+   "bytes":25415
   },
-  "shots/1629028.json":{
-   "bytes":8030
+  "shots/1629640.json":{
+   "bytes":16400
   },
-  "shots/1642907.json":{
-   "bytes":21576
+  "shots/1641871.json":{
+   "bytes":3266
   },
-  "shots/1642268.json":{
-   "bytes":11440
+  "shots/1628378.json":{
+   "bytes":40052
   },
-  "shots/1642403.json":{
-   "bytes":2043
+  "shots/1631159.json":{
+   "bytes":9748
   },
-  "shots/1630696.json":{
-   "bytes":3351
+  "shots/1630573.json":{
+   "bytes":14381
   },
-  "shots/1629008.json":{
-   "bytes":27416
+  "shots/1642359.json":{
+   "bytes":2880
   },
-  "shots/1627780.json":{
-   "bytes":8746
+  "shots/1627936.json":{
+   "bytes":10364
   },
-  "shots/1631204.json":{
-   "bytes":9201
+  "shots/1642264.json":{
+   "bytes":30376
   },
-  "shots/1642383.json":{
-   "bytes":11951
+  "shots/1629680.json":{
+   "bytes":13984
   },
-  "shots/1626168.json":{
-   "bytes":10704
+  "shots/1627734.json":{
+   "bytes":17349
   },
-  "shots/1629622.json":{
-   "bytes":9660
+  "shots/1643530.json":{
+   "bytes":15069
   },
-  "shots/1631212.json":{
-   "bytes":19438
+  "shots/203991.json":{
+   "bytes":3559
   },
-  "shots/1642854.json":{
-   "bytes":3689
+  "shots/1631199.json":{
+   "bytes":4129
   },
-  "shots/1631245.json":{
-   "bytes":15735
+  "shots/1643588.json":{
+   "bytes":3336
   },
-  "shots/1629675.json":{
-   "bytes":35079
+  "shots/1626172.json":{
+   "bytes":2875
   },
-  "shots/1630643.json":{
-   "bytes":10084
+  "shots/2544.json":{
+   "bytes":23755
   },
-  "shots/1631117.json":{
-   "bytes":19152
+  "shots/1629638.json":{
+   "bytes":37242
   },
-  "shots/1643551.json":{
-   "bytes":2198
+  "shots/1643567.json":{
+   "bytes":10905
   },
-  "shots/1643414.json":{
-   "bytes":14928
+  "shots/1631121.json":{
+   "bytes":4025
   },
-  "shots/1642878.json":{
-   "bytes":15200
+  "shots/1629004.json":{
+   "bytes":12611
   },
-  "shots/1630182.json":{
-   "bytes":8489
+  "shots/1626164.json":{
+   "bytes":36166
   },
-  "shots/1628418.json":{
-   "bytes":9044
+  "shots/1642419.json":{
+   "bytes":15464
   },
-  "shots/1628398.json":{
-   "bytes":19647
+  "shots/1629012.json":{
+   "bytes":20150
   },
-  "shots/1642881.json":{
-   "bytes":1780
-  },
-  "shots/1643510.json":{
-   "bytes":1926
-  },
-  "shots/1630194.json":{
-   "bytes":17009
-  },
-  "shots/1641716.json":{
-   "bytes":13527
-  },
-  "shots/1629618.json":{
-   "bytes":2772
-  },
-  "shots/1643547.json":{
-   "bytes":4308
-  },
-  "shots/1643052.json":{
-   "bytes":8571
-  },
-  "shots/1642357.json":{
-   "bytes":2780
-  },
-  "shots/1641717.json":{
-   "bytes":4453
-  },
-  "shots/201935.json":{
-   "bytes":25821
-  },
-  "shots/1641740.json":{
-   "bytes":7642
-  },
-  "shots/1631157.json":{
-   "bytes":20175
-  },
-  "shots/1641869.json":{
-   "bytes":1773
-  },
-  "shots/1630183.json":{
-   "bytes":29804
-  },
-  "shots/1642879.json":{
-   "bytes":1799
-  },
-  "shots/1630245.json":{
-   "bytes":31304
-  },
-  "shots/1626145.json":{
-   "bytes":5390
-  },
-  "shots/1643415.json":{
-   "bytes":16770
-  },
-  "shots/1627884.json":{
-   "bytes":14361
-  },
-  "shots/1628989.json":{
-   "bytes":16604
-  },
-  "shots/1629731.json":{
-   "bytes":8207
-  },
-  "shots/1629674.json":{
-   "bytes":12220
-  },
-  "shots/1642910.json":{
-   "bytes":2927
-  },
-  "shots/1629048.json":{
-   "bytes":5717
-  },
-  "shots/1642855.json":{
-   "bytes":8339
-  },
-  "shots/1642382.json":{
-   "bytes":4077
-  },
-  "shots/203932.json":{
-   "bytes":16228
-  },
-  "shots/1630551.json":{
-   "bytes":4431
-  },
-  "shots/1642394.json":{
-   "bytes":5471
-  },
-  "shots/203924.json":{
-   "bytes":16886
-  },
-  "shots/1630228.json":{
-   "bytes":21588
-  },
-  "shots/1627739.json":{
-   "bytes":12208
-  },
-  "shots/1642269.json":{
-   "bytes":1934
-  },
-  "shots/1628970.json":{
-   "bytes":24029
-  },
-  "shots/league_zones.json":{
-   "bytes":1386
-  },
-  "shots/1641783.json":{
-   "bytes":19646
-  },
-  "shots/1642843.json":{
-   "bytes":33679
-  },
-  "shots/1630658.json":{
-   "bytes":2486
-  },
-  "shots/1629029.json":{
-   "bytes":48990
-  },
-  "shots/1630208.json":{
-   "bytes":2059
-  },
-  "shots/201939.json":{
-   "bytes":24476
-  },
-  "shots/1641824.json":{
-   "bytes":19613
-  },
-  "shots/1629750.json":{
-   "bytes":9681
-  },
-  "shots/1642863.json":{
-   "bytes":10540
-  },
-  "shots/1627826.json":{
-   "bytes":11480
-  },
-  "shots/1630619.json":{
-   "bytes":2499
-  },
-  "shots/1630249.json":{
-   "bytes":4423
-  },
-  "shots/1628415.json":{
-   "bytes":23771
-  },
-  "shots/1630530.json":{
-   "bytes":16045
-  },
-  "shots/1631321.json":{
-   "bytes":11671
-  },
-  "shots/1642434.json":{
-   "bytes":3987
-  },
-  "shots/1643419.json":{
-   "bytes":3886
-  },
-  "shots/1630567.json":{
-   "bytes":29322
-  },
-  "shots/1642859.json":{
-   "bytes":12671
-  },
-  "shots/1642273.json":{
-   "bytes":30053
-  },
-  "shots/1631248.json":{
-   "bytes":10681
-  },
-  "shots/1629013.json":{
-   "bytes":16001
-  },
-  "shots/1643570.json":{
-   "bytes":3939
-  },
-  "shots/1641737.json":{
-   "bytes":4547
-  },
-  "shots/1630224.json":{
-   "bytes":21197
-  },
-  "shots/1629639.json":{
-   "bytes":32187
-  },
-  "shots/1642377.json":{
-   "bytes":16604
-  },
-  "shots/201942.json":{
-   "bytes":14074
-  },
-  "shots/1643024.json":{
-   "bytes":2048
-  },
-  "shots/1642844.json":{
-   "bytes":31674
-  },
-  "shots/1631255.json":{
-   "bytes":11631
-  },
-  "shots/1642281.json":{
-   "bytes":10980
-  },
-  "shots/1641854.json":{
-   "bytes":4391
-  },
-  "shots/1629632.json":{
-   "bytes":12973
-  },
-  "shots/1631097.json":{
-   "bytes":10819
-  },
-  "shots/203935.json":{
-   "bytes":9612
-  },
-  "shots/1629018.json":{
-   "bytes":5990
-  },
-  "shots/1643717.json":{
-   "bytes":5371
-  },
-  "shots/1630540.json":{
-   "bytes":12587
-  },
-  "shots/1626181.json":{
-   "bytes":24315
-  },
-  "shots/1642852.json":{
-   "bytes":19144
-  },
-  "shots/1642278.json":{
-   "bytes":7269
-  },
-  "shots/1641842.json":{
-   "bytes":10093
-  },
-  "shots/1629673.json":{
-   "bytes":9610
-  },
-  "shots/1641706.json":{
-   "bytes":34719
-  },
-  "shots/1630700.json":{
-   "bytes":19128
-  },
-  "shots/1630583.json":{
-   "bytes":6060
-  },
-  "shots/1642346.json":{
-   "bytes":8799
-  },
-  "shots/1643412.json":{
-   "bytes":12065
-  },
-  "shots/1642868.json":{
-   "bytes":8364
-  },
-  "shots/1641747.json":{
-   "bytes":2056
-  },
-  "shots/1629130.json":{
-   "bytes":21173
-  },
-  "shots/1630311.json":{
-   "bytes":2481
-  },
-  "shots/1630192.json":{
-   "bytes":1786
-  },
-  "shots/1643516.json":{
-   "bytes":11655
-  },
-  "shots/1641710.json":{
-   "bytes":18663
-  },
-  "shots/1631107.json":{
-   "bytes":4676
-  },
-  "shots/1642350.json":{
-   "bytes":9616
-  },
-  "shots/1630595.json":{
-   "bytes":35989
-  },
-  "shots/1642262.json":{
-   "bytes":2308
-  },
-  "shots/1643536.json":{
-   "bytes":3387
-  },
-  "shots/1631170.json":{
-   "bytes":24832
-  },
-  "shots/1642848.json":{
-   "bytes":19668
-  },
-  "shots/1641767.json":{
-   "bytes":2063
-  },
-  "shots/1641730.json":{
-   "bytes":11370
-  },
-  "shots/1642389.json":{
-   "bytes":2082
-  },
-  "shots/1626162.json":{
-   "bytes":16798
-  },
-  "shots/1642366.json":{
-   "bytes":6845
-  },
-  "shots/1629628.json":{
-   "bytes":35648
-  },
-  "shots/1631218.json":{
-   "bytes":4031
-  },
-  "shots/1631131.json":{
-   "bytes":4148
-  },
-  "shots/201142.json":{
-   "bytes":29962
-  },
-  "shots/1629014.json":{
-   "bytes":19108
-  },
-  "shots/1642274.json":{
-   "bytes":4419
-  },
-  "shots/1643520.json":{
-   "bytes":4027
-  },
-  "shots/1641771.json":{
-   "bytes":5736
-  },
-  "shots/1630188.json":{
-   "bytes":17590
-  },
-  "shots/1630167.json":{
-   "bytes":15282
-  },
-  "shots/1642258.json":{
-   "bytes":16830
-  },
-  "shots/1628384.json":{
-   "bytes":24532
-  },
-  "shots/1628404.json":{
-   "bytes":12551
-  },
-  "shots/1630171.json":{
-   "bytes":11323
-  },
-  "shots/1642864.json":{
-   "bytes":7841
-  },
-  "shots/1628392.json":{
-   "bytes":14878
-  },
-  "shots/1643633.json":{
-   "bytes":7039
-  },
-  "shots/203954.json":{
-   "bytes":26937
-  },
-  "shots/1641989.json":{
-   "bytes":1791
-  },
-  "shots/1631222.json":{
-   "bytes":10708
-  },
-  "shots/1643408.json":{
-   "bytes":33065
-  },
-  "shots/1627749.json":{
-   "bytes":16059
-  },
-  "shots/1643721.json":{
-   "bytes":1777
-  },
-  "shots/203903.json":{
-   "bytes":8696
-  },
-  "shots/1630598.json":{
-   "bytes":24790
-  },
-  "shots/1643409.json":{
-   "bytes":29438
-  },
-  "shots/1630577.json":{
-   "bytes":17074
-  },
-  "shots/1642865.json":{
-   "bytes":30933
-  },
-  "shots/1642920.json":{
-   "bytes":14196
-  },
-  "shots/1630170.json":{
-   "bytes":18586
-  },
-  "shots/1643624.json":{
-   "bytes":5013
-  },
-  "shots/1629652.json":{
-   "bytes":17612
-  },
-  "shots/1643018.json":{
-   "bytes":10315
-  },
-  "shots/1630166.json":{
-   "bytes":31173
-  },
-  "shots/1642259.json":{
-   "bytes":18517
-  },
-  "shots/1642449.json":{
-   "bytes":2490
-  },
-  "shots/203083.json":{
-   "bytes":8843
-  },
-  "shots/1642275.json":{
-   "bytes":8946
-  },
-  "shots/1628983.json":{
-   "bytes":47136
-  },
-  "shots/203484.json":{
-   "bytes":10182
-  },
-  "shots/201143.json":{
-   "bytes":8760
-  },
-  "shots/1642367.json":{
-   "bytes":4009
-  },
-  "shots/1641731.json":{
-   "bytes":13042
-  },
-  "shots/1629111.json":{
-   "bytes":8282
-  },
-  "shots/1642849.json":{
-   "bytes":18758
-  },
-  "shots/1642263.json":{
-   "bytes":16789
-  },
-  "shots/1643813.json":{
+  "shots/201144.json":{
    "bytes":2475
   },
+  "shots/1642272.json":{
+   "bytes":27009
+  },
+  "shots/203084.json":{
+   "bytes":8491
+  },
+  "shots/202695.json":{
+   "bytes":6848
+  },
+  "shots/1630264.json":{
+   "bytes":2473
+  },
+  "shots/1627759.json":{
+   "bytes":34866
+  },
+  "shots/1643418.json":{
+   "bytes":2790
+  },
+  "shots/1629655.json":{
+   "bytes":12017
+  },
+  "shots/1642874.json":{
+   "bytes":10067
+  },
+  "shots/203944.json":{
+   "bytes":30741
+  },
+  "shots/1630198.json":{
+   "bytes":5158
+  },
+  "shots/1642862.json":{
+   "bytes":5168
+  },
+  "shots/203114.json":{
+   "bytes":5061
+  },
+  "shots/1626220.json":{
+   "bytes":11350
+  },
+  "shots/1627827.json":{
+   "bytes":2064
+  },
+  "shots/203952.json":{
+   "bytes":18141
+  },
+  "shots/1629614.json":{
+   "bytes":21575
+  },
+  "shots/1630570.json":{
+   "bytes":4692
+  },
+  "shots/1629028.json":{
+   "bytes":8181
+  },
+  "shots/1642907.json":{
+   "bytes":23152
+  },
+  "shots/1642268.json":{
+   "bytes":11441
+  },
+  "shots/1642403.json":{
+   "bytes":2044
+  },
+  "shots/1630696.json":{
+   "bytes":3352
+  },
+  "shots/1629008.json":{
+   "bytes":28379
+  },
+  "shots/1627780.json":{
+   "bytes":9292
+  },
+  "shots/1631204.json":{
+   "bytes":9202
+  },
+  "shots/1642383.json":{
+   "bytes":12926
+  },
+  "shots/1626168.json":{
+   "bytes":10705
+  },
+  "shots/1629622.json":{
+   "bytes":9661
+  },
+  "shots/1631212.json":{
+   "bytes":19439
+  },
+  "shots/1642854.json":{
+   "bytes":3690
+  },
+  "shots/1631245.json":{
+   "bytes":16991
+  },
+  "shots/1629675.json":{
+   "bytes":35080
+  },
+  "shots/1630643.json":{
+   "bytes":11014
+  },
+  "shots/1631117.json":{
+   "bytes":20113
+  },
+  "shots/1643551.json":{
+   "bytes":2199
+  },
+  "shots/1643414.json":{
+   "bytes":16355
+  },
+  "shots/1642878.json":{
+   "bytes":16037
+  },
+  "shots/1630182.json":{
+   "bytes":9032
+  },
+  "shots/1628418.json":{
+   "bytes":9581
+  },
+  "shots/1628398.json":{
+   "bytes":21953
+  },
+  "shots/1642881.json":{
+   "bytes":1781
+  },
+  "shots/1643510.json":{
+   "bytes":1927
+  },
+  "shots/1630194.json":{
+   "bytes":18270
+  },
+  "shots/1641716.json":{
+   "bytes":14240
+  },
+  "shots/1629618.json":{
+   "bytes":2773
+  },
+  "shots/1643547.json":{
+   "bytes":4309
+  },
+  "shots/1643052.json":{
+   "bytes":9135
+  },
+  "shots/1642357.json":{
+   "bytes":2781
+  },
+  "shots/1641717.json":{
+   "bytes":4454
+  },
+  "shots/201935.json":{
+   "bytes":27200
+  },
+  "shots/1641740.json":{
+   "bytes":7643
+  },
+  "shots/1631157.json":{
+   "bytes":20176
+  },
+  "shots/1641869.json":{
+   "bytes":2047
+  },
+  "shots/1630183.json":{
+   "bytes":29805
+  },
+  "shots/1642879.json":{
+   "bytes":1800
+  },
+  "shots/1630245.json":{
+   "bytes":31305
+  },
+  "shots/1626145.json":{
+   "bytes":5841
+  },
+  "shots/1643415.json":{
+   "bytes":18034
+  },
+  "shots/1627884.json":{
+   "bytes":14362
+  },
+  "shots/1628989.json":{
+   "bytes":17865
+  },
+  "shots/1629731.json":{
+   "bytes":8208
+  },
+  "shots/1629674.json":{
+   "bytes":14184
+  },
+  "shots/1642910.json":{
+   "bytes":2928
+  },
+  "shots/1629048.json":{
+   "bytes":6424
+  },
+  "shots/1642855.json":{
+   "bytes":8894
+  },
+  "shots/1642382.json":{
+   "bytes":4078
+  },
+  "shots/203932.json":{
+   "bytes":17586
+  },
+  "shots/1630551.json":{
+   "bytes":4432
+  },
+  "shots/1642394.json":{
+   "bytes":5472
+  },
+  "shots/203924.json":{
+   "bytes":17578
+  },
+  "shots/1630228.json":{
+   "bytes":21589
+  },
+  "shots/1627739.json":{
+   "bytes":12209
+  },
+  "shots/1642269.json":{
+   "bytes":1935
+  },
+  "shots/1628970.json":{
+   "bytes":25173
+  },
+  "shots/league_zones.json":{
+   "bytes":1387
+  },
+  "shots/1641783.json":{
+   "bytes":20645
+  },
+  "shots/1642843.json":{
+   "bytes":35821
+  },
+  "shots/1630658.json":{
+   "bytes":2487
+  },
+  "shots/1629029.json":{
+   "bytes":53039
+  },
+  "shots/1630208.json":{
+   "bytes":2060
+  },
+  "shots/201939.json":{
+   "bytes":24477
+  },
+  "shots/1641824.json":{
+   "bytes":21847
+  },
+  "shots/1629750.json":{
+   "bytes":11363
+  },
+  "shots/1642863.json":{
+   "bytes":11226
+  },
+  "shots/1627826.json":{
+   "bytes":12040
+  },
+  "shots/1630619.json":{
+   "bytes":2500
+  },
+  "shots/1630249.json":{
+   "bytes":4424
+  },
+  "shots/1628415.json":{
+   "bytes":26365
+  },
+  "shots/1630530.json":{
+   "bytes":16046
+  },
+  "shots/1631321.json":{
+   "bytes":11672
+  },
+  "shots/1642434.json":{
+   "bytes":3988
+  },
+  "shots/1643419.json":{
+   "bytes":3887
+  },
+  "shots/1630567.json":{
+   "bytes":29323
+  },
+  "shots/1642859.json":{
+   "bytes":12672
+  },
+  "shots/1642273.json":{
+   "bytes":32324
+  },
+  "shots/1631248.json":{
+   "bytes":11263
+  },
+  "shots/1629013.json":{
+   "bytes":16002
+  },
+  "shots/1643570.json":{
+   "bytes":3940
+  },
+  "shots/1641737.json":{
+   "bytes":4548
+  },
+  "shots/1630224.json":{
+   "bytes":23144
+  },
+  "shots/1629639.json":{
+   "bytes":33743
+  },
+  "shots/1642377.json":{
+   "bytes":17314
+  },
+  "shots/201942.json":{
+   "bytes":15534
+  },
+  "shots/1643024.json":{
+   "bytes":2049
+  },
+  "shots/1642844.json":{
+   "bytes":31675
+  },
+  "shots/1631255.json":{
+   "bytes":12027
+  },
+  "shots/1642281.json":{
+   "bytes":10981
+  },
+  "shots/1641854.json":{
+   "bytes":4941
+  },
+  "shots/1629632.json":{
+   "bytes":12974
+  },
+  "shots/1631097.json":{
+   "bytes":10820
+  },
+  "shots/203935.json":{
+   "bytes":10185
+  },
+  "shots/1629018.json":{
+   "bytes":6671
+  },
+  "shots/1643717.json":{
+   "bytes":5372
+  },
+  "shots/1630540.json":{
+   "bytes":12588
+  },
+  "shots/1626181.json":{
+   "bytes":26653
+  },
+  "shots/1642852.json":{
+   "bytes":20019
+  },
+  "shots/1642278.json":{
+   "bytes":7270
+  },
+  "shots/1641842.json":{
+   "bytes":10094
+  },
+  "shots/1629673.json":{
+   "bytes":11189
+  },
+  "shots/1641706.json":{
+   "bytes":34720
+  },
+  "shots/1630700.json":{
+   "bytes":20404
+  },
+  "shots/1630583.json":{
+   "bytes":6337
+  },
+  "shots/1642346.json":{
+   "bytes":9478
+  },
+  "shots/1643412.json":{
+   "bytes":12066
+  },
+  "shots/1642868.json":{
+   "bytes":8365
+  },
+  "shots/1641747.json":{
+   "bytes":2057
+  },
+  "shots/1629130.json":{
+   "bytes":21174
+  },
+  "shots/1630311.json":{
+   "bytes":2482
+  },
+  "shots/1630192.json":{
+   "bytes":1787
+  },
+  "shots/1643516.json":{
+   "bytes":12353
+  },
+  "shots/1641710.json":{
+   "bytes":20949
+  },
+  "shots/1631107.json":{
+   "bytes":5216
+  },
+  "shots/1642350.json":{
+   "bytes":9617
+  },
+  "shots/1630595.json":{
+   "bytes":35990
+  },
+  "shots/1642262.json":{
+   "bytes":2309
+  },
+  "shots/1643536.json":{
+   "bytes":3388
+  },
+  "shots/1631170.json":{
+   "bytes":25844
+  },
+  "shots/1642848.json":{
+   "bytes":19941
+  },
+  "shots/1641767.json":{
+   "bytes":2064
+  },
+  "shots/1641730.json":{
+   "bytes":12188
+  },
+  "shots/1642389.json":{
+   "bytes":2083
+  },
+  "shots/1626162.json":{
+   "bytes":18158
+  },
+  "shots/1642366.json":{
+   "bytes":6973
+  },
+  "shots/1629628.json":{
+   "bytes":35649
+  },
+  "shots/1631218.json":{
+   "bytes":4748
+  },
+  "shots/1631131.json":{
+   "bytes":4422
+  },
+  "shots/201142.json":{
+   "bytes":31190
+  },
+  "shots/1629014.json":{
+   "bytes":20775
+  },
+  "shots/1642274.json":{
+   "bytes":4843
+  },
+  "shots/1643520.json":{
+   "bytes":4173
+  },
+  "shots/1641771.json":{
+   "bytes":6435
+  },
+  "shots/1630188.json":{
+   "bytes":19138
+  },
+  "shots/1630167.json":{
+   "bytes":16006
+  },
+  "shots/1642258.json":{
+   "bytes":17679
+  },
+  "shots/1628384.json":{
+   "bytes":24533
+  },
+  "shots/1628404.json":{
+   "bytes":12552
+  },
+  "shots/1630171.json":{
+   "bytes":12272
+  },
+  "shots/1642864.json":{
+   "bytes":8529
+  },
+  "shots/1628392.json":{
+   "bytes":15574
+  },
+  "shots/1643633.json":{
+   "bytes":7592
+  },
+  "shots/203954.json":{
+   "bytes":29416
+  },
+  "shots/1641989.json":{
+   "bytes":2095
+  },
+  "shots/1631222.json":{
+   "bytes":11146
+  },
+  "shots/1643408.json":{
+   "bytes":33813
+  },
+  "shots/1627749.json":{
+   "bytes":16060
+  },
+  "shots/1643721.json":{
+   "bytes":1920
+  },
+  "shots/203903.json":{
+   "bytes":8697
+  },
+  "shots/1630598.json":{
+   "bytes":26580
+  },
+  "shots/1643409.json":{
+   "bytes":30681
+  },
+  "shots/1630577.json":{
+   "bytes":17075
+  },
+  "shots/1642865.json":{
+   "bytes":33525
+  },
+  "shots/1642920.json":{
+   "bytes":14197
+  },
+  "shots/1630170.json":{
+   "bytes":18587
+  },
+  "shots/1643624.json":{
+   "bytes":5014
+  },
+  "shots/1629652.json":{
+   "bytes":19147
+  },
+  "shots/1643018.json":{
+   "bytes":11400
+  },
+  "shots/1630166.json":{
+   "bytes":31174
+  },
+  "shots/1642259.json":{
+   "bytes":19361
+  },
+  "shots/1629605.json":{
+   "bytes":1779
+  },
+  "shots/1642449.json":{
+   "bytes":2635
+  },
+  "shots/203083.json":{
+   "bytes":8844
+  },
+  "shots/1642275.json":{
+   "bytes":8947
+  },
+  "shots/1628983.json":{
+   "bytes":51168
+  },
+  "shots/203484.json":{
+   "bytes":10839
+  },
+  "shots/201143.json":{
+   "bytes":8761
+  },
+  "shots/1642367.json":{
+   "bytes":4010
+  },
+  "shots/1631126.json":{
+   "bytes":2075
+  },
+  "shots/1641731.json":{
+   "bytes":13457
+  },
+  "shots/1629111.json":{
+   "bytes":8283
+  },
+  "shots/1642849.json":{
+   "bytes":20081
+  },
+  "shots/1642263.json":{
+   "bytes":18162
+  },
+  "shots/1643813.json":{
+   "bytes":2476
+  },
   "shots/1629023.json":{
-   "bytes":23099
+   "bytes":24454
   },
   "shots/1630202.json":{
-   "bytes":23488
+   "bytes":25048
   },
   "shots/1641711.json":{
-   "bytes":11351
+   "bytes":11352
   },
   "shots/1631106.json":{
-   "bytes":21157
+   "bytes":22685
   },
   "shots/1630193.json":{
-   "bytes":25746
+   "bytes":28806
   },
   "shots/1643517.json":{
-   "bytes":2342
+   "bytes":2910
   },
   "shots/201572.json":{
-   "bytes":21264
+   "bytes":21265
   },
   "shots/1628370.json":{
-   "bytes":14348
+   "bytes":15192
   },
   "shots/1641750.json":{
-   "bytes":6586
+   "bytes":6587
   },
   "shots/1628389.json":{
-   "bytes":25332
+   "bytes":27368
   },
   "shots/1642347.json":{
-   "bytes":15358
+   "bytes":17120
   },
   "shots/1643413.json":{
-   "bytes":16940
+   "bytes":16941
   },
   "shots/1627752.json":{
-   "bytes":2513
+   "bytes":2514
   },
   "shots/1641707.json":{
-   "bytes":6815
+   "bytes":7809
   },
   "shots/1628960.json":{
-   "bytes":19298
+   "bytes":19299
   },
   "shots/1642853.json":{
-   "bytes":2993
+   "bytes":2994
   },
   "shots/1642384.json":{
-   "bytes":3953
+   "bytes":4085
   },
   "shots/1631096.json":{
-   "bytes":5391
+   "bytes":5392
   },
   "shots/1630557.json":{
-   "bytes":6627
+   "bytes":7333
   },
   "shots/1642404.json":{
-   "bytes":3160
+   "bytes":4021
   },
   "shots/203471.json":{
-   "bytes":14153
+   "bytes":14154
   },
   "shots/1628976.json":{
-   "bytes":16412
+   "bytes":17913
   },
   "shots/203076.json":{
-   "bytes":34494
+   "bytes":36770
   },
   "shots/1642845.json":{
-   "bytes":23526
+   "bytes":25625
   }
  }
 }
