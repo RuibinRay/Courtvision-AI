@@ -215,6 +215,7 @@ def main():
     sched = json.loads((DATA / "games" / "schedule.json").read_text())["table"]; sd = pd.DataFrame(sched["rows"], columns=sched["cols"]); sd["utc"] = pd.to_datetime(sd["utc"], errors="coerce", utc=True).dt.tz_convert(None)
     asof = g.date.max(); horizon = asof + pd.Timedelta(days=15)
     up = sd[(sd.utc > asof + pd.Timedelta(hours=12)) & (sd.utc <= horizon)].sort_values("utc")
+    up = up[up.homeId.isin(ids) & up.awayId.isin(ids)]   # skip games whose teams are not decided yet (e.g. NBA Cup knockouts listed with team id 0)
     last_play = {tid: (state[tid].last_date if state[tid].last_date is not None else None) for tid in ids}
     rows, meta = [], []
     for r in up.itertuples(index=False):
