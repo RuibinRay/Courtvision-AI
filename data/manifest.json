@@ -1,5 +1,5 @@
 {
- "generated_at":"2026-11-26T18:25:21+00:00",
+ "generated_at":"2026-11-27T15:44:07+00:00",
  "season":"2026-27",
  "sources":[
   {
@@ -14,7 +14,7 @@
   }
  ],
  "file_count":1030,
- "total_bytes":19652234,
+ "total_bytes":19652392,
  "files":{
   "players/index_totals.json":{
    "bytes":106697
@@ -1481,7 +1481,7 @@
    "bytes":787
   },
   "players/seasons/2024-25.json":{
-   "bytes":139456
+   "bytes":139460
   },
   "players/seasons/2025-26.json":{
    "bytes":142849
@@ -1493,7 +1493,7 @@
    "bytes":147344
   },
   "players/seasons/2023-24.json":{
-   "bytes":139850
+   "bytes":139848
   },
   "players/seasons/2025-26_playoffs.json":{
    "bytes":55181
@@ -1628,10 +1628,10 @@
    "bytes":153715
   },
   "teams/rosters.json":{
-   "bytes":80820
+   "bytes":80986
   },
   "teams/stats.json":{
-   "bytes":81814
+   "bytes":81804
   },
   "teams/lineups.json":{
    "bytes":65932
